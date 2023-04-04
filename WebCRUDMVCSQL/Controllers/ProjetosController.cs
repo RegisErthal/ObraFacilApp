@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
 
@@ -21,9 +16,9 @@ namespace ObraFacilApp.Controllers
         // GET: Projetoe
         public async Task<IActionResult> Index()
         {
-              return _context.Projeto_1 != null ? 
-                          View(await _context.Projeto_1.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Projeto_1'  is null.");
+            return _context.Projeto_1 != null ?
+                        View(await _context.Projeto_1.ToListAsync()) :
+                        Problem("Entity set 'Contexto.Projeto_1'  is null.");
         }
 
         // GET: Projetoe/Details/5
@@ -149,14 +144,14 @@ namespace ObraFacilApp.Controllers
             {
                 _context.Projeto_1.Remove(projeto);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProjetoExists(int id)
         {
-          return (_context.Projeto_1?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Projeto_1?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

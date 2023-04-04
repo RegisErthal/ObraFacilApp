@@ -7,7 +7,7 @@ namespace ObraFacilApp.Models
     public class Produto
     {
         [Column("Id")]
-        [Display(Name ="Código")]
+        [Display(Name = "Código")]
         public int Id { get; set; }
 
         [Column("Nome")]

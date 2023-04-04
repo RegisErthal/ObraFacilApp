@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Models
 {

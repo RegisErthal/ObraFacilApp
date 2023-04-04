@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using ObraFacilApp.Models;
+using System.Diagnostics;
 
 namespace ObraFacilApp.Controllers
 {

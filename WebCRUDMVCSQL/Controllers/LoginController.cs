@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using ObraFacilApp.Models;
 
 
 namespace ObraFacilApp.Controllers
@@ -9,12 +7,12 @@ namespace ObraFacilApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();                      
+            return View();
         }
 
-        public IActionResult Logar(string username, string senha ) 
+        public IActionResult Logar(string username, string senha)
         {
-            return Json(new {});
+            return Json(new { });
         }
 
     }
