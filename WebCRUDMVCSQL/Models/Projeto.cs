@@ -12,6 +12,6 @@ namespace ObraFacilApp.Models
 
         [Column("NomeProjeto")]
         [Display(Name = "Nome do Projeto")]
-        public string NomeProjeto { get; set; }
+        public string? NomeProjeto { get; set; }
     }
 }

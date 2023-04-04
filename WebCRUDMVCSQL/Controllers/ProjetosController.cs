@@ -9,11 +9,11 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
 {
-    public class ProjetoeController : Controller
+    public class ProjetosController : Controller
     {
         private readonly Contexto _context;
 
-        public ProjetoeController(Contexto context)
+        public ProjetosController(Contexto context)
         {
             _context = context;
         }

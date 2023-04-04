@@ -8,9 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Contexto>
     (options => options.UseSqlServer
-    //("Data Source=DESKTOP-NFKMOF8\\SQLBIA;Initial Catalog=CRUD_MVC_SQL_CANAL_DEV;Integrated Security=False;User ID=sa;Password=1234;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False"));
-    //("Data Source=DESKTOP-NFKMOF8\\SQLBIA;Initial Catalog=CRUD_MVC_SQL_CANAL_DEV;Integrated Security=True"));
-    ("Data Source=ERTHAL\\SQLEXPRESS;Initial Catalog=master;User ID=sa;Password=root"));
+    ("Data Source=ACERNITRO;Initial Catalog=master;User ID=sa;Password=root"));
 
 var app = builder.Build();
 

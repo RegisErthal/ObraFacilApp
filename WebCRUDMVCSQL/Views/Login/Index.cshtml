@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ObraFacilApp.Models.Login>
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<form asp-controller="Login" asp-action="Logar" method="post">
+    <label>Usuário</label>
+    <input type="text" name="userName" />
+
+    <label>Senha</label>
+    <input type="password" name="senha" />
+
+    <input type="submit" name="enviar" />
+</form>
