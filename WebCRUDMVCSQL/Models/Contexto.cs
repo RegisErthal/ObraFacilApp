@@ -10,8 +10,8 @@ namespace ObraFacilApp.Models
         }
 
         public DbSet<Produto> Produto { get; set; }
-        public DbSet<Produto> Projeto { get; set; }
-        public DbSet<Produto> Login { get; set; }
+        public DbSet<Projeto> Projeto { get; set; }
+        public DbSet<Login> Login { get; set; }
         public DbSet<ObraFacilApp.Models.Projeto>? Projeto_1 { get; set; }
 
     }
