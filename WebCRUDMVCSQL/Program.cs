@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Contexto>
     (options => options.UseSqlServer
-    ("Data Source=ACERNITRO;Initial Catalog=master;User ID=sa;Password=root"));
+    ("Data Source=ACERNITRO;Initial Catalog=master;User ID=sa;Password=root; trustServerCertificate=true"));
 
 var app = builder.Build();
 
