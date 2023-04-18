@@ -17,6 +17,7 @@ namespace ObraFacilApp.Models
         [Column("Senha")]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
+
     }
 }
 

@@ -12,6 +12,26 @@ namespace ObraFacilApp.Models
 
         [Column("NomeProjeto")]
         [Display(Name = "Nome do Projeto")]
-        public string? NomeProjeto { get; set; }
+        public string NomeProjeto { get; set; }
+
+        [Column("Responsavel")]
+        [Display(Name = "Responsável")]
+        public string Responsavel { get; set; }
+        
+        [Column("EmailResponsavel")]
+        [Display(Name = "Email do Responsável")]
+        public string EmailResponsavel { get; set; }
+        
+        [Column("CustoMetro")]
+        [Display(Name = "Valor de custo m²")]
+        public string CustoMetro { get; set; }
+
+        [Column("DataInicio")]
+        [Display(Name = "Data para ínicio da obra")]
+        public DateTime DataInicio { get; set; }
+
+        [Column("DataConclusao")]
+        [Display(Name = "Data para coclusao da obra")]
+        public DateTime DataConclusao { get; set; }
     }
 }
