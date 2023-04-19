@@ -50,7 +50,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeProjeto")] Projeto projeto)
+        public async Task<IActionResult> Create([Bind("Id,NomeProjeto,Responsavel,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] Projeto projeto)
         {
             if (ModelState.IsValid)
             {

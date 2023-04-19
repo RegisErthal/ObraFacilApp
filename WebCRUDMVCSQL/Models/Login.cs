@@ -18,6 +18,10 @@ namespace ObraFacilApp.Models
         [Display(Name = "Senha")]
         public string Senha { get; set; }
 
+        [Column("isAdmin")]
+        [Display(Name = "isAdmin")]
+        public bool isAdmin { get; set; }
+
     }
 }
 

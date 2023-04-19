@@ -13,11 +13,42 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="NomeProjeto" class="control-label"></label>
+            <div class="form-group" style="margin-top: 5px">
+                <label asp-for="NomeProjeto" class="control-label">Nome do Projeto</label>
                 <input asp-for="NomeProjeto" class="form-control" />
                 <span asp-validation-for="NomeProjeto" class="text-danger"></span>
             </div>
+
+            <div class="form-group" style="margin-top: 5px">
+                <label asp-for="Responsavel" class="control-label">Responsável</label>
+                <input asp-for="Responsavel" class="form-control" />
+                <span asp-validation-for="Responsavel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+                <label asp-for="EmailResponsavel" class="control-label">E-mail do Responsável</label>
+                <input asp-for="EmailResponsavel" class="form-control" />
+                <span asp-validation-for="EmailResponsavel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+                <label asp-for="CustoMetro" class="control-label">Custo por Metro</label>
+                <input asp-for="CustoMetro" class="form-control" />
+                <span asp-validation-for="CustoMetro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+                <label asp-for="DataInicio" class="control-label">Data de Início</label>
+                <input asp-for="DataInicio" class="form-control datepicker" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+                <label asp-for="DataConclusao" class="control-label">Data de Conclusão</label>
+                <input asp-for="DataConclusao" class="form-control" />
+                <span asp-validation-for="DataConclusao" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

@@ -9,7 +9,6 @@ namespace ObraFacilApp.Models
 
         }
 
-        public DbSet<Produto> Produto { get; set; }
         public DbSet<Projeto> Projeto { get; set; }
         public DbSet<Login> Login { get; set; }
         //public DbSet<Etapas> Etapas { get; set; }
