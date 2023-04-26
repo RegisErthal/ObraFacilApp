@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ObraFacilApp.Models.Fundacao>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<h1>Fundação</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprimentoAlicerce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlturaAlicerce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdBlocosAlicerce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlturaPedra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprimentoPedra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlturaVigaBaldrame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LarguraVigaBaldrame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdMicro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioFundacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoFundacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComprimentoAlicerce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlturaAlicerce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdBlocosAlicerce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlturaPedra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComprimentoPedra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlturaVigaBaldrame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComprimentoVigaBaldrame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LarguraVigaBaldrame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetragemCubicaCimentoVigaBaldrama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdMicro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioFundacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoFundacao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

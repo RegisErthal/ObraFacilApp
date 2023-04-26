@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ObraFacilApp.Models.Alvenaria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProjeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdBlocos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlturaBloco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprimentoBlocos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdPilares)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioFundacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdBlocos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlturaBloco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComprimentoBlocos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdPilares)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioFundacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoAlvenaria)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

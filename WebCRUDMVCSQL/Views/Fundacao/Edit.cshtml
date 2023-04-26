@@ -1,0 +1,87 @@
+﻿@model ObraFacilApp.Models.Fundacao
+
+@{
+    ViewData["Title"] = "Edit";
+    
+}
+
+<h1>Edit</h1>
+
+<h4>Fundacao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ComprimentoAlicerce" class="control-label"></label>
+                <input asp-for="ComprimentoAlicerce" class="form-control" />
+                <span asp-validation-for="ComprimentoAlicerce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlturaAlicerce" class="control-label"></label>
+                <input asp-for="AlturaAlicerce" class="form-control" />
+                <span asp-validation-for="AlturaAlicerce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdBlocosAlicerce" class="control-label"></label>
+                <input asp-for="QtdBlocosAlicerce" class="form-control" />
+                <span asp-validation-for="QtdBlocosAlicerce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlturaPedra" class="control-label"></label>
+                <input asp-for="AlturaPedra" class="form-control" />
+                <span asp-validation-for="AlturaPedra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComprimentoPedra" class="control-label"></label>
+                <input asp-for="ComprimentoPedra" class="form-control" />
+                <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
+                <input asp-for="AlturaVigaBaldrame" class="form-control" />
+                <span asp-validation-for="AlturaVigaBaldrame" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComprimentoVigaBaldrame" class="control-label"></label>
+                <input asp-for="ComprimentoVigaBaldrame" class="form-control" />
+                <span asp-validation-for="ComprimentoVigaBaldrame" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LarguraVigaBaldrame" class="control-label"></label>
+                <input asp-for="LarguraVigaBaldrame" class="form-control" />
+                <span asp-validation-for="LarguraVigaBaldrame" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetragemCubicaCimentoVigaBaldrama" class="control-label"></label>
+                <input asp-for="MetragemCubicaCimentoVigaBaldrama" class="form-control" />
+                <span asp-validation-for="MetragemCubicaCimentoVigaBaldrama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdMicro" class="control-label"></label>
+                <input asp-for="QtdMicro" class="form-control" />
+                <span asp-validation-for="QtdMicro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicioFundacao" class="control-label"></label>
+                <input asp-for="DataInicioFundacao" class="form-control" />
+                <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoFundacao" class="control-label"></label>
+                <input asp-for="DataConclusaoFundacao" class="form-control" />
+                <span asp-validation-for="DataConclusaoFundacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
