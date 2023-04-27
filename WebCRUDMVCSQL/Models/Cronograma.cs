@@ -1,6 +1,6 @@
 ﻿namespace ObraFacilApp.Models
 {
-    public class Clronograma
+    public class Cronograma
     {
     }
 }

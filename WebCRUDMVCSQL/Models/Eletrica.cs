@@ -1,6 +1,6 @@
 ﻿namespace ObraFacilApp.Models
 {
-    public class Eletricacs
+    public class Eletrica
     {
     }
 }

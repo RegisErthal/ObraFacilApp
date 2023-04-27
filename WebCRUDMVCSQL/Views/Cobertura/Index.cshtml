@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ObraFacilApp.Models.Cobertura>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProjeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TamanhoCobertura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PossueLaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EspessuraLaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioCobertura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoCobertura)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProjeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TamanhoCobertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PossueLaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspessuraLaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioCobertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoCobertura)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
