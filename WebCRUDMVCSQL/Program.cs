@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +9,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Contexto>
     (options => options.UseSqlServer
-    ("Data Source=ACERNITRO;Initial Catalog=master;User ID=sa;Password=root; trustServerCertificate=true"));
-
+    //("Data Source=ACERNITRO;Initial Catalog=master;User ID=sa;Password=root; trustServerCertificate=true"));
+    //SEnha banco Azure:
+    //ObraFacil2023 servidor: acernitro
+    ("Server = tcp:bancoobrafacil.database.windows.net, 1433; Initial Catalog = ObraFacil - banco; Persist Security Info=False; User ID =acernitro; Password ={ObraFacil2023}; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
