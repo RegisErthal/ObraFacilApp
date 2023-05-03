@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230502024451_Create_table_eletrica")]
+    partial class Create_table_eletrica
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,10 +138,6 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("float")
                         .HasColumnName("QtdDisjuntores");
 
-                    b.Property<double>("QtdLampadas")
-                        .HasColumnType("float")
-                        .HasColumnName("QtdLampadas");
-
                     b.Property<double>("QtdTomadas")
                         .HasColumnType("float")
                         .HasColumnName("QtdTomadas");
@@ -212,40 +211,6 @@ namespace ObraFacilApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Fundacao");
-                });
-
-            modelBuilder.Entity("ObraFacilApp.Models.Hidraulica", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DataConclusaoEletrica")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataConclusaoEletrica");
-
-                    b.Property<DateTime>("DataInicioEletrica")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataInicioEletrica");
-
-                    b.Property<int>("IdProjeto")
-                        .HasColumnType("int")
-                        .HasColumnName("IdProjeto");
-
-                    b.Property<double>("QtdRalos")
-                        .HasColumnType("float")
-                        .HasColumnName("QtdRalos");
-
-                    b.Property<double>("QtdTorneiras")
-                        .HasColumnType("float")
-                        .HasColumnName("QtdTorneiras");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Hidraulica");
                 });
 
             modelBuilder.Entity("ObraFacilApp.Models.Login", b =>

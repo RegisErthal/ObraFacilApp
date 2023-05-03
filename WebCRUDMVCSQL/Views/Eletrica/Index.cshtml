@@ -1,10 +1,11 @@
-﻿@model IEnumerable<ObraFacilApp.Models.Alvenaria>
+﻿@model IEnumerable<ObraFacilApp.Models.Eletrica>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+
 
 <table class="table">
     <thead>
@@ -13,22 +14,22 @@
                 @Html.DisplayNameFor(model => model.IdProjeto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QtdBlocos)
+                @Html.DisplayNameFor(model => model.LigacaoMonofasica)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AlturaBloco)
+                @Html.DisplayNameFor(model => model.LigacaoTrifasica)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ComprimentoBlocos)
+                @Html.DisplayNameFor(model => model.QtdDisjuntores)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.QtdPilares)
+                @Html.DisplayNameFor(model => model.QtdTomadas)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataInicioFundacao)
+                @Html.DisplayNameFor(model => model.DataInicioEletrica)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)
+                @Html.DisplayNameFor(model => model.DataConclusaoEletrica)
             </th>
             <th></th>
         </tr>
@@ -40,22 +41,22 @@
                 @Html.DisplayFor(modelItem => item.IdProjeto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.QtdBlocos)
+                @Html.DisplayFor(modelItem => item.LigacaoMonofasica)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AlturaBloco)
+                @Html.DisplayFor(modelItem => item.LigacaoTrifasica)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ComprimentoBlocos)
+                @Html.DisplayFor(modelItem => item.QtdDisjuntores)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.QtdPilares)
+                @Html.DisplayFor(modelItem => item.QtdTomadas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataInicioFundacao)
+                @Html.DisplayFor(modelItem => item.DataInicioEletrica)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataConclusaoAlvenaria)
+                @Html.DisplayFor(modelItem => item.DataConclusaoEletrica)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

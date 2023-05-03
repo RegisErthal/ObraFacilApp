@@ -1,0 +1,50 @@
+﻿@model ObraFacilApp.Models.Hidraulica
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Hidraulica</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdProjeto" class="control-label"></label>
+                <input asp-for="IdProjeto" class="form-control" />
+                <span asp-validation-for="IdProjeto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdTorneiras" class="control-label"></label>
+                <input asp-for="QtdTorneiras" class="form-control" />
+                <span asp-validation-for="QtdTorneiras" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdRalos" class="control-label"></label>
+                <input asp-for="QtdRalos" class="form-control" />
+                <span asp-validation-for="QtdRalos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicioEletrica" class="control-label"></label>
+                <input asp-for="DataInicioEletrica" class="form-control" />
+                <span asp-validation-for="DataInicioEletrica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoEletrica" class="control-label"></label>
+                <input asp-for="DataConclusaoEletrica" class="form-control" />
+                <span asp-validation-for="DataConclusaoEletrica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
