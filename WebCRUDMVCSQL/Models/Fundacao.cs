@@ -16,7 +16,7 @@ namespace ObraFacilApp.Models
             public int IdProjeto { get; set; }
 
             [Column("ComprimentoAlicerce")]
-            [Display(Name = "Comprimento do alicerte em metros")]
+            [Display(Name = "Comprimento do alicerce em metros")]
             public double ComprimentoAlicerce { get; set; }
 
             [Column("AlturaAlicerce")]

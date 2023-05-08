@@ -5,85 +5,64 @@
     
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Fundacao</h4>
+    <h4>Fundação</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ComprimentoAlicerce)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ComprimentoAlicerce)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlturaAlicerce)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlturaAlicerce)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdBlocosAlicerce)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdBlocosAlicerce)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlturaPedra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlturaPedra)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ComprimentoPedra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ComprimentoPedra)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlturaVigaBaldrame)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlturaVigaBaldrame)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ComprimentoVigaBaldrame)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LarguraVigaBaldrame)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LarguraVigaBaldrame)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MetragemCubicaCimentoVigaBaldrama)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdMicro)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdMicro)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataInicioFundacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataInicioFundacao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataConclusaoFundacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataConclusaoFundacao)
-        </dd>
-    </dl>
+    <div class="row">
+        <div class="col-md-4">
+        
+                
+                <div class="form-group">
+                    <label asp-for="ComprimentoAlicerce" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="AlturaAlicerce" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="QtdBlocosAlicerce" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="AlturaPedra" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="ComprimentoPedra" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="ComprimentoVigaBaldrame" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="LarguraVigaBaldrame" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="MetragemCubicaCimentoVigaBaldrama" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="QtdMicro" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataInicioFundacao" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataConclusaoFundacao" class="control-label"></label>
+                <input class="form-check-input" type="checkbox" value="" id="" name="">
+                </div>
+        </div>
+    </div>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |

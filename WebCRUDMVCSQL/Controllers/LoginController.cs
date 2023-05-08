@@ -1,162 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
+using System.Web;
+
 
 namespace ObraFacilApp.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly Contexto _context;
-
-        public LoginController(Contexto context)
-        {
-            _context = context;
-        }
-
-        // GET: Login
-        public async Task<IActionResult> Index()
-        {
-              return _context.Login != null ? 
-                          View(await _context.Login.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Login'  is null.");
-        }
-
-        // GET: Login/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Login == null)
-            {
-                return NotFound();
-            }
-
-            var login = await _context.Login
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (login == null)
-            {
-                return NotFound();
-            }
-
-            return View(login);
-        }
-
-        // GET: Login/Create
-        public IActionResult Create()
+        public ActionResult Index()
         {
             return View();
         }
 
-        // POST: Login/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,Senha,Teste")] Login login)
+        public ActionResult AutenticarUsuario(string userName, string senha)
         {
-            if (ModelState.IsValid)
+            // Conectar ao banco de dados
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                _context.Add(login);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(login);
-        }
+                connection.Open();
 
-        // GET: Login/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Login == null)
-            {
-                return NotFound();
-            }
-
-            var login = await _context.Login.FindAsync(id);
-            if (login == null)
-            {
-                return NotFound();
-            }
-            return View(login);
-        }
-
-        // POST: Login/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UserName,Senha,Teste")] Login login)
-        {
-            if (id != login.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                // Consultar o banco de dados para verificar se o usuário e a senha estão corretos
+                string sql = "SELECT Id, Nome FROM login WHERE Nome=@Nome AND Senha=@Senha";
+                using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    _context.Update(login);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LoginExists(login.Id))
+                    command.Parameters.AddWithValue("@Nome", userName);
+                    command.Parameters.AddWithValue("@Senha", senha);
+
+                    using (SqlDataReader dataReader = command.ExecuteReader())
                     {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
+                        if (dataReader.Read())
+                        {
+                            // Credenciais válidas
+                            int idUsuario = (int)dataReader["Id"];
+                            string nomeUsuario = (string)dataReader["Nome"];
+                            string emailUsuario = (string)dataReader["Email"];
+
+                            // Adicionar o usuário à sessão
+                            var identidade = new ClaimsIdentity(new[] {
+                                new Claim(ClaimTypes.NameIdentifier, idUsuario.ToString()),
+                                new Claim(ClaimTypes.Name, nomeUsuario),
+                                new Claim(ClaimTypes.Email, emailUsuario),
+                            }, "ApplicationCookie");
+
+                           // var contexto = Request.GetOwinContext();
+                           // var autenticador = contexto.Authentication;
+                            //autenticador.SignIn(identidade);
+
+                            // Redirecionar para a página principal
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            // Credenciais inválidas
+                            ModelState.AddModelError("", "Usuário ou senha incorretos.");
+                        }
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(login);
+
+            // Retornar para a página de login com uma mensagem de erro
+            return View("Index");
         }
 
-        // GET: Login/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public ActionResult Logout()
         {
-            if (id == null || _context.Login == null)
-            {
-                return NotFound();
-            }
+            // Remover o usuário da sessão
+            //var contexto = Request.GetOwinContext();
+            //var autenticador = contexto.Authentication;
+            //autenticador.SignOut("ApplicationCookie");
 
-            var login = await _context.Login
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (login == null)
-            {
-                return NotFound();
-            }
+            // Redirecionar para a página de login
+            return RedirectToAction("Index", "Login");
 
-            return View(login);
-        }
-
-        // POST: Login/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Login == null)
-            {
-                return Problem("Entity set 'Contexto.Login'  is null.");
-            }
-            var login = await _context.Login.FindAsync(id);
-            if (login != null)
-            {
-                _context.Login.Remove(login);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool LoginExists(int id)
-        {
-          return (_context.Login?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
