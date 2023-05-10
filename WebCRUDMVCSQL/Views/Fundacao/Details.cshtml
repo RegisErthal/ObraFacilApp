@@ -9,9 +9,64 @@
     <h4>Fundação</h4>
     <hr />
     <div class="row">
-        <div class="col-md-4">
-        
+        <table class="table">
+  <tbody>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.ComprimentoAlicerce)</th>
+      <td>@Model.ComprimentoAlicerce</td>
+      <td>@Model.ComprimentoAlicerceOK</td>
+    </tr>
                 
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.AlturaAlicerce)</th>
+      <td>@Model.AlturaAlicerce</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.QtdBlocosAlicerce)</th>
+      <td>@Model.QtdBlocosAlicerce</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.AlturaPedra)</th>
+      <td>@Model.AlturaPedra</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.ComprimentoPedra)</th>
+      <td>@Model.ComprimentoPedra</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.AlturaVigaBaldrame)</th>
+      <td>@Model.AlturaVigaBaldrame</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)</th>
+      <td>@Model.ComprimentoVigaBaldrame</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.LarguraVigaBaldrame)</th>
+      <td>@Model.LarguraVigaBaldrame</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)</th>
+      <td>@Model.MetragemCubicaCimentoVigaBaldrama</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.QtdMicro)</th>
+      <td>@Model.QtdMicro</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.DataInicioFundacao)</th>
+      <td>@Model.DataInicioFundacao</td>
+    </tr>
+    <tr>
+      <th>@Html.DisplayNameFor(model => model.DataConclusaoFundacao)</th>
+      <td>@Model.DataConclusaoFundacao</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        <div class="col-md-4">
+                <form asp-action="Details">       
                 <div class="form-group">
                     <label asp-for="ComprimentoAlicerce" class="control-label"></label>
                 <input class="form-check-input" type="checkbox" value="" id="" name="">
@@ -60,6 +115,7 @@
                     <label asp-for="DataConclusaoFundacao" class="control-label"></label>
                 <input class="form-check-input" type="checkbox" value="" id="" name="">
                 </div>
+                </form>
         </div>
     </div>
 

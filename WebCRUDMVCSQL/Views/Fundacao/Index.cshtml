@@ -7,49 +7,45 @@
 
 <h1>Fundação</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ComprimentoAlicerce)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlturaAlicerce)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QtdBlocosAlicerce)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlturaPedra)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComprimentoPedra)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlturaVigaBaldrame)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LarguraVigaBaldrame)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QtdMicro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataInicioFundacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataConclusaoFundacao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Comprimento Alicerce</th>
+                <th>Altura Alicerce</th>
+                <th>Quantidade de Blocos Alicerce</th>
+                <th>Altura Pedra</th>
+                <th>Comprimento Pedra</th>
+                <th>Altura Viga Baldrame</th>
+                <th>Comprimento Viga Baldrame</th>
+                <th>Largura Viga Baldrame</th>
+                <th>Metragem Cúbica Cimento Viga Baldrame</th>
+                <th>Quantidade de Micro Estacas</th>
+                <th>Data de Início da Fundação</th>
+                <th>Data de Conclusão da Fundação</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="ComprimentoAlicerce"></td>
+                <td><input type="text" name="AlturaAlicerce"></td>
+                <td><input type="text" name="QtdBlocosAlicerce"></td>
+                <td><input type="text" name="AlturaPedra"></td>
+                <td><input type="text" name="ComprimentoPedra"></td>
+                <td><input type="text" name="AlturaVigaBaldrame"></td>
+                <td><input type="text" name="ComprimentoVigaBaldrame"></td>
+                <td><input type="text" name="LarguraVigaBaldrame"></td>
+                <td><input type="text" name="MetragemCubicaCimentoVigaBaldrama"></td>
+                <td><input type="text" name="QtdMicro"></td>
+                <td><input type="date" name="DataInicioFundacao"></td>
+                <td><input type="date" name="DataConclusaoFundacao"></td>
+                <td><button type="submit">Enviar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
 @foreach (var item in Model) {
         <tr>
             <td>

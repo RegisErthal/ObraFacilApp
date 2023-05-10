@@ -1,52 +1,47 @@
 ﻿@model IEnumerable<ObraFacilApp.Models.Login>
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Index";
 }
 
-<link rel="stylesheet" href="~/css/login-page.css" />
+<h1>Index</h1>
 
-
-<div class="container-fluid ps-md-0">
-    <div class="row g-0">
-        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-        <div class="col-md-8 col-lg-6">
-            <div class="login d-flex align-items-center py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-9 col-lg-8 mx-auto">
-                            <h3 class="login-heading mb-4">Welcome back!</h3>
-
-                            <!-- Sign In Form -->
-                            <formasp-controller ="Login" asp-action="Logar" method="post">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="userName" name="userName" placeholder="name@example.com">
-                                    <label for="floatingInput">Email address</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Password">
-                                    <label for="floatingPassword">Password</label>
-                                </div>
-
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck" name="materLogado">
-                                    <label class="form-check-label" for="rememberPasswordCheck">
-                                        Manter logado?
-                                    </label>
-                                </div>
-
-                                <div class="d-grid">
-                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" style="background-color:#255f9c">Logar</button>
-                                    @*<div class="text-center">
-                                    <a class="small" href="#">Forgot password?</a>
-                                    </div>*@
-                                </div>
-
-                            </formasp-controller>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isAdmin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isAdmin)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

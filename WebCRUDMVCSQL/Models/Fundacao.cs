@@ -18,12 +18,14 @@ namespace ObraFacilApp.Models
             [Column("ComprimentoAlicerce")]
             [Display(Name = "Comprimento do alicerce em metros")]
             public double ComprimentoAlicerce { get; set; }
+            public bool ComprimentoAlicerceOK { get; set; }
 
             [Column("AlturaAlicerce")]
             [Display(Name = "Altura do alicerte em metros")]
             public double AlturaAlicerce { get; set; }
+            public bool AlturaAlicerceOK { get; set; }
 
-            [Column("QtdBlocosAlicerce")]
+        [Column("QtdBlocosAlicerce")]
             [Display(Name = "Quantidade blocos do alicerce")]
             public double QtdBlocosAlicerce { get; set; }
 
