@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'ObraFacil'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_146F11E5979C46119DBC5F9865C0FD74 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CD8E5229DFB04E1DB7CDD7D0434C0F41 }}
           package: .
