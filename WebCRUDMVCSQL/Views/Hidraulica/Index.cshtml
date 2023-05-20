@@ -6,54 +6,22 @@
 
 <h1>Index</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProjeto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QtdTorneiras)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QtdRalos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataInicioEletrica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataConclusaoEletrica)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProjeto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtdTorneiras)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtdRalos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicioEletrica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataConclusaoEletrica)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<p>
-    <a class="btn btn-primary" asp-action="Create">Criar</a>
-</p>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <strong>@Html.DisplayNameFor(model => item.IdProjeto)</strong>: @Html.DisplayFor(modelItem => item.IdProjeto)<br />
+            <strong>@Html.DisplayNameFor(model => item.QtdTorneiras)</strong>: @Html.DisplayFor(modelItem => item.QtdTorneiras)<br />
+            <strong>@Html.DisplayNameFor(model => item.QtdRalos)</strong>: @Html.DisplayFor(modelItem => item.QtdRalos)<br />
+            <strong>@Html.DisplayNameFor(model => item.DataInicioEletrica)</strong>: @Html.DisplayFor(modelItem => item.DataInicioEletrica)<br />
+            <strong>@Html.DisplayNameFor(model => item.DataConclusaoEletrica)</strong>: @Html.DisplayFor(modelItem => item.DataConclusaoEletrica)<br />
+           <ul style="margin-top:15px; margin-left:initial"> 
+                <a class="btn btn-primary" style="background-color:#255f9c" asp-action="Create"  asp-route-id="@item.Id">Criar</a>
+                <a class="btn btn-primary" style="background-color:#255f9c" asp-action="Edit"    asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-primary" style="background-color:#255f9c" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
+                <a class="btn btn-primary" style="background-color:#255f9c" asp-action="Delete"  asp-route-id="@item.Id">Excluir</a>
+           </ul>
+        </li>
+    }
+</ul>
+

@@ -31,9 +31,12 @@ namespace ObraFacilApp.Controllers
                                               && m.Senha == dadosLogin.Senha);
 
                 if (login == null)
-                    return RedirectToAction(nameof(Index));
-                else
-                    return LocalRedirect("/Home");
+                { 
+                    ModelState.AddModelError("", "Usuário ou senha incorretos."); // Adiciona mensagem de erro à ModelState
+                    return View(); // Retorna a view com a mensagem de erro
+                }
+            else
+                return LocalRedirect("/Home");
             }
             return View();
         }
