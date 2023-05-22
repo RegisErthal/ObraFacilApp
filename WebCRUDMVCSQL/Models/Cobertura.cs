@@ -17,22 +17,24 @@ namespace ObraFacilApp.Models
             [Column("TamanhoCobertura")]
             [Display(Name = "Metragem da cobertura")]
             public double TamanhoCobertura { get; set; }
+            public bool TamanhoCoberturaOK { get; set; }
 
-            [Column("PossueLaje")]
+        [Column("PossueLaje")]
             [Display(Name = "Possui laje")]
             public bool PossueLaje { get; set; }
-
-            [Column("EspessuraLaje")]
+            public bool PossueLajeOK { get; set; }
+        [Column("EspessuraLaje")]
             [Display(Name = "Espessura da laje")]
             public double EspessuraLaje { get; set; }
-
-            [Column("DataInicioCobertura")]
+            public bool EspessuraLajeOk { get; set; }
+        [Column("DataInicioCobertura")]
             [Display(Name = "Data de previsao de ínicio da cobertura")]
             public DateTime DataInicioCobertura { get; set; }
-
-            [Column("DataConclusaoCobertura")]
+            public bool DataInicioCoberturaOK { get; set; }
+        [Column("DataConclusaoCobertura")]
             [Display(Name = "Data de previsao de conclusão da alvenaria")]
             public DateTime DataConclusaoCobertura { get; set; }
+             bool DataConclusaoCoberturaOK { get; set; }
 
     }
 }

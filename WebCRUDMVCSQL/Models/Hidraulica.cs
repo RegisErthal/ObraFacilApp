@@ -17,18 +17,22 @@ namespace ObraFacilApp.Models
         [Column("QtdTorneiras")]
         [Display(Name = "Quantidade de torneiras")]
         public double QtdTorneiras { get; set; }
+        public bool QtdTorneirasOK { get; set; }
 
         [Column("QtdRalos")]
         [Display(Name = "Quantidade de saídas para esgoto")]
         public double QtdRalos { get; set; }
+        public bool QtdRalosOK { get; set; }
 
-        [Column("DataInicioEletrica")]
+        [Column("DataInicioHidraulica ")]
         [Display(Name = "Data de previsao de ínicio da eletrica")]
-        public DateTime DataInicioEletrica { get; set; }
+        public DateTime DataInicioHidraulica { get; set; }
+        public bool DataInicioHidraulicaOK { get; set; }
 
-        [Column("DataConclusaoEletrica")]
+        [Column("DataConclusaoHidraulica")]
         [Display(Name = "Data de previsao de conclusão da eletrica")]
-        public DateTime DataConclusaoEletrica { get; set; }
+        public DateTime DataConclusaoHidraulica { get; set; }
+        public bool DataConclusaoHidraulicaOK { get; set; }
 
     }
 }

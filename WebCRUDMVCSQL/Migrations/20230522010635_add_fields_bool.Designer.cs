@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230522010635_add_fields_bool")]
+    partial class add_fields_bool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,80 +133,6 @@ namespace ObraFacilApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cobertura");
-                });
-
-            modelBuilder.Entity("ObraFacilApp.Models.Cronograma", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DataConclusaoAlvenaria")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataConclusaoAlvenaria");
-
-                    b.Property<bool>("DataConclusaoAlvenariaOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataConclusaoCobertura")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataConclusaoCobertura");
-
-                    b.Property<DateTime>("DataConclusaoEletrica")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataConclusaoEletrica");
-
-                    b.Property<bool>("DataConclusaoEletricaOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataConclusaoFundacao")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataInicioAlvenaria");
-
-                    b.Property<bool>("DataConclusaoFundacaoOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataConclusaoHidraulica")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataConclusaoHidraulica");
-
-                    b.Property<bool>("DataConclusaoHidraulicaOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataInicioCobertura")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataInicioCobertura");
-
-                    b.Property<bool>("DataInicioCoberturaOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataInicioEletrica")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataInicioEletrica");
-
-                    b.Property<bool>("DataInicioEletricaOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataInicioFundacao")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataConclusaoFundacao");
-
-                    b.Property<bool>("DataInicioFundacaoOk")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataInicioHidraulica")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DataInicioHidraulica ");
-
-                    b.Property<bool>("DataInicioHidraulicaOk")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cronograma");
                 });
 
             modelBuilder.Entity("ObraFacilApp.Models.Eletrica", b =>
