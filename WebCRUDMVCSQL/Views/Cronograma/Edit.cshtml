@@ -1,0 +1,111 @@
+﻿@model ObraFacilApp.Models.Cronograma
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Cronograma</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DataInicioFundacao" class="control-label"></label>
+                <input asp-for="DataInicioFundacao" class="form-control" />
+                <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataInicioFundacaoOk" /> @Html.DisplayNameFor(model => model.DataInicioFundacaoOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoFundacao" class="control-label"></label>
+                <input asp-for="DataConclusaoFundacao" class="form-control" />
+                <span asp-validation-for="DataConclusaoFundacao" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataConclusaoFundacaoOk" /> @Html.DisplayNameFor(model => model.DataConclusaoFundacaoOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoAlvenaria" class="control-label"></label>
+                <input asp-for="DataConclusaoAlvenaria" class="form-control" />
+                <span asp-validation-for="DataConclusaoAlvenaria" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataConclusaoAlvenariaOk" /> @Html.DisplayNameFor(model => model.DataConclusaoAlvenariaOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicioCobertura" class="control-label"></label>
+                <input asp-for="DataInicioCobertura" class="form-control" />
+                <span asp-validation-for="DataInicioCobertura" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataInicioCoberturaOk" /> @Html.DisplayNameFor(model => model.DataInicioCoberturaOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoCobertura" class="control-label"></label>
+                <input asp-for="DataConclusaoCobertura" class="form-control" />
+                <span asp-validation-for="DataConclusaoCobertura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicioEletrica" class="control-label"></label>
+                <input asp-for="DataInicioEletrica" class="form-control" />
+                <span asp-validation-for="DataInicioEletrica" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataInicioEletricaOk" /> @Html.DisplayNameFor(model => model.DataInicioEletricaOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoEletrica" class="control-label"></label>
+                <input asp-for="DataConclusaoEletrica" class="form-control" />
+                <span asp-validation-for="DataConclusaoEletrica" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataConclusaoEletricaOk" /> @Html.DisplayNameFor(model => model.DataConclusaoEletricaOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicioHidraulica" class="control-label"></label>
+                <input asp-for="DataInicioHidraulica" class="form-control" />
+                <span asp-validation-for="DataInicioHidraulica" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataInicioHidraulicaOk" /> @Html.DisplayNameFor(model => model.DataInicioHidraulicaOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataConclusaoHidraulica" class="control-label"></label>
+                <input asp-for="DataConclusaoHidraulica" class="form-control" />
+                <span asp-validation-for="DataConclusaoHidraulica" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataConclusaoHidraulicaOk" /> @Html.DisplayNameFor(model => model.DataConclusaoHidraulicaOk)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

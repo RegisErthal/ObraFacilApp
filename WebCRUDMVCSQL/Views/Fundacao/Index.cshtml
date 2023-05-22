@@ -37,12 +37,6 @@
         </thead>
         <tbody>
             <tr>
-                
-                
-                
-                
-                
-                
                 <td><input type="text" name="QtdMicro"></td>
                 <td><input type="date" name="DataInicioFundacao"></td>
                 <td><input type="date" name="DataConclusaoFundacao"></td>
@@ -91,14 +85,12 @@
                 @Html.DisplayFor(modelItem => item.DataConclusaoFundacao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<p>
-    <a class="btn btn-primary" asp-action="Create">Criar</a>
-</p>
+

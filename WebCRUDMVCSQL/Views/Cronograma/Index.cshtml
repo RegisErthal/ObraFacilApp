@@ -1,0 +1,131 @@
+﻿@model IEnumerable<ObraFacilApp.Models.Cronograma>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioFundacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioFundacaoOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoFundacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoFundacaoOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoAlvenariaOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioCobertura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioCoberturaOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoCobertura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioEletrica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioEletricaOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoEletrica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoEletricaOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioHidraulica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioHidraulicaOk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoHidraulica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConclusaoHidraulicaOk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioFundacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioFundacaoOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoFundacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoFundacaoOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoAlvenaria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoAlvenariaOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioCobertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioCoberturaOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoCobertura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioEletrica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioEletricaOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoEletrica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoEletricaOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioHidraulica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioHidraulicaOk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoHidraulica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusaoHidraulicaOk)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
