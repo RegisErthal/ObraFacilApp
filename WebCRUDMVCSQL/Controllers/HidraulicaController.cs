@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class HidraulicaController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public HidraulicaController(Contexto context)
+        public HidraulicaController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,QtdTorneiras,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] Hidraulica hidraulica)
+        public async Task<IActionResult> Create([Bind("Id,IdProjeto,QtdTorneiras,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,QtdTorneiras,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] Hidraulica hidraulica)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,QtdTorneiras,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
         {
             if (id != hidraulica.Id)
             {

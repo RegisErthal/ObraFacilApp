@@ -10,7 +10,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20220128235116_Inicial")]
     partial class Inicial
     {

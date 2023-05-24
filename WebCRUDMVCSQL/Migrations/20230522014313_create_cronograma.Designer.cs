@@ -11,7 +11,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20230522014313_create_cronograma")]
     partial class create_cronograma
     {

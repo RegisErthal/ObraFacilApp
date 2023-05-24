@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class CoberturaController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public CoberturaController(Contexto context)
+        public CoberturaController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] Cobertura cobertura)
+        public async Task<IActionResult> Create([Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] CoberturaModel cobertura)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] Cobertura cobertura)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] CoberturaModel cobertura)
         {
             if (id != cobertura.Id)
             {

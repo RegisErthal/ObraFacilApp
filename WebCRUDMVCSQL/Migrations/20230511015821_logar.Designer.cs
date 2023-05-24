@@ -11,7 +11,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20230511015821_logar")]
     partial class logar
     {

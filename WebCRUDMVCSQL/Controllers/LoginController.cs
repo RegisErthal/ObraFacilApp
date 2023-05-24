@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public LoginController(Contexto context)
+        public LoginController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,Senha,isAdmin")] Login login)
+        public async Task<IActionResult> Create([Bind("Id,UserName,Senha,isAdmin")] LoginModel login)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UserName,Senha,isAdmin")] Login login)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UserName,Senha,isAdmin")] LoginModel login)
         {
             if (id != login.Id)
             {

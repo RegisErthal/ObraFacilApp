@@ -11,7 +11,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20230522010635_add_fields_bool")]
     partial class add_fields_bool
     {

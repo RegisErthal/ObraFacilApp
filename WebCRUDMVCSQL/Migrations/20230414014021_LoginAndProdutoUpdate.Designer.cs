@@ -10,7 +10,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20230414014021_LoginAndProdutoUpdate")]
     partial class LoginAndProdutoUpdate
     {

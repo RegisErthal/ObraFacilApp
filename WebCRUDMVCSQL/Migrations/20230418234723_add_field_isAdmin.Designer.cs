@@ -11,7 +11,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20230418234723_add_field_isAdmin")]
     partial class add_field_isAdmin
     {

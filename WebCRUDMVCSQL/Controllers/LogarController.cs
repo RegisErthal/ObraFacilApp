@@ -6,9 +6,9 @@ namespace ObraFacilApp.Controllers
 {
     public class LogarController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public LogarController(Contexto context)
+        public LogarController(ContextoModel context)
         {
             _context = context;
         }
@@ -19,7 +19,7 @@ namespace ObraFacilApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(Logar dadosLogin)
+        public async Task<IActionResult> Login(LogarModel dadosLogin)
         {
             if (ModelState.IsValid)
             {

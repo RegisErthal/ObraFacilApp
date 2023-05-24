@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class EletricaController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public EletricaController(Contexto context)
+        public EletricaController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,DataInicioEletrica,DataConclusaoEletrica")] Eletrica eletrica)
+        public async Task<IActionResult> Create([Bind("Id,IdProjeto,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,DataInicioEletrica,DataConclusaoEletrica")] EletricaModel eletrica)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,DataInicioEletrica,DataConclusaoEletrica")] Eletrica eletrica)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,DataInicioEletrica,DataConclusaoEletrica")] EletricaModel eletrica)
         {
             if (id != eletrica.Id)
             {

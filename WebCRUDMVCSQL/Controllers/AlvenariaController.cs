@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class AlvenariaController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public AlvenariaController(Contexto context)
+        public AlvenariaController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] Alvenaria alvenaria)
+        public async Task<IActionResult> Create([Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] Alvenaria alvenaria)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
             if (id != alvenaria.Id)
             {

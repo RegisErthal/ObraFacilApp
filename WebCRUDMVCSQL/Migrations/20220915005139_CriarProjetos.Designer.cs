@@ -10,7 +10,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20220915005139_CriarProjetos")]
     partial class CriarProjetos
     {

@@ -6,9 +6,9 @@ namespace ObraFacilApp.Controllers
 {
     public class ProjetosController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public ProjetosController(Contexto context)
+        public ProjetosController(ContextoModel context)
         {
             _context = context;
         }
@@ -50,7 +50,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeProjeto,Responsavel,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] Projeto projeto)
+        public async Task<IActionResult> Create([Bind("Id,NomeProjeto,Responsavel,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] ProjetoModel projeto)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeProjeto")] Projeto projeto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeProjeto")] ProjetoModel projeto)
         {
             if (id != projeto.Id)
             {

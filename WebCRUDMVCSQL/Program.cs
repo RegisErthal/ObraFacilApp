@@ -14,7 +14,7 @@ builder.Services.AddControllersWithViews();
 
 var Configuration = builder.Configuration;
 
-builder.Services.AddDbContext<Contexto>
+builder.Services.AddDbContext<ContextoModel>
     (options => options.UseSqlServer
     (Configuration.GetConnectionString("master")));
     //("Data Source=ACERNITRO;Initial Catalog=master;User ID=sa;Password=root; trustServerCertificate=true"));

@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class CronogramaController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public CronogramaController(Contexto context)
+        public CronogramaController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DataInicioFundacao,DataInicioFundacaoOk,DataConclusaoFundacao,DataConclusaoFundacaoOk,DataConclusaoAlvenaria,DataConclusaoAlvenariaOk,DataInicioCobertura,DataInicioCoberturaOk,DataConclusaoCobertura,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,DataInicioHidraulica,DataInicioHidraulicaOk,DataConclusaoHidraulica,DataConclusaoHidraulicaOk")] Cronograma cronograma)
+        public async Task<IActionResult> Create([Bind("Id,DataInicioFundacao,DataInicioFundacaoOk,DataConclusaoFundacao,DataConclusaoFundacaoOk,DataConclusaoAlvenaria,DataConclusaoAlvenariaOk,DataInicioCobertura,DataInicioCoberturaOk,DataConclusaoCobertura,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,DataInicioHidraulica,DataInicioHidraulicaOk,DataConclusaoHidraulica,DataConclusaoHidraulicaOk")] CronogramaModel cronograma)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DataInicioFundacao,DataInicioFundacaoOk,DataConclusaoFundacao,DataConclusaoFundacaoOk,DataConclusaoAlvenaria,DataConclusaoAlvenariaOk,DataInicioCobertura,DataInicioCoberturaOk,DataConclusaoCobertura,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,DataInicioHidraulica,DataInicioHidraulicaOk,DataConclusaoHidraulica,DataConclusaoHidraulicaOk")] Cronograma cronograma)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DataInicioFundacao,DataInicioFundacaoOk,DataConclusaoFundacao,DataConclusaoFundacaoOk,DataConclusaoAlvenaria,DataConclusaoAlvenariaOk,DataInicioCobertura,DataInicioCoberturaOk,DataConclusaoCobertura,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,DataInicioHidraulica,DataInicioHidraulicaOk,DataConclusaoHidraulica,DataConclusaoHidraulicaOk")] CronogramaModel cronograma)
         {
             if (id != cronograma.Id)
             {

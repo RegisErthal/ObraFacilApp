@@ -11,9 +11,9 @@ namespace ObraFacilApp.Controllers
 {
     public class FundacaoController : Controller
     {
-        private readonly Contexto _context;
+        private readonly ContextoModel _context;
 
-        public FundacaoController(Contexto context)
+        public FundacaoController(ContextoModel context)
         {
             _context = context;
         }
@@ -55,7 +55,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] Fundacao fundacao)
+        public async Task<IActionResult> Create([Bind("Id,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] Fundacao fundacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
         {
             if (id != fundacao.Id)
             {

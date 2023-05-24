@@ -11,7 +11,7 @@ using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Migrations
 {
-    [DbContext(typeof(Contexto))]
+    [DbContext(typeof(ContextoModel))]
     [Migration("20230426013116_create_tables_alvenaria_fundacao")]
     partial class create_tables_alvenaria_fundacao
     {
