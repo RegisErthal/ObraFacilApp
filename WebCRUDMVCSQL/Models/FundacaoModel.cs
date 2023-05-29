@@ -11,11 +11,11 @@ namespace ObraFacilApp.Models
             [Display(Name = "Código")]
             public int Id { get; set; }
 
-            [Column("IdProjeto")]
-            [Display(Name = "IdProjeto")]
-            public int IdProjeto { get; set; }
+        [Column("ProjetoId")]
+        [Display(Name = "ProjetoId")]
+        public int ProjetoId { get; set; }
 
-            [Column("ComprimentoAlicerce")]
+        [Column("ComprimentoAlicerce")]
             [Display(Name = "Comprimento do alicerce em metros")]
             public double ComprimentoAlicerce { get; set; }
             public bool ComprimentoAlicerceOK { get; set; }

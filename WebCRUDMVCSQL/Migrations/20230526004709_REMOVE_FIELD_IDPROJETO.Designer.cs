@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230526004709_REMOVE_FIELD_IDPROJETO")]
+    partial class REMOVE_FIELD_IDPROJETO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,8 +356,7 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("ProjetoId")
-                        .HasColumnType("int")
-                        .HasColumnName("ProjetoId");
+                        .HasColumnType("int");
 
                     b.Property<double>("QtdBlocosAlicerce")
                         .HasColumnType("float")

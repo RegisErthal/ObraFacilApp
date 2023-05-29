@@ -35,9 +35,9 @@ namespace ObraFacilApp.Models
         public DateTime DataConclusao { get; set; }
 
         public virtual List<FundacaoModel> Fundacaos { get; set; }
-        public virtual List<AlvenariaModel> Alvenarias { get; set; }
-        public virtual List<EletricaModel> Eletricas { get; set; }
-        public virtual List<CoberturaModel> Coberturas { get; set; }
+        //public virtual List<AlvenariaModel> Alvenarias { get; set; }
+        //public virtual List<EletricaModel> Eletricas { get; set; }
+        //public virtual List<CoberturaModel> Coberturas { get; set; }
 
     }
 }

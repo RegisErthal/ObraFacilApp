@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230524020846_CriandoVinculoFundacaoProjetos")]
+    partial class CriandoVinculoFundacaoProjetos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -338,6 +341,10 @@ namespace ObraFacilApp.Migrations
                     b.Property<bool>("DataInicioFundacaoOK")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("IdProjeto")
+                        .HasColumnType("int")
+                        .HasColumnName("IdProjeto");
+
                     b.Property<double>("LarguraVigaBaldrame")
                         .HasColumnType("float")
                         .HasColumnName("LarguraVigaBaldrame");
@@ -353,8 +360,7 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("ProjetoId")
-                        .HasColumnType("int")
-                        .HasColumnName("ProjetoId");
+                        .HasColumnType("int");
 
                     b.Property<double>("QtdBlocosAlicerce")
                         .HasColumnType("float")

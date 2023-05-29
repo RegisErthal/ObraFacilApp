@@ -21,13 +21,13 @@ namespace ObraFacilApp.Controllers
         // GET: Fundacao
         public async Task<IActionResult> Index()
         {
-              return _context.Fundacao != null ? 
-                          View(await _context.Fundacao.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Fundacao'  is null.");
+            return _context.Fundacao != null ?
+                        View(await _context.Fundacao.ToListAsync()) :
+                        Problem("Entity set 'Contexto.Fundacao'  is null.");
         }
 
         // GET: Fundacao/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null || _context.Fundacao == null)
             {
@@ -55,10 +55,17 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
+        public async Task<IActionResult> Create([Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao, int? id)
         {
+            if (id == null)
+                throw new ArgumentNullException("id");
+
+            fundacao.ProjetoId = id.GetValueOrDefault();
+
             if (ModelState.IsValid)
             {
+                  
+                _context.Entry(fundacao).State = EntityState.Added;
                 _context.Add(fundacao);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -149,14 +156,14 @@ namespace ObraFacilApp.Controllers
             {
                 _context.Fundacao.Remove(fundacao);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool FundacaoExists(int id)
         {
-          return (_context.Fundacao?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Fundacao?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
