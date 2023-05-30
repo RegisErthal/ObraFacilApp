@@ -57,14 +57,14 @@ namespace ObraFacilApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao, int? id)
         {
-            if (id == null)
-                throw new ArgumentNullException("id");
-
+            //if (id == null)
+            //    throw new ArgumentNullException("id");
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             fundacao.ProjetoId = id.GetValueOrDefault();
 
             if (ModelState.IsValid)
             {
-                  
+
                 _context.Entry(fundacao).State = EntityState.Added;
                 _context.Add(fundacao);
                 await _context.SaveChangesAsync();

@@ -6,6 +6,7 @@ namespace ObraFacilApp.Models
     [Table("Projeto")]
     public class ProjetoModel
     {
+        
         [Column("Id")]
         [Display(Name = "Código")]
         public int Id { get; set; }
@@ -34,10 +35,8 @@ namespace ObraFacilApp.Models
         [Display(Name = "Data para coclusao da obra")]
         public DateTime DataConclusao { get; set; }
 
-        public virtual List<FundacaoModel> Fundacaos { get; set; }
-        //public virtual List<AlvenariaModel> Alvenarias { get; set; }
-        //public virtual List<EletricaModel> Eletricas { get; set; }
-        //public virtual List<CoberturaModel> Coberturas { get; set; }
-
+       
+         public virtual List<FundacaoModel>? Fundacaos { get; set; }
+    
     }
 }

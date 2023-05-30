@@ -52,6 +52,9 @@ namespace ObraFacilApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,NomeProjeto,Responsavel,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] ProjetoModel projeto)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            //projeto.DataConclusao=DateTime.Now
+                
             if (ModelState.IsValid)
             {
                 _context.Add(projeto);

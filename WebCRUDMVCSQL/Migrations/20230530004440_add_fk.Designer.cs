@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230530004440_add_fk")]
+    partial class add_fk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -460,8 +463,9 @@ namespace ObraFacilApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("CustoMetro")
-                        .HasColumnType("float")
+                    b.Property<string>("CustoMetro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("CustoMetro");
 
                     b.Property<DateTime>("DataConclusao")
@@ -495,12 +499,17 @@ namespace ObraFacilApp.Migrations
             modelBuilder.Entity("ObraFacilApp.Models.FundacaoModel", b =>
                 {
                     b.HasOne("ObraFacilApp.Models.ProjetoModel", "Projeto")
-                        .WithMany()
+                        .WithMany("Fundacaos")
                         .HasForeignKey("ProjetoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Projeto");
+                });
+
+            modelBuilder.Entity("ObraFacilApp.Models.ProjetoModel", b =>
+                {
+                    b.Navigation("Fundacaos");
                 });
 #pragma warning restore 612, 618
         }
