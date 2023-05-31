@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
 {
     public class EtapasController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            var model = new ProjetoModel();
+            model.Id = id;
+            return View(model);
         }
     }
 }

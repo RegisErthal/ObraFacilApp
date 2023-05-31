@@ -1,5 +1,4 @@
-﻿@model IEnumerable<ObraFacilApp.Models.ProjetoModel>
-
+﻿
 <div class="row">
 
     <div class="col-lg-4 col-sm-6 mb-4">
@@ -8,9 +7,9 @@
             <div class="card-body">
                 <h5 class="card-title">Fundação</h5>
                 <p class="card-text">Etapa referente  as informações da fundação do projeto.</p>
-                <a class="btn btn-primary" asp-area="" asp-controller="Fundacao" asp-route-id="" asp-action="Create">Criar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Fundacao" asp-route-id="" asp-action="Edit">Editar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Fundacao" asp-route-id="" asp-action="Detail">Visualizar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Fundacao" asp-route-id="@Model.Id" asp-action="Create">Criar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Fundacao" asp-route-id="@Model.Id" asp-action="Edit">Editar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Fundacao" asp-route-id="@Model.Id" asp-action="Detail">Visualizar</a>
             </div>
 
         </div>
@@ -22,9 +21,9 @@
             <div class="card-body">
                 <h5 class="card-title">Alvenaria</h5>
                 <p class="card-text">Etapa referente  as informações da alvenaria do projeto.</p>
-                <a class="btn btn-primary" asp-area="" asp-controller="Alvenaria" asp-route-id="" asp-action="Create">Criar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Alvenaria" asp-route-id="" asp-action="Edit">Editar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Alvenaria" asp-route-id="" asp-action="Details">Visualizar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Alvenaria" asp-route-id="@Model.Id" asp-action="Create">Criar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Alvenaria" asp-route-id="@Model.Id" asp-action="Edit">Editar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Alvenaria" asp-route-id="@Model.Id" asp-action="Details">Visualizar</a>
             </div>
         </div>
     </div>
@@ -35,9 +34,9 @@
             <div class="card-body">
                 <h5 class="card-title">Cobertura</h5>
                 <p class="card-text">Etapa referente  as informações da cobertura do projeto</p>
-                <a class="btn btn-primary" asp-area="" asp-controller="Cobertura" asp-action="Create">Criar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Cobertura" asp-action="Edit">Editar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Cobertura" asp-action="Details">Visualizar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Cobertura" asp-route-id="@Model.Id" asp-action="Create">Criar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Cobertura" asp-route-id="@Model.Id" asp-action="Edit">Editar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Cobertura" asp-route-id="@Model.Id" asp-action="Details">Visualizar</a>
             </div>
         </div>
     </div>
@@ -48,9 +47,9 @@
             <div class="card-body">
                 <h5 class="card-title">Elétrica</h5>
                 <p class="card-text">Etapa referente  as informações da elétrica do projeto</p>
-                <a class="btn btn-primary" asp-area="" asp-controller="Eletrica" asp-action="Create">Criar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Eletrica" asp-action="Edit">Editar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Eletrica" asp-action="Details">Visualizar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Eletrica" asp-route-id="@Model.Id" asp-action="Create">Criar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Eletrica" asp-route-id="@Model.Id" asp-action="Edit">Editar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Eletrica" asp-route-id="@Model.Id" asp-action="Details">Visualizar</a>
             </div>
         </div>
     </div>
@@ -61,9 +60,9 @@
             <div class="card-body">
                 <h5 class="card-title">Hidraulica</h5>
                 <p class="card-text">Etapa referente  as informações da hidraulica do projeto.</p>
-                <a class="btn btn-primary" asp-area="" asp-controller="Hidraulica" asp-action="Create">Criar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Hidraulica" asp-action="Edit">Editar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Hidraulica" asp-action="Details">Visualizar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Hidraulica" asp-route-id="@Model.Id" asp-action="Create">Criar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Hidraulica" asp-route-id="@Model.Id" asp-action="Edit">Editar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Hidraulica" asp-route-id="@Model.Id" asp-action="Details">Visualizar</a>
             </div>
         </div>
     </div>
@@ -74,9 +73,9 @@
             <div class="card-body">
                 <h5 class="card-title">Cronograma</h5>
                 <p class="card-text">Informações referente aos prazos de entrega e cronograma da obra.</p>
-                <a class="btn btn-primary" asp-area="" asp-controller="Cronograma" asp-action="Create">Criar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Cronograma" asp-action="Edit">Editar</a>
-                <a class="btn btn-primary" asp-area="" asp-controller="Cronograma" asp-action="Details">Visualizar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Cronograma" asp-route-id="@Model.Id" asp-action="Create">Criar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Cronograma" asp-route-id="@Model.Id" asp-action="Edit">Editar</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Cronograma" asp-route-id="@Model.Id" asp-action="Details">Visualizar</a>
             </div>
         </div>
     </div>
