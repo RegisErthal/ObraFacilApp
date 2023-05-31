@@ -13,7 +13,7 @@ namespace ObraFacilApp.Models
 
         [Column("ProjetoId")]
         [Display(Name = "ProjetoId")]
-        public int ProjetoId { get; set; }
+        public int? ProjetoId { get; set; }
 
         [Column("ComprimentoAlicerce")]
         [Display(Name = "Comprimento do alicerce em metros")]
@@ -75,7 +75,7 @@ namespace ObraFacilApp.Models
         public DateTime DataConclusaoFundacao { get; set; }
         public bool DataConclusaoFundacaoOK { get; set; }
 
-        public ProjetoModel Projeto { get; set; }
+        public ProjetoModel? Projeto { get; set; }
 
     }
 }

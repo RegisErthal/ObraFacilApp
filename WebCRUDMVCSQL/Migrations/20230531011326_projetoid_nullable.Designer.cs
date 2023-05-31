@@ -12,8 +12,8 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    [Migration("20230530022918_remove_list_projeto")]
-    partial class remove_list_projeto
+    [Migration("20230531011326_projetoid_nullable")]
+    partial class projetoid_nullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -355,7 +355,7 @@ namespace ObraFacilApp.Migrations
                     b.Property<bool>("MetragemCubicaCimentoVigaBaldramaOK")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProjetoId")
+                    b.Property<int?>("ProjetoId")
                         .HasColumnType("int")
                         .HasColumnName("ProjetoId");
 
@@ -463,8 +463,9 @@ namespace ObraFacilApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("CustoMetro")
-                        .HasColumnType("float")
+                    b.Property<string>("CustoMetro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("CustoMetro");
 
                     b.Property<DateTime>("DataConclusao")
@@ -498,12 +499,15 @@ namespace ObraFacilApp.Migrations
             modelBuilder.Entity("ObraFacilApp.Models.FundacaoModel", b =>
                 {
                     b.HasOne("ObraFacilApp.Models.ProjetoModel", "Projeto")
-                        .WithMany()
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Fundacaos")
+                        .HasForeignKey("ProjetoId");
 
                     b.Navigation("Projeto");
+                });
+
+            modelBuilder.Entity("ObraFacilApp.Models.ProjetoModel", b =>
+                {
+                    b.Navigation("Fundacaos");
                 });
 #pragma warning restore 612, 618
         }
