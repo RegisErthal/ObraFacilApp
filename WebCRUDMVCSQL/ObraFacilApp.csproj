@@ -27,4 +27,12 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\imagens\UploadHidraulica\" />
+    <Folder Include="wwwroot\imagens\UploadCobertura\" />
+    <Folder Include="wwwroot\imagens\UploadEletrica\" />
+    <Folder Include="wwwroot\imagens\UploadAlvenaria\" />
+    <Folder Include="wwwroot\imagens\UploadFundacao\" />
+  </ItemGroup>
+
 </Project>

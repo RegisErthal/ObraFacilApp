@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
 
@@ -55,12 +57,12 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
             {
             //if (id == null)
             //    throw new ArgumentNullException("id");
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            //fundacao.ProjetoId = id;
+            fundacao.ProjetoId = ProjetoId;
 
             if (ModelState.IsValid)
             {
@@ -161,6 +163,25 @@ namespace ObraFacilApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        private string caminhoServidor;
+
+        public FundacaoController (IWebHostEnvironment sistema)
+        {
+            caminhoServidor = sistema.WebRootPath;
+        }
+        public IActionResult UploadFundacao()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult UploadFundacao(IFormFile imgFundacao)
+        {
+            string caminhoImagem = caminhoServidor + "\\imagem\\";
+            string novoNomeImagem = Guid.NewGuid().ToString()+imgFundacao.FileName;
+            return RedirectToAction("UploadFundacao");
+        }
+
+        
         private bool FundacaoExists(int id)
         {
             return (_context.Fundacao?.Any(e => e.Id == id)).GetValueOrDefault();

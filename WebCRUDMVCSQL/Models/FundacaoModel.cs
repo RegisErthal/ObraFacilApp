@@ -7,6 +7,7 @@ namespace ObraFacilApp.Models
     [Table("Fundacao")]
     public class FundacaoModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         [Display(Name = "Código")]
         public int Id { get; set; }

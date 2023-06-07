@@ -2,7 +2,7 @@
 
 namespace ObraFacilApp.Controllers
 {
-    public class ContatoController : Controller
+    public class MeuContatoController : Controller
     {
         public IActionResult Index()
         {
