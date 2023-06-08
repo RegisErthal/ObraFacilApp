@@ -45,8 +45,9 @@ namespace ObraFacilApp.Controllers
         }
 
         // GET: Eletrica/Create
-        public IActionResult Create()
+        public IActionResult Create([FromRoute] int id)
         {
+            ViewBag.Id = id;
             return View();
         }
 

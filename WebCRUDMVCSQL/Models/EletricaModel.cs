@@ -48,6 +48,6 @@ namespace ObraFacilApp.Models
         [Display(Name = "Data de previsao de conclusão da eletrica")]
         public DateTime DataConclusaoEletrica { get; set; }
         public bool DataConclusaoEletricaOk { get; set; }
-
+        public ProjetoModel? Projeto { get; set; }
     }
 }

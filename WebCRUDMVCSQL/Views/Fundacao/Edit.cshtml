@@ -13,66 +13,81 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+
+            <input type="hidden" asp-for="Id" value="@Model.Id"/>
+            <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
+
             <div class="form-group">
                 <label asp-for="ComprimentoAlicerce" class="control-label"></label>
                 <input asp-for="ComprimentoAlicerce" class="form-control" />
                 <span asp-validation-for="ComprimentoAlicerce" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.ComprimentoAlicerceOK?"checked":"") value="true" name="ComprimentoAlicerceOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AlturaAlicerce" class="control-label"></label>
                 <input asp-for="AlturaAlicerce" class="form-control" />
                 <span asp-validation-for="AlturaAlicerce" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.AlturaAlicerceOK ? "checked" : "") value="true" name="AlturaAlicerceOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="QtdBlocosAlicerce" class="control-label"></label>
                 <input asp-for="QtdBlocosAlicerce" class="form-control" />
                 <span asp-validation-for="QtdBlocosAlicerce" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.QtdBlocosAlicerceOK ? "checked" : "") value="true" name="QtdBlocosAlicerceOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AlturaPedra" class="control-label"></label>
                 <input asp-for="AlturaPedra" class="form-control" />
                 <span asp-validation-for="AlturaPedra" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.AlturaPedraOK ? "checked" : "") value="true" name="AlturaPedraOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ComprimentoPedra" class="control-label"></label>
                 <input asp-for="ComprimentoPedra" class="form-control" />
                 <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.ComprimentoPedraOK ? "checked" : "") value="true" name="ComprimentoPedraOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
                 <input asp-for="AlturaVigaBaldrame" class="form-control" />
                 <span asp-validation-for="AlturaVigaBaldrame" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.AlturaVigaBaldrameOK ? "checked" : "") value="true" name="AlturaVigaBaldrameOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ComprimentoVigaBaldrame" class="control-label"></label>
                 <input asp-for="ComprimentoVigaBaldrame" class="form-control" />
-                <span asp-validation-for="ComprimentoVigaBaldrame" class="text-danger"></span>
+                <span asp-validation-for="ComprimentoVigaBaldrame" class="text-danger">
+                </span><span><input class="form-check-input" type="checkbox" @(Model.ComprimentoVigaBaldrameOK ? "checked" : "") value="true" name="ComprimentoVigaBaldrameOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LarguraVigaBaldrame" class="control-label"></label>
                 <input asp-for="LarguraVigaBaldrame" class="form-control" />
                 <span asp-validation-for="LarguraVigaBaldrame" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.LarguraVigaBaldrameOK ? "checked" : "") value="true" name="LarguraVigaBaldrameOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MetragemCubicaCimentoVigaBaldrama" class="control-label"></label>
                 <input asp-for="MetragemCubicaCimentoVigaBaldrama" class="form-control" />
                 <span asp-validation-for="MetragemCubicaCimentoVigaBaldrama" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.MetragemCubicaCimentoVigaBaldramaOK ? "checked" : "") value="true" name="MetragemCubicaCimentoVigaBaldramaOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="QtdMicro" class="control-label"></label>
                 <input asp-for="QtdMicro" class="form-control" />
                 <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.QtdMicroOK ? "checked" : "") value="true" name="QtdMicroOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataInicioFundacao" class="control-label"></label>
                 <input asp-for="DataInicioFundacao" class="form-control" />
                 <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.DataInicioFundacaoOK ? "checked" : "") value="true" name="DataInicioFundacaoOK"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataConclusaoFundacao" class="control-label"></label>
                 <input asp-for="DataConclusaoFundacao" class="form-control" />
                 <span asp-validation-for="DataConclusaoFundacao" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.DataConclusaoFundacaoOK ? "checked" : "") value="true" name="DataConclusaoFundacaoOK"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c; margin-top:15px"/>

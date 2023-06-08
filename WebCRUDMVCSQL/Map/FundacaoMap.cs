@@ -13,7 +13,6 @@ namespace ObraFacilApp.Map
             builder.HasKey(x => x.Id);
             builder.HasOne(x => x.Projeto);
 
-  
         }
     }
 }

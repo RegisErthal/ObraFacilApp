@@ -35,6 +35,7 @@ namespace ObraFacilApp.Models
             [Display(Name = "Data de previsao de conclusão da alvenaria")]
             public DateTime DataConclusaoCobertura { get; set; }
              bool DataConclusaoCoberturaOK { get; set; }
+             public ProjetoModel? Projeto { get; set; }
 
     }
 }

@@ -37,7 +37,7 @@ namespace ObraFacilApp.Controllers
             }
 
             var fundacao = await _context.Fundacao
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (fundacao == null)
             {
                 return NotFound();
@@ -47,9 +47,19 @@ namespace ObraFacilApp.Controllers
         }
 
         // GET: Fundacao/Create
-        public IActionResult Create()
+
+        public IActionResult Create([FromRoute] int id)
         {
-            return View();
+            var FundacaoExistente = _context.Fundacao.FirstOrDefault(m => m.ProjetoId == id);
+            if (FundacaoExistente == null)
+            {
+                ViewBag.Id = id;
+                return View();
+            }
+            else
+            {
+                return Redirect("/Fundacao/Details/" + FundacaoExistente.Id); 
+            }
         }
 
         // POST: Fundacao/Create
@@ -57,8 +67,9 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
-            {
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
+        {
+            
             //if (id == null)
             //    throw new ArgumentNullException("id");
             var errors = ModelState.Values.SelectMany(v => v.Errors);
@@ -66,7 +77,6 @@ namespace ObraFacilApp.Controllers
 
             if (ModelState.IsValid)
             {
-
                 _context.Entry(fundacao).State = EntityState.Added;
                 _context.Add(fundacao);
                 await _context.SaveChangesAsync();
@@ -78,17 +88,18 @@ namespace ObraFacilApp.Controllers
         // GET: Fundacao/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null || _context.Fundacao == null)
             {
                 return NotFound();
             }
+            var FundacaoExistente = _context.Fundacao.FirstOrDefault(m => m.ProjetoId == id);
 
-            var fundacao = await _context.Fundacao.FindAsync(id);
-            if (fundacao == null)
+            if (FundacaoExistente == null)
             {
                 return NotFound();
             }
-            return View(fundacao);
+            return View(FundacaoExistente);
         }
 
         // POST: Fundacao/Edit/5
@@ -96,7 +107,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao")] FundacaoModel fundacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
         {
             if (id != fundacao.Id)
             {
@@ -165,21 +176,21 @@ namespace ObraFacilApp.Controllers
 
         private string caminhoServidor;
 
-        public FundacaoController (IWebHostEnvironment sistema)
-        {
-            caminhoServidor = sistema.WebRootPath;
-        }
-        public IActionResult UploadFundacao()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult UploadFundacao(IFormFile imgFundacao)
-        {
-            string caminhoImagem = caminhoServidor + "\\imagem\\";
-            string novoNomeImagem = Guid.NewGuid().ToString()+imgFundacao.FileName;
-            return RedirectToAction("UploadFundacao");
-        }
+        //public FundacaoController (IWebHostEnvironment sistema)
+        //{
+        //    caminhoServidor = sistema.WebRootPath;
+        //}
+        //public IActionResult UploadFundacao()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult UploadFundacao(IFormFile imgFundacao)
+        //{
+        //    string caminhoImagem = caminhoServidor + "\\imagem\\";
+        //    string novoNomeImagem = Guid.NewGuid().ToString()+imgFundacao.FileName;
+        //    return RedirectToAction("UploadFundacao");
+        //}
 
         
         private bool FundacaoExists(int id)

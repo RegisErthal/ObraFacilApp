@@ -44,9 +44,9 @@ namespace ObraFacilApp.Controllers
             return View(hidraulica);
         }
 
-        // GET: Hidraulica/Create
-        public IActionResult Create()
+        public IActionResult Create([FromRoute] int id)
         {
+            ViewBag.Id = id;
             return View();
         }
 

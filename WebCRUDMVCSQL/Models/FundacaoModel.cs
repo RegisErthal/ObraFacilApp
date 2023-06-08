@@ -29,7 +29,7 @@ namespace ObraFacilApp.Models
         [Column("QtdBlocosAlicerce")]
         [Display(Name = "Quantidade blocos do alicerce")]
         public double QtdBlocosAlicerce { get; set; }
-        public bool QtdBlocosAlicerceÒK { get; set; }
+        public bool QtdBlocosAlicerceOK { get; set; }
 
         [Column("AlturaPedra")]
         [Display(Name = "Altura bloco do alicerce")]
