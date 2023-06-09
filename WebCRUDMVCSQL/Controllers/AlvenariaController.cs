@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
 
@@ -35,7 +36,7 @@ namespace ObraFacilApp.Controllers
             }
 
             var alvenaria = await _context.Alvenaria
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.IdProjeto == id);
             if (alvenaria == null)
             {
                 return NotFound();
@@ -45,20 +46,33 @@ namespace ObraFacilApp.Controllers
         }
 
         // GET: Alvenaria/Create
-        public IActionResult Create()
+        public IActionResult Create([FromRoute] int id)
         {
-            return View();
-        }
+            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.IdProjeto == id);
+            if (AlvenariaExistente == null)
+            {
+                ViewBag.Id = id;
+                return View();
 
+            }
+            else
+            {
+                return Redirect("/Alvenaria/Details/" + AlvenariaExistente.Id);
+            }
+        }
         // POST: Alvenaria/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Create(int IdProjeto,[Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            alvenaria.IdProjeto = IdProjeto;
+
             if (ModelState.IsValid)
             {
+                _context.Entry(alvenaria).State = EntityState.Added;
                 _context.Add(alvenaria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -74,12 +88,12 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var alvenaria = await _context.Alvenaria.FindAsync(id);
-            if (alvenaria == null)
+            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.IdProjeto == id);
+            if (AlvenariaExistente == null)
             {
                 return NotFound();
             }
-            return View(alvenaria);
+            return View(AlvenariaExistente);
         }
 
         // POST: Alvenaria/Edit/5
@@ -87,7 +101,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
             if (id != alvenaria.Id)
             {

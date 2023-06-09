@@ -70,8 +70,6 @@ namespace ObraFacilApp.Controllers
         public async Task<IActionResult> Create(int ProjetoId,[Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
         {
             
-            //if (id == null)
-            //    throw new ArgumentNullException("id");
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             fundacao.ProjetoId = ProjetoId;
 

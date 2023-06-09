@@ -5,24 +5,14 @@
    
 }
 
-<h1>Create</h1>
-
 <h4>Alvenaria</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <input type="hidden" name="IdProjeto" value="@ViewBag.Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdProjeto" class="control-label"></label>
-                <input asp-for="IdProjeto" class="form-control" />
-                <span asp-validation-for="IdProjeto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QtdBlocos" class="control-label"></label>
-                <input asp-for="QtdBlocos" class="form-control" />
-                <span asp-validation-for="QtdBlocos" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="AlturaBloco" class="control-label"></label>
                 <input asp-for="AlturaBloco" class="form-control" />
@@ -40,12 +30,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataInicioFundacao" class="control-label"></label>
-                <input asp-for="DataInicioFundacao" class="form-control" />
+                <input asp-for="DataInicioFundacao" type="date" class="form-control" />
                 <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataConclusaoAlvenaria" class="control-label"></label>
-                <input asp-for="DataConclusaoAlvenaria" class="form-control" />
+                <input asp-for="DataConclusaoAlvenaria" type="date" class="form-control" />
                 <span asp-validation-for="DataConclusaoAlvenaria" class="text-danger"></span>
             </div>
             <div class="form-group">

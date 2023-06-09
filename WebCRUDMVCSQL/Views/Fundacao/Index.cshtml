@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ObraFacilApp.Models.FundacaoModel>
+﻿@model ObraFacilApp.Models.FundacaoModel
 
 @{
     ViewData["Title"] = "Index";
@@ -7,90 +7,84 @@
 
 <h1>Fundação</h1>
 
-<form>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Comprimento Alicerce</th>
-                <td><input type="text" name="ComprimentoAlicerce"></td>
-                <th>Altura Alicerce</th>
-                <td><input type="text" name="AlturaAlicerce"></td>
-                <th>Quantidade de Blocos Alicerce</th>
-                <td><input type="text" name="QtdBlocosAlicerce"></td>
-                <th>Altura Pedra</th>
-                <td><input type="text" name="AlturaPedra"></td>
-                <th>Comprimento Pedra</th>
-                <td><input type="text" name="ComprimentoPedra"></td>
-                <th>Altura Viga Baldrame</th>
-                <th>Comprimento Viga Baldrame</th>
-                <td><input type="text" name="AlturaVigaBaldrame"></td>
-                <th>Largura Viga Baldrame</th>
-                <td><input type="text" name="ComprimentoVigaBaldrame"></td>
-                <th>Metragem Cúbica Cimento Viga Baldrame</th>
-                <td><input type="text" name="LarguraVigaBaldrame"></td>
-                <th>Quantidade de Micro Estacas</th>
-                <td><input type="text" name="MetragemCubicaCimentoVigaBaldrama"></td>
-                <th>Data de Início da Fundação</th>
-                <th>Data de Conclusão da Fundação</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" name="QtdMicro"></td>
-                <td><input type="date" name="DataInicioFundacao"></td>
-                <td><input type="date" name="DataConclusaoFundacao"></td>
-                <td><button type="submit">Enviar</button></td>
-            </tr>
-        </tbody>
-    </table>
-</form>
+<div>
+    <h4>Fundação</h4>
+    <hr />
+    <div class="row">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ComprimentoAlicerce)</th>
+                    <td>@Model.ComprimentoAlicerce</td>
+                    <td>@(Model.ComprimentoAlicerceOK ? "Concluído" : "Não concluído")</td>
+                </tr>
 
-@foreach (var item in Model) {
-        <tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.AlturaAlicerce)</th>
+                    <td>@Model.AlturaAlicerce</td>
+                    <td>@(Model.AlturaAlicerceOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdBlocosAlicerce)</th>
+                    <td>@Model.QtdBlocosAlicerce</td>
+                    <td>@(Model.QtdBlocosAlicerceOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.AlturaPedra)</th>
+                    <td>@Model.AlturaPedra</td>
+                    <td>@(Model.AlturaPedraOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ComprimentoPedra)</th>
+                    <td>@Model.ComprimentoPedra</td>
+                    <td>@(Model.ComprimentoPedraOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.AlturaVigaBaldrame)</th>
+                    <td>@Model.AlturaVigaBaldrame</td>
+                    <td>@(Model.AlturaVigaBaldrameOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)</th>
+                    <td>@Model.ComprimentoVigaBaldrame</td>
+                    <td>@(Model.ComprimentoVigaBaldrameOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.LarguraVigaBaldrame)</th>
+                    <td>@Model.LarguraVigaBaldrame</td>
+                    <td>@(Model.LarguraVigaBaldrameOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)</th>
+                    <td>@Model.MetragemCubicaCimentoVigaBaldrama</td>
+                    <td>@(Model.MetragemCubicaCimentoVigaBaldramaOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdMicro)</th>
+                    <td>@Model.QtdMicro</td>
+                    <td>@(Model.QtdMicroOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicioFundacao)</th>
+                    <td>@Model.DataInicioFundacao</td>
+                    <td>@(Model.DataInicioFundacaoOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataConclusaoFundacao)</th>
+                    <td>@Model.DataConclusaoFundacao</td>
+                    <td>@(Model.DataConclusaoFundacaoOK ? "Concluído" : "Não concluído")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
             <td>
-                @Html.DisplayFor(modelItem => item.ComprimentoAlicerce)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AlturaAlicerce)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtdBlocosAlicerce)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AlturaPedra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComprimentoPedra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AlturaVigaBaldrame)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComprimentoVigaBaldrame)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LarguraVigaBaldrame)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetragemCubicaCimentoVigaBaldrama)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QtdMicro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicioFundacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataConclusaoFundacao)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                <a asp-action="Edit">Editar</a> |
+                <a asp-action="Details">Detalhes</a> |
+                <a asp-action="Delete">Excluir</a>
             </td>
         </tr>
-}
-    </tbody>
-</table>
+
+    
 

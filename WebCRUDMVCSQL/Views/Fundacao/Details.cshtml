@@ -64,12 +64,13 @@
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.DataInicioFundacao)</th>
-                    <td>@Model.DataInicioFundacao</td>
+                    <td>@Model.DataInicioFundacao.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataInicioFundacaoOK ? "Concluído" : "Não concluído")</td>
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.DataConclusaoFundacao)</th>
-                    <td>@Model.DataConclusaoFundacao</td>
+                    <td>@Model.DataConclusaoFundacao.ToString("dd/MM/yyyy")</td>
+
                     <td>@(Model.DataConclusaoFundacaoOK ? "Concluído" : "Não concluído")</td>
                 </tr>
             </tbody>
@@ -77,6 +78,5 @@
     </div>
 </div>
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Index">Voltar</a>
+    <a asp-controller="/Etapas/" asp-route-id="@Model.Id">Voltarrrrrrrrrrrrrrr</a>
     </div>
