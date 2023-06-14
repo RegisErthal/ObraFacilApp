@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230613002422_AlvenariaId")]
+    partial class AlvenariaId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,9 +38,15 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("float")
                         .HasColumnName("AlturaBloco");
 
+                    b.Property<bool>("AlturaBlocoOk")
+                        .HasColumnType("bit");
+
                     b.Property<double>("ComprimentoBlocos")
                         .HasColumnType("float")
                         .HasColumnName("ComprimentoBlocos");
+
+                    b.Property<bool>("ComprimentoBlocosOk")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DataConclusaoAlvenaria")
                         .HasColumnType("datetime2")
@@ -46,18 +55,11 @@ namespace ObraFacilApp.Migrations
                     b.Property<bool>("DataConclusaoAlvenariaOk")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("DataInicioAlvenaria")
+                    b.Property<DateTime>("DataInicioFundacao")
                         .HasColumnType("datetime2")
                         .HasColumnName("DataInicioAlvenaria");
 
-                    b.Property<bool>("DataInicioalvenariaOk")
-                        .HasColumnType("bit");
-
-                    b.Property<double>("MetrosDeParede")
-                        .HasColumnType("float")
-                        .HasColumnName("MetrosDeParede");
-
-                    b.Property<bool>("MetrosDeParedeOK")
+                    b.Property<bool>("DataInicioFundacaoOk")
                         .HasColumnType("bit");
 
                     b.Property<int?>("ProjetoId")
@@ -98,9 +100,6 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DataConclusaoCobertura");
 
-                    b.Property<bool>("DataConclusaoCoberturaOK")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("DataInicioCobertura")
                         .HasColumnType("datetime2")
                         .HasColumnName("DataInicioCobertura");
@@ -112,20 +111,19 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("float")
                         .HasColumnName("EspessuraLaje");
 
+                    b.Property<bool>("EspessuraLajeOk")
+                        .HasColumnType("bit");
+
                     b.Property<int>("IdProjeto")
                         .HasColumnType("int")
                         .HasColumnName("IdProjeto");
 
-                    b.Property<double>("MetragemCubicaLage")
-                        .HasColumnType("float")
-                        .HasColumnName("MetragemCubicaLAge");
-
-                    b.Property<bool>("MetragemCubicaLageOk")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("PossueLaje")
                         .HasColumnType("bit")
                         .HasColumnName("PossueLaje");
+
+                    b.Property<bool>("PossueLajeOK")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ProjetoId")
                         .HasColumnType("int");
@@ -243,14 +241,11 @@ namespace ObraFacilApp.Migrations
 
                     b.Property<int>("IdProjeto")
                         .HasColumnType("int")
-                        .HasColumnName("ProjetoId");
+                        .HasColumnName("IdProjeto");
 
                     b.Property<bool>("LigacaoMonofasica")
                         .HasColumnType("bit")
                         .HasColumnName("LigacaoMonofasica");
-
-                    b.Property<bool>("LigacaoMonofasicaOk")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("LigacaoTrifasica")
                         .HasColumnType("bit")
@@ -261,6 +256,9 @@ namespace ObraFacilApp.Migrations
 
                     b.Property<int?>("ProjetoId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("QtdBlocosOk")
+                        .HasColumnType("bit");
 
                     b.Property<double>("QtdDisjuntores")
                         .HasColumnType("float")
@@ -287,11 +285,7 @@ namespace ObraFacilApp.Migrations
 
                     b.HasIndex("ProjetoId");
 
-                    b.ToTable("Eletrica", t =>
-                        {
-                            t.Property("ProjetoId")
-                                .HasColumnName("ProjetoId1");
-                        });
+                    b.ToTable("Eletrica");
                 });
 
             modelBuilder.Entity("ObraFacilApp.Models.FundacaoModel", b =>
@@ -421,9 +415,12 @@ namespace ObraFacilApp.Migrations
                     b.Property<bool>("DataInicioHidraulicaOK")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProjetoId")
+                    b.Property<int>("IdProjeto")
                         .HasColumnType("int")
-                        .HasColumnName("ProjetoId");
+                        .HasColumnName("IdProjeto");
+
+                    b.Property<int?>("ProjetoId")
+                        .HasColumnType("int");
 
                     b.Property<double>("QtdRalos")
                         .HasColumnType("float")
@@ -556,9 +553,7 @@ namespace ObraFacilApp.Migrations
                 {
                     b.HasOne("ObraFacilApp.Models.ProjetoModel", "Projeto")
                         .WithMany("Hidraulicas")
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjetoId");
 
                     b.Navigation("Projeto");
                 });

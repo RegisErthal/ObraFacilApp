@@ -12,13 +12,13 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <input type="hidden" asp-for="Id" value="@Model.Id" />
-            <input type="hidden" asp-for="IdProjeto" value="@Model.IdProjeto" />
+            <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="IdProjeto" class="control-label"></label>
-                <input asp-for="IdProjeto" class="form-control" />
-                <span asp-validation-for="IdProjeto" class="text-danger"></span>
+                <label asp-for="ProjetoId" class="control-label"></label>
+                <input asp-for="ProjetoId" class="form-control" />
+                <span asp-validation-for="ProjetoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="QtdBlocos" class="control-label"></label>
@@ -41,9 +41,9 @@
                 <span asp-validation-for="QtdPilares" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataInicioFundacao" class="control-label"></label>
-                <input asp-for="DataInicioFundacao" class="form-control" />
-                <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
+                <label asp-for="DataInicioAlvenaria" class="control-label"></label>
+                <input asp-for="DataInicioAlvenaria" class="form-control" />
+                <span asp-validation-for="DataInicioAlvenaria" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataConclusaoAlvenaria" class="control-label"></label>

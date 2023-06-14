@@ -36,7 +36,7 @@ namespace ObraFacilApp.Controllers
             }
 
             var alvenaria = await _context.Alvenaria
-                .FirstOrDefaultAsync(m => m.IdProjeto == id);
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (alvenaria == null)
             {
                 return NotFound();
@@ -48,12 +48,11 @@ namespace ObraFacilApp.Controllers
         // GET: Alvenaria/Create
         public IActionResult Create([FromRoute] int id)
         {
-            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.IdProjeto == id);
+            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.ProjetoId == id);
             if (AlvenariaExistente == null)
             {
                 ViewBag.Id = id;
                 return View();
-
             }
             else
             {
@@ -65,10 +64,10 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int IdProjeto,[Bind("Id,IdProjeto,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("Id,ProjetoId,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            alvenaria.IdProjeto = IdProjeto;
+            alvenaria.ProjetoId = ProjetoId;
 
             if (ModelState.IsValid)
             {
@@ -88,7 +87,7 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.IdProjeto == id);
+            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.ProjetoId == id);
             if (AlvenariaExistente == null)
             {
                 return NotFound();

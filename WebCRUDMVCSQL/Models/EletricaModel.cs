@@ -10,14 +10,14 @@ namespace ObraFacilApp.Models
         [Display(Name = "Código")]
         public int Id { get; set; }
 
-        [Column("IdProjeto")]
-        [Display(Name = "IdProjeto")]
+        [Column("ProjetoId")]
+        [Display(Name = "ProjetoId")]
         public int IdProjeto { get; set; }
 
         [Column("LigacaoMonofasica")]
         [Display(Name = "Ligação monofasica")]
         public bool LigacaoMonofasica { get; set; }
-        public bool QtdBlocosOk { get; set; }
+        public bool LigacaoMonofasicaOk { get; set; }
 
         [Column("LigacaoTrifasica")]
         [Display(Name = "Ligação trifasica")]

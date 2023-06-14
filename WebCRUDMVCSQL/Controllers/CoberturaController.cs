@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
@@ -45,9 +47,18 @@ namespace ObraFacilApp.Controllers
         }
 
         // GET: Cobertura/Create
-        public IActionResult Create()
+        public IActionResult Create([FromRoute] int id)
         {
-            return View();
+            var CoberturaExistente  = _context.Cobertura.FirstOrDefault(m => m.IdProjeto == id);
+            if (CoberturaExistente == null)
+            {
+                ViewBag.Id = id;
+                return View();
+            }
+            else
+            {
+                return Redirect("/Cobertura/Details/" + CoberturaExistente.Id);
+            }
         }
 
         // POST: Cobertura/Create
@@ -55,10 +66,13 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] CoberturaModel cobertura)
+        public async Task<IActionResult> Create(int IdProjeto[Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] CoberturaModel cobertura)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            cobertura.IdProjeto = IdProjeto;
             if (ModelState.IsValid)
             {
+                _context.Entry(cobertura).State = EntityState.Added;
                 _context.Add(cobertura);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
