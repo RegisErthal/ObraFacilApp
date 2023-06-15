@@ -22,10 +22,10 @@
                     @Html.DisplayFor(modelItem => item.NomeProjeto)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a> |
-                <a asp-controller="Etapas" asp-route-id="@item.Id">Etapas</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit" style="color:#255f9c"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-search" style=" color:#255f9c"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" style=" color:#255f9c"></i></a> |
+                    <a asp-controller="Etapas" asp-route-id="@item.Id">Etapas</a>
             </td>
         </tr>
 }

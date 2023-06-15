@@ -9,51 +9,69 @@
 <div>
     <h4>Alvenaria</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProjetoId)
-            <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck" name="materLogado">
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProjetoId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdBlocos)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdBlocos)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlturaBloco)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlturaBloco)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ComprimentoBlocos)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ComprimentoBlocos)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdPilares)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdPilares)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataInicioAlvenaria)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataInicioAlvenaria)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataConclusaoAlvenaria)
-        </dd>
-    </dl>
+    <div class="row">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.ProjetoId)
+                        <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck" name="materLogado">
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.ProjetoId)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.QtdBlocos)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.QtdBlocos)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.AlturaBloco)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.AlturaBloco)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.ComprimentoBlocos)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.ComprimentoBlocos)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.QtdPilares)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.QtdPilares)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DataInicioAlvenaria)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.DataInicioAlvenaria)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.DataConclusaoAlvenaria)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |

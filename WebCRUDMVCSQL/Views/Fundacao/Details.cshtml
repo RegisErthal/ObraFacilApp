@@ -5,18 +5,20 @@
 
 }
 
+
 <div>
     <h4>Fundação</h4>
     <hr />
     <div class="row">
         <table class="table">
             <tbody>
+                
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoAlicerce)</th>
                     <td>@Model.ComprimentoAlicerce</td>
-                    <td>@(Model.ComprimentoAlicerceOK ? "Concluído" : "Não concluído")</td>
+                    <td>@(Model.ComprimentoAlicerceOK ? "<i class='fas fa-check'></i>" : "<i class='fas fa-times'></i>")</td>
                 </tr>
-
+                <i class='fas fa-check'></i>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaAlicerce)</th>
                     <td>@Model.AlturaAlicerce</td>
