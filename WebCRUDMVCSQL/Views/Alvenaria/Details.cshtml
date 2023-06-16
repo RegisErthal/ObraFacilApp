@@ -4,7 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    .green {
+        color: green
+    }
+
+    .red {
+        color: red
+    }
+</style>
 
 <div>
     <h4>Alvenaria</h4>
@@ -13,67 +21,44 @@
         <table class="table">
             <tbody>
                 <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ProjetoId)
-                        <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck" name="materLogado">
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.ProjetoId)
-                    </td>
+                    <th>@Html.DisplayNameFor(model => model.AlturaBloco)</th>
+                    <td>@Model.AlturaBloco</td>
                 </tr>
                 <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.QtdBlocos)
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.QtdBlocos)
-                    </td>
+                    <th> @Html.DisplayNameFor(model => model.ComprimentoBlocos)</th>
+                    <td>@Model.ComprimentoBlocos</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdBlocos)</th>
+                    <td>@Model.QtdBlocos</td>
+                    <td>@(Model.QtdBlocosOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+              
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdPilares)</th>
+                    <td>@Model.QtdPilares</td>
+                    <td>@(Model.QtdPilaresOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+
+                <tr>
+
+                    <th>@Html.DisplayNameFor(model => model.DataInicioAlvenaria)</th>
+                    <td>@Model.DataInicioAlvenaria</td>
+                    <td>@(Model.DataInicioAlvenariaOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.AlturaBloco)
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.AlturaBloco)
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ComprimentoBlocos)
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.ComprimentoBlocos)
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.QtdPilares)
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.QtdPilares)
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DataInicioAlvenaria)
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.DataInicioAlvenaria)
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)
-                    </td>
-                    <td class="col-sm-10">
-                        @Html.DisplayFor(model => model.DataConclusaoAlvenaria)
-                    </td>
+
+                    <th> @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)</th>
+                    <td>@Model.DataConclusaoAlvenaria</td>
+                    <td>@(Model.DataConclusaoAlvenariaOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Voltar</a>
+    
+    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>

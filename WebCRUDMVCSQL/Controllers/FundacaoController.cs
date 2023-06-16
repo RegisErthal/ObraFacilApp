@@ -58,7 +58,7 @@ namespace ObraFacilApp.Controllers
             }
             else
             {
-                return Redirect("/Fundacao/Details/" + FundacaoExistente.Id); 
+                return Redirect("/Fundacao/Details/" + FundacaoExistente.ProjetoId); 
             }
         }
 

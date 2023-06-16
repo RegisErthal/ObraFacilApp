@@ -11,20 +11,11 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
+
             <input type="hidden" asp-for="Id" value="@Model.Id" />
             <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="ProjetoId" class="control-label"></label>
-                <input asp-for="ProjetoId" class="form-control" />
-                <span asp-validation-for="ProjetoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QtdBlocos" class="control-label"></label>
-                <input asp-for="QtdBlocos" class="form-control" />
-                <span asp-validation-for="QtdBlocos" class="text-danger"></span>
-            </div>
+
+
             <div class="form-group">
                 <label asp-for="AlturaBloco" class="control-label"></label>
                 <input asp-for="AlturaBloco" class="form-control" />
@@ -35,29 +26,40 @@
                 <input asp-for="ComprimentoBlocos" class="form-control" />
                 <span asp-validation-for="ComprimentoBlocos" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="QtdBlocos" class="control-label"></label>
+                <input asp-for="QtdBlocos" class="form-control" />
+                <span asp-validation-for="QtdBlocos" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.QtdBlocosOk ? "checked" : "") value="true" name="QtdBlocosOk"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="QtdPilares" class="control-label"></label>
                 <input asp-for="QtdPilares" class="form-control" />
                 <span asp-validation-for="QtdPilares" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.QtdPilaresOk ? "checked" : "") value="true" name="QtdBlocosOk"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataInicioAlvenaria" class="control-label"></label>
                 <input asp-for="DataInicioAlvenaria" class="form-control" />
                 <span asp-validation-for="DataInicioAlvenaria" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.DataInicioAlvenariaOk ? "checked" : "") value="true" name="DataInicioAlvenariaOk"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataConclusaoAlvenaria" class="control-label"></label>
                 <input asp-for="DataConclusaoAlvenaria" class="form-control" />
                 <span asp-validation-for="DataConclusaoAlvenaria" class="text-danger"></span>
+                <span><input class="form-check-input" type="checkbox" @(Model.DataConclusaoAlvenariaOk ? "checked" : "") value="true" name="DataConclusaoAlvenariaOk"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" style="background-color:#255f9c" />
+                <input type="submit" value="Salvar" class="btn btn-primary" style="background-color:#255f9c" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>
 

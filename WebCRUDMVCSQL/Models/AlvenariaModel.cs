@@ -42,7 +42,8 @@ namespace ObraFacilApp.Models
         [Column("DataInicioAlvenaria")]
         [Display(Name = "Data de previsao de ínicio da alvenaria")]
         public DateTime DataInicioAlvenaria { get; set; }
-        public bool DataInicioalvenariaOk { get; set; }
+        public bool DataInicioAlvenariaOk { get; set; }
+        
         [Column("DataConclusaoAlvenaria")]
         [Display(Name = "Data de previsao de conclusão da alvenaria")]
         public DateTime DataConclusaoAlvenaria { get; set; }
