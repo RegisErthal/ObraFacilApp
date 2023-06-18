@@ -12,12 +12,9 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="IdProjeto" class="control-label"></label>
-                <input asp-for="IdProjeto" class="form-control" />
-                <span asp-validation-for="IdProjeto" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
+            
             <div class="form-group">
                 <label asp-for="TamanhoCobertura" class="control-label"></label>
                 <input asp-for="TamanhoCobertura" class="form-control" />
@@ -43,14 +40,16 @@
                 <input asp-for="DataConclusaoCobertura" class="form-control" />
                 <span asp-validation-for="DataConclusaoCobertura" class="text-danger"></span>
             </div>
+            <br >
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" style="background-color:#255f9c" />
+                <input type="submit" value="Salvar" class="btn btn-primary" style="background-color:#255f9c" />
             </div>
+            <br />
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>
 

@@ -107,6 +107,7 @@ namespace ObraFacilApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
         {
+            
             if (id != fundacao.Id)
             {
                 return NotFound();
@@ -130,9 +131,9 @@ namespace ObraFacilApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
             }
-            return View(fundacao);
+            return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
         }
 
         // GET: Fundacao/Delete/5

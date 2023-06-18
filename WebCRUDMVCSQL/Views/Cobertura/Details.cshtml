@@ -4,51 +4,49 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    .green {
+        color: green
+    }
+
+    .red {
+        color: red
+    }
+</style>
 
 <div>
     <h4>Cobertura</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdProjeto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdProjeto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TamanhoCobertura)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TamanhoCobertura)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PossueLaje)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PossueLaje)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EspessuraLaje)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EspessuraLaje)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataInicioCobertura)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataInicioCobertura)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataConclusaoCobertura)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataConclusaoCobertura)
-        </dd>
-    </dl>
+    <div class="row">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.TamanhoCobertura)</th>
+                    <td>@Model.TamanhoCobertura</td>
+                    <td>@(Model.TamanhoCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayFor(model => model.PossueLaje)</th>
+                    <td>@(Model.PossueLaje ? Html.Raw("Sim") : Html.Raw("Não"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.EspessuraLaje)</th>
+                    <td>@Model.EspessuraLaje</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicioCobertura)</th>
+                    <td>@Model.DataInicioCobertura.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataInicioCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayFor(model => model.DataConclusaoCobertura)</th>
+                    <td>@Model.DataConclusaoCobertura.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataConclusaoCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Voltar</a>
+    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>

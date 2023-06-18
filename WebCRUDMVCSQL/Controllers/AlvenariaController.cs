@@ -102,6 +102,7 @@ namespace ObraFacilApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria,MetrosDeParedeOK,QtdBlocosOk,ComprimentoBlocos,QtdPilaresOk,DataInicioalvenariaOk,DataConclusaoAlvenariaOk")] AlvenariaModel alvenaria)
         {
+            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.ProjetoId == id);
             if (id != alvenaria.Id)
             {
                 return NotFound();
@@ -125,9 +126,9 @@ namespace ObraFacilApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
             }
-            return View(alvenaria);
+            return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
         }
 
         // GET: Alvenaria/Delete/5

@@ -6,13 +6,14 @@ namespace ObraFacilApp.Models
     [Table("Eletrica")]
     public class EletricaModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         [Display(Name = "Código")]
         public int Id { get; set; }
 
         [Column("ProjetoId")]
         [Display(Name = "ProjetoId")]
-        public int IdProjeto { get; set; }
+        public int ProjetoId { get; set; }
 
         [Column("LigacaoMonofasica")]
         [Display(Name = "Ligação monofasica")]

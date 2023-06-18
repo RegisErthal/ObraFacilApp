@@ -37,7 +37,7 @@ namespace ObraFacilApp.Controllers
             }
 
             var cobertura = await _context.Cobertura
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (cobertura == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace ObraFacilApp.Controllers
         // GET: Cobertura/Create
         public IActionResult Create([FromRoute] int id)
         {
-            var CoberturaExistente  = _context.Cobertura.FirstOrDefault(m => m.IdProjeto == id);
+            var CoberturaExistente  = _context.Cobertura.FirstOrDefault(m => m.ProjetoId == id);
             if (CoberturaExistente == null)
             {
                 ViewBag.Id = id;
@@ -57,7 +57,7 @@ namespace ObraFacilApp.Controllers
             }
             else
             {
-                return Redirect("/Cobertura/Details/" + CoberturaExistente.Id);
+                return Redirect("/Cobertura/Details/" + CoberturaExistente.ProjetoId);
             }
         }
 
@@ -66,10 +66,10 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int IdProjeto,[Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] CoberturaModel cobertura)
+        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK")] CoberturaModel cobertura)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            cobertura.IdProjeto = IdProjeto;
+            cobertura.ProjetoId = ProjetoId;
             if (ModelState.IsValid)
             {
                 _context.Entry(cobertura).State = EntityState.Added;
@@ -77,7 +77,7 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cobertura);
+            return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
         }
 
         // GET: Cobertura/Edit/5
@@ -88,12 +88,12 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var cobertura = await _context.Cobertura.FindAsync(id);
-            if (cobertura == null)
+            var CoberturaExistente = _context.Cobertura.FirstOrDefault(m => m.ProjetoId == id);
+            if (CoberturaExistente == null)
             {
                 return NotFound();
             }
-            return View(cobertura);
+            return View(CoberturaExistente);
         }
 
         // POST: Cobertura/Edit/5
@@ -101,7 +101,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura")] CoberturaModel cobertura)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK")] CoberturaModel cobertura)
         {
             if (id != cobertura.Id)
             {
@@ -126,9 +126,9 @@ namespace ObraFacilApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
             }
-            return View(cobertura);
+            return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
         }
 
         // GET: Cobertura/Delete/5

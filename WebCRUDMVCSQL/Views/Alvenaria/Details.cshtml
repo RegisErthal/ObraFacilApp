@@ -44,13 +44,13 @@
                 <tr>
 
                     <th>@Html.DisplayNameFor(model => model.DataInicioAlvenaria)</th>
-                    <td>@Model.DataInicioAlvenaria</td>
+                    <td>@Model.DataInicioAlvenaria.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataInicioAlvenariaOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
 
                     <th> @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)</th>
-                    <td>@Model.DataConclusaoAlvenaria</td>
+                    <td>@Model.DataConclusaoAlvenaria.ToString("dd/MM/yyyy") </td>
                     <td>@(Model.DataConclusaoAlvenariaOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                     
                 </tr>

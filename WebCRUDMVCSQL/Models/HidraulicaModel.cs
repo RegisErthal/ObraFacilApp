@@ -5,7 +5,8 @@ namespace ObraFacilApp.Models
 {
     [Table("Hidraulica")]
     public class HidraulicaModel
-    {
+    {   
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         [Display(Name = "Código")]
         public int Id { get; set; }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
@@ -47,8 +48,16 @@ namespace ObraFacilApp.Controllers
         // GET: Eletrica/Create
         public IActionResult Create([FromRoute] int id)
         {
-            ViewBag.Id = id;
-            return View();
+            var EletricaExistente = _context.Eletrica.FirstOrDefault(m => m.ProjetoId == id);
+            if (EletricaExistente == null)
+            {
+                ViewBag.Id = id;
+                return View();
+            }
+            else
+            {
+                return Redirect("/Eletrica/Details/" + EletricaExistente.ProjetoId);
+            }
         }
 
         // POST: Eletrica/Create
@@ -56,15 +65,18 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,DataInicioEletrica,DataConclusaoEletrica")] EletricaModel eletrica)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,DataInicioEletrica,DataConclusaoEletrica")] EletricaModel eletrica)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            eletrica.ProjetoId = ProjetoId;
             if (ModelState.IsValid)
             {
+                _context.Entry(eletrica).State = EntityState.Added;
                 _context.Add(eletrica);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(eletrica);
+            return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
         }
 
         // GET: Eletrica/Edit/5
@@ -75,12 +87,12 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var eletrica = await _context.Eletrica.FindAsync(id);
-            if (eletrica == null)
+            var EletricaExistente = _context.Eletrica.FirstOrDefault(m => m.ProjetoId == id);
+            if (EletricaExistente == null)
             {
                 return NotFound();
             }
-            return View(eletrica);
+            return View(EletricaExistente);
         }
 
         // POST: Eletrica/Edit/5
@@ -113,9 +125,9 @@ namespace ObraFacilApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
             }
-            return View(eletrica);
+            return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
         }
 
         // GET: Eletrica/Delete/5
