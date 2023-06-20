@@ -26,12 +26,12 @@ namespace ObraFacilApp.Models
         public bool QtdRalosOK { get; set; }
 
         [Column("DataInicioHidraulica ")]
-        [Display(Name = "Data de previsao de ínicio da eletrica")]
+        [Display(Name = "Previsao de ínicio")]
         public DateTime DataInicioHidraulica { get; set; }
         public bool DataInicioHidraulicaOK { get; set; }
 
         [Column("DataConclusaoHidraulica")]
-        [Display(Name = "Data de previsao de conclusão da eletrica")]
+        [Display(Name = "Previsão de conclusão")]
         public DateTime DataConclusaoHidraulica { get; set; }
         public bool DataConclusaoHidraulicaOK { get; set; }
         public ProjetoModel? Projeto { get; set; }

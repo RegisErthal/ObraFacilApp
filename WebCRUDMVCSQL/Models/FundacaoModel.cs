@@ -67,12 +67,12 @@ namespace ObraFacilApp.Models
         public bool QtdMicroOK { get; set; }
 
         [Column("DataInicioFundacao")]
-        [Display(Name = "Data de inicio da fundação")]
+        [Display(Name = "Previsão de início ")]
         public DateTime DataInicioFundacao { get; set; }
         public bool DataInicioFundacaoOK { get; set; }
 
         [Column("DataConclusaoFundacao")]
-        [Display(Name = "Data de conclusão da fundação")]
+        [Display(Name = "Previsão de conclusão")]
         public DateTime DataConclusaoFundacao { get; set; }
         public bool DataConclusaoFundacaoOK { get; set; }
 

@@ -36,7 +36,7 @@ namespace ObraFacilApp.Controllers
             }
 
             var eletrica = await _context.Eletrica
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (eletrica == null)
             {
                 return NotFound();
@@ -74,7 +74,7 @@ namespace ObraFacilApp.Controllers
                 _context.Entry(eletrica).State = EntityState.Added;
                 _context.Add(eletrica);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
             }
             return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
         }

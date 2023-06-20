@@ -40,12 +40,12 @@ namespace ObraFacilApp.Models
         public bool QtdPilaresOk { get; set; }
 
         [Column("DataInicioAlvenaria")]
-        [Display(Name = "Data de previsao de ínicio da alvenaria")]
+        [Display(Name = "Previsão de ínicio")]
         public DateTime DataInicioAlvenaria { get; set; }
         public bool DataInicioAlvenariaOk { get; set; }
         
         [Column("DataConclusaoAlvenaria")]
-        [Display(Name = "Data de previsao de conclusão da alvenaria")]
+        [Display(Name = "Previsão de conclusão")]
         public DateTime DataConclusaoAlvenaria { get; set; }
         public bool DataConclusaoAlvenariaOk { get; set; }
 

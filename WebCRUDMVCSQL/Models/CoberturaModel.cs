@@ -34,12 +34,12 @@ namespace ObraFacilApp.Models
             public bool MetragemCubicaLageOk { get; set; }
 
             [Column("DataInicioCobertura")]
-            [Display(Name = "Data de ínicio da cobertura")]
+            [Display(Name = "Previsão de ínicio")]
             public DateTime DataInicioCobertura { get; set; }
             public bool DataInicioCoberturaOK { get; set; }
 
             [Column("DataConclusaoCobertura")]
-            [Display(Name = "Data de conclusão da cobertura")]
+            [Display(Name = "Previsao de conclusão")]
             public DateTime DataConclusaoCobertura { get; set; }
             public bool DataConclusaoCoberturaOK { get; set; }
             public ProjetoModel? Projeto { get; set; }

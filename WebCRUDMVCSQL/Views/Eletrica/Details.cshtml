@@ -4,57 +4,57 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    .green {
+        color: green
+    }
+
+    .red {
+        color: red
+    }
+</style>
 
 <div>
-    <h4>Eletrica</h4>
+    <h4>Elétrica</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdProjeto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdProjeto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LigacaoMonofasica)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LigacaoMonofasica)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LigacaoTrifasica)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LigacaoTrifasica)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdDisjuntores)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdDisjuntores)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdTomadas)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdTomadas)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataInicioEletrica)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataInicioEletrica)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataConclusaoEletrica)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataConclusaoEletrica)
-        </dd>
-    </dl>
+    <div class="row">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.LigacaoMonofasica)</th>
+                    <td>@Model.LigacaoMonofasica</td>
+                    <td>@(Model.LigacaoMonofasicaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.LigacaoTrifasica)</th>
+                    <td>@Model.LigacaoTrifasica</td>
+                    <td>@(Model.LigacaoTrifasicaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdDisjuntores)</th>
+                    <td>@Model.QtdDisjuntores</td>
+                    <td>@(Model.QtdDisjuntoresOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdTomadas)</th>
+                    <td>@Model.QtdTomadas</td>
+                    <td>@(Model.QtdTomadasOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicioEletrica)</th>
+                    <td>@Model.DataInicioEletrica.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataInicioEletricaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataConclusaoEletrica)</th>
+                    <td>@Model.DataConclusaoEletrica.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataConclusaoEletricaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Voltar</a>
+    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>

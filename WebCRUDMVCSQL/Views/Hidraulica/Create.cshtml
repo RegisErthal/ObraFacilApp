@@ -11,12 +11,8 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <input type="hidden" name="ProjetoId" value="@ViewBag.Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProjetoId" class="control-label"></label>
-                <input asp-for="ProjetoId" class="form-control" />
-                <span asp-validation-for="ProjetoId" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="QtdTorneiras" class="control-label"></label>
                 <input asp-for="QtdTorneiras" class="form-control" />
@@ -38,7 +34,7 @@
                 <span asp-validation-for="DataConclusaoHidraulica " class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" style="background-color:#255f9c" />
+                <input type="submit" value="Criar" class="btn btn-primary" style="background-color:#255f9c" />
             </div>
         </form>
     </div>
