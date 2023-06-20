@@ -4,44 +4,52 @@
     ViewData["Title"] = "Details";
 }
 
+<style>
+    .green {
+        color: green
+    }
+
+    .red {
+        color: red
+    }
+</style>
 
 <div>
     <h4>Hidraulica</h4>
+
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProjetoId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProjetoId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdTorneiras)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdTorneiras)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QtdRalos)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QtdRalos)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataInicioHidraulica)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataInicioHidraulica)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataConclusaoHidraulica)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataConclusaoHidraulica)
-        </dd>
-    </dl>
+    <div class="row">
+        <table class="table">
+            <tbody>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdTorneiras)</th>
+                    <td>@Model.QtdTorneiras</td>
+                    <td>@(Model.QtdTorneirasOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdRalos)</th>
+                    <td>@Model.QtdRalos</td>
+                    <td>@(Model.QtdRalosOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicioHidraulica)</th>
+                    <td>@Model.DataInicioHidraulica.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataInicioHidraulicaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataConclusaoHidraulica)</th>
+                    <td>@Model.DataConclusaoHidraulica.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataConclusaoHidraulicaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Voltar</a>
+    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>
+ 

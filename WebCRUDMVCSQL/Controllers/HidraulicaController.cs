@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
 
@@ -35,7 +36,7 @@ namespace ObraFacilApp.Controllers
             }
 
             var hidraulica = await _context.Hidraulica
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (hidraulica == null)
             {
                 return NotFound();
@@ -46,8 +47,16 @@ namespace ObraFacilApp.Controllers
 
         public IActionResult Create([FromRoute] int id)
         {
-            ViewBag.Id = id;
-            return View();
+            var HidraulicaExistente = _context.Hidraulica.FirstOrDefault(m => m.ProjetoId == id);
+            if (HidraulicaExistente == null)
+            {
+                ViewBag.Id = id;
+                return View();
+            }
+            else
+            {
+                return Redirect("/Hidraulica/Details/" + HidraulicaExistente.ProjetoId);
+            }
         }
 
         // POST: Hidraulica/Create
@@ -55,15 +64,19 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdProjeto,QtdTorneiras,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOK,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            hidraulica.ProjetoId = ProjetoId;
+
             if (ModelState.IsValid)
             {
+                _context.Entry(hidraulica).State = EntityState.Added;
                 _context.Add(hidraulica);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
             }
-            return View(hidraulica);
+            return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
         }
 
         // GET: Hidraulica/Edit/5
@@ -87,7 +100,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdProjeto,QtdTorneiras,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOK,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
         {
             if (id != hidraulica.Id)
             {
@@ -112,9 +125,9 @@ namespace ObraFacilApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
             }
-            return View(hidraulica);
+            return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
         }
 
         // GET: Hidraulica/Delete/5
