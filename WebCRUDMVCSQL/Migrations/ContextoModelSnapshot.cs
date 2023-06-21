@@ -436,6 +436,33 @@ namespace ObraFacilApp.Migrations
                     b.ToTable("Hidraulica");
                 });
 
+            modelBuilder.Entity("ObraFacilApp.Models.ImagensModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdEntidade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TiposEntidades")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Imagens");
+                });
+
             modelBuilder.Entity("ObraFacilApp.Models.LoginModel", b =>
                 {
                     b.Property<int>("Id")

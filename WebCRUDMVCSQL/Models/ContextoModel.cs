@@ -19,6 +19,7 @@ namespace ObraFacilApp.Models
 
         public DbSet<HidraulicaModel> Hidraulica { get; set; }
         public DbSet<CronogramaModel> Cronograma { get; set; }
+        public DbSet<ImagensModel> Imagens { get; set; }
         public DbSet<ObraFacilApp.Models.FundacaoModel>? Fundacao { get; set; }
 
         public DbSet<ObraFacilApp.Models.EletricaModel>? Eletrica { get; set; }

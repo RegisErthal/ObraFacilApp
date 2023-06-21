@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
+using ObraFacilApp.Models.Enum;
 
 namespace ObraFacilApp.Controllers
 {
@@ -93,11 +94,15 @@ namespace ObraFacilApp.Controllers
             }
             var FundacaoExistente = _context.Fundacao.FirstOrDefault(m => m.ProjetoId == id);
 
+
             if (FundacaoExistente == null)
             {
                 return NotFound();
             }
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == FundacaoExistente.Id && m.TiposEntidades == TiposEntidadesEnum.Fundacao).ToList();
+            FundacaoExistente.Imagens = imagens;
             return View(FundacaoExistente);
+
         }
 
         // POST: Fundacao/Edit/5
@@ -105,13 +110,54 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,UploadFundacao")] FundacaoModel fundacao)
         {
             
             if (id != fundacao.Id)
             {
                 return NotFound();
             }
+
+            if (fundacao.UploadFundacao == null || fundacao.UploadFundacao.Count == 0)
+                return BadRequest("No files selected");
+
+            foreach (var file in fundacao.UploadFundacao)
+            {
+
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                Guid guid = Guid.NewGuid();
+
+
+                var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+
+
+                var folderPath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", "imagens", "UploadFundacao");
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+
+                var filePath = Path.Combine(folderPath, newFileName);
+
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                var imagemBanco = new ImagensModel();
+                imagemBanco.FilePath = filePath;
+                imagemBanco.TiposEntidades = TiposEntidadesEnum.Fundacao;
+                imagemBanco.IdEntidade = fundacao.Id;
+                imagemBanco.FileName = newFileName;
+
+                _context.Imagens.Add(imagemBanco);
+
+            }   
 
             if (ModelState.IsValid)
             {

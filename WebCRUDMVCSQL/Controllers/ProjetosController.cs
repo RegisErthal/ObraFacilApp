@@ -85,12 +85,36 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeProjeto")] ProjetoModel projeto)
+        public async Task<IActionResult> Edit(int id, IFormFile uploadProjeto, [Bind("Id,NomeProjeto,Responsavel,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] ProjetoModel projeto)
         {
             if (id != projeto.Id)
             {
                 return NotFound();
             }
+
+            if (uploadProjeto == null || uploadProjeto.Length == 0)
+                return BadRequest("No file selected");
+
+            var fileName = Path.GetFileName(uploadProjeto.FileName);
+
+            
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Imagens","UploadProjeto");
+
+            
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            var filePath = Path.Combine(folderPath, fileName);
+
+           
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await uploadProjeto.CopyToAsync(stream);
+            }
+
+
 
             if (ModelState.IsValid)
             {
