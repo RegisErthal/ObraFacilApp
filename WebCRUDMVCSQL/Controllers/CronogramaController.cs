@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
@@ -27,21 +29,101 @@ namespace ObraFacilApp.Controllers
         }
 
         // GET: Cronograma/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.Cronograma == null)
-            {
+            if (id == null || _context.Fundacao == null) {
                 return NotFound();
             }
 
-            var cronograma = await _context.Cronograma
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cronograma == null)
-            {
+            var fundacao = await _context.Fundacao
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
+            if (fundacao == null) {
                 return NotFound();
             }
 
-            return View(cronograma);
+            if (id == null || _context.Alvenaria == null) {
+                return NotFound();
+            }
+
+            var alvenaria = await _context.Alvenaria
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
+            if (alvenaria == null) {
+                return NotFound();
+            }
+
+            if (id == null || _context.Cobertura == null) {
+                return NotFound();
+            }
+
+            var cobertura = await _context.Cobertura
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
+            if (cobertura == null) {
+                return NotFound();
+            }
+
+            if (id == null || _context.Eletrica == null) {
+                return NotFound();
+            }
+
+            var eletrica = await _context.Eletrica
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
+            if (eletrica == null) {
+                return NotFound();
+            }
+
+            if (id == null || _context.Hidraulica == null) {
+                return NotFound();
+            }
+
+            var hidraulica = await _context.Hidraulica
+                .FirstOrDefaultAsync(m => m.ProjetoId == id);
+            if (hidraulica == null) {
+                return NotFound();
+            }
+
+            List<CronogramaViewModel> cronogramaViewModels = new List<CronogramaViewModel>();
+            cronogramaViewModels.Add(new CronogramaViewModel {
+                NomeEtapa = "Fundacao",
+                DataInicio = fundacao.DataInicioFundacao,
+                DataFim = fundacao.DataConclusaoFundacao,
+                DataInicioOk = fundacao.DataInicioFundacaoOK,
+                DataFimOk = fundacao.DataConclusaoFundacaoOK
+            });
+
+            cronogramaViewModels.Add(new CronogramaViewModel {
+                NomeEtapa = "Alvenaria",
+                DataInicio = alvenaria.DataInicioAlvenaria,
+                DataFim = alvenaria.DataConclusaoAlvenaria,
+                DataInicioOk = alvenaria.DataInicioAlvenariaOk,
+                DataFimOk = alvenaria.DataConclusaoAlvenariaOk
+            });
+
+            cronogramaViewModels.Add(new CronogramaViewModel {
+                NomeEtapa = "Cobertura",
+                DataInicio = cobertura.DataInicioCobertura,
+                DataFim = cobertura.DataConclusaoCobertura,
+                DataInicioOk = cobertura.DataInicioCoberturaOK,
+                DataFimOk = cobertura.DataConclusaoCoberturaOK
+            });
+
+            cronogramaViewModels.Add(new CronogramaViewModel {
+                NomeEtapa = "Eletrica",
+                DataInicio = eletrica.DataInicioEletrica,
+                DataFim = eletrica.DataConclusaoEletrica,
+                DataInicioOk = eletrica.DataInicioEletricaOk,
+                DataFimOk = eletrica.DataConclusaoEletricaOk
+            });
+
+            cronogramaViewModels.Add(new CronogramaViewModel {
+                NomeEtapa = "Hidraulica",
+                DataInicio = hidraulica.DataInicioHidraulica,
+                DataFim = hidraulica.DataConclusaoHidraulica,
+                DataInicioOk = hidraulica.DataInicioHidraulicaOK,
+                DataFimOk = hidraulica.DataConclusaoHidraulicaOK
+            });
+
+            return View(cronogramaViewModels);
+
         }
 
         // GET: Cronograma/Create

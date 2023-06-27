@@ -42,7 +42,11 @@
                 <label asp-for="AlturaAlicerce" class="control-label"></label>
                 <input asp-for="AlturaAlicerce" class="form-control" />
                 <span asp-validation-for="AlturaAlicerce" class="text-danger"></span>
-                <span><input class="form-check-input" type="checkbox" @(Model.AlturaAlicerceOK ? "checked" : "") value="true" name="AlturaAlicerceOK"></span>
+                
+            </div>
+            <div>
+                <label>Para este alicerce serão necessária uma média de blocos de:</label>
+                <span id="qtdBlocos"></span>
             </div>
             <div class="form-group">
                 <label asp-for="QtdBlocosAlicerce" class="control-label"></label>
@@ -121,6 +125,7 @@
                 <input asp-for="UploadFundacao" type="file" name="UploadFundacao" value="UploadFundacao" multiple />
                
             </div>
+            <br />
 
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c; margin-top:15px"/>
@@ -134,3 +139,29 @@
     <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>
 
+@section Scripts {
+<script>
+   
+    $(document).ready(function() {
+        // Função para calcular a metragem quadrada e atualizar o valor na tela
+        function qtdBlocos() {
+            debugger;
+            var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
+            var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
+            var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
+            var alturaPedra = parseFloat($('#AlturaPedra').val());
+            var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+           
+            $('#qtdBlocos').text(qtdBlocos.toFixed(2)); // Arredonda o valor para duas casas decimais
+        }
+
+        // Chamar a função de cálculo quando os valores dos campos de entrada forem alterados
+        $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
+            qtdBlocos();
+        });
+
+        // Chamar a função de cálculo ao carregar a página, caso haja valores preenchidos nos campos de entrada
+        qtdBlocos();
+    });
+</script>
+}

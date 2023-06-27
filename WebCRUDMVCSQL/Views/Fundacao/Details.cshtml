@@ -8,6 +8,22 @@
 <style>
     .green{color:green}
     .red{color:red}
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress {
+        height: 100%;
+        background-color: #4caf50;
+        width: 0;
+        transition: width 0.3s ease-in-out;
+    }
+
 </style>
 
 
@@ -80,10 +96,37 @@
                     <td>@Model.DataConclusaoFundacao.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataConclusaoFundacaoOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
+
+
             </tbody>
         </table>
+        <div class="progress-bar">
+            <div class="progress" style="text-align:center">
+                <span class="progress-percentage" >0%</span>
+            </div>
+        </div>
+
     </div>
+
 </div>
     <div>
     <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
     </div>
+
+@section Scripts
+    {
+    <script>
+        const booleanArray = [@(Model.ComprimentoAlicerceOK.ToString().ToLower()), @(Model.AlturaAlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.AlturaPedraOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower())];
+
+        function updateProgressBar() {
+            const progressBar = document.querySelector('.progress');
+            const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
+            progressBar.style.width = progressPercentage + '%';
+
+            const progressPercentageElement = document.querySelector('.progress-percentage');
+            progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
+        }
+
+        updateProgressBar(); // Update the progress bar initially
+    </script>
+    }

@@ -118,49 +118,46 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            if (fundacao.UploadFundacao == null || fundacao.UploadFundacao.Count == 0)
-                return BadRequest("No files selected");
-
-            foreach (var file in fundacao.UploadFundacao)
+            if (fundacao.UploadFundacao != null && fundacao.UploadFundacao.Count > 0) 
             {
+                foreach (var file in fundacao.UploadFundacao) {
 
-                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-
-
-                Guid guid = Guid.NewGuid();
+                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
 
 
-                var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+                    Guid guid = Guid.NewGuid();
 
 
-                var folderPath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", "imagens", "UploadFundacao");
+                    var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
 
-                if (!Directory.Exists(folderPath))
-                {
-                    Directory.CreateDirectory(folderPath);
+
+                    var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadFundacao");
+
+                    if (!Directory.Exists(folderPath)) {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+
+                    var filePath = Path.Combine(folderPath, newFileName);
+
+
+                    using (var stream = new FileStream(filePath, FileMode.Create)) {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    var imagemBanco = new ImagensModel();
+                    imagemBanco.FilePath = filePath;
+                    imagemBanco.TiposEntidades = TiposEntidadesEnum.Fundacao;
+                    imagemBanco.IdEntidade = fundacao.Id;
+                    imagemBanco.FileName = newFileName;
+
+                    _context.Imagens.Add(imagemBanco);
                 }
 
+            }
+           
 
-                var filePath = Path.Combine(folderPath, newFileName);
-
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                var imagemBanco = new ImagensModel();
-                imagemBanco.FilePath = filePath;
-                imagemBanco.TiposEntidades = TiposEntidadesEnum.Fundacao;
-                imagemBanco.IdEntidade = fundacao.Id;
-                imagemBanco.FileName = newFileName;
-
-                _context.Imagens.Add(imagemBanco);
-
-            }   
-
-            if (ModelState.IsValid)
-            {
+            
                 try
                 {
                     _context.Update(fundacao);
@@ -178,8 +175,7 @@ namespace ObraFacilApp.Controllers
                     }
                 }
                 return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
-            }
-            return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
+            
         }
 
         // GET: Fundacao/Delete/5

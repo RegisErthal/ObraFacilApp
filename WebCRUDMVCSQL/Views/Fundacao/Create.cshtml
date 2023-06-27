@@ -83,3 +83,29 @@
     <a asp-action="Index">Voltar</a>
 </div>
 
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            // Função para calcular a metragem quadrada e atualizar o valor na tela
+            function qtdBlocos() {
+                debugger;
+                var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
+                var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
+                var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
+                var alturaPedra = parseFloat($('#AlturaPedra').val());
+                var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+
+                $('#qtdBlocos').text(qtdBlocos.toFixed(2)); // Arredonda o valor para duas casas decimais
+            }
+
+            // Chamar a função de cálculo quando os valores dos campos de entrada forem alterados
+            $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
+                qtdBlocos();
+            });
+
+            // Chamar a função de cálculo ao carregar a página, caso haja valores preenchidos nos campos de entrada
+            qtdBlocos();
+        });
+    </script>
+}
