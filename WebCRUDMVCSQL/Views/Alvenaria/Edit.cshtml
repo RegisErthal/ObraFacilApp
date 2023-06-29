@@ -76,7 +76,7 @@
             <div class="form-group">
                 <label asp-for="DataInicioAlvenaria" class="control-label"></label>
                 <div class="input-group">
-                    <input asp-for="DataInicioAlvenaria" class="form-control" />
+                    <input asp-for="DataInicioAlvenaria" type="date" class="form-control " />
                     <span asp-validation-for="DataInicioAlvenaria" type="date" class="text-danger"></span>
                     <span class="input-group-addon" style="margin-left:10px">
                         <input class="form-check-input" type="checkbox" @(Model.DataInicioAlvenariaOk ? "checked" : "") value="true" name="DataInicioAlvenariaOk">
