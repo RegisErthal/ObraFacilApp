@@ -77,10 +77,10 @@ namespace ObraFacilApp.Models
         public bool DataConclusaoFundacaoOK { get; set; }
 
         [NotMapped]
-        public List <IFormFile> UploadFundacao { get; set; }
+        public List <IFormFile>? UploadFundacao { get; set; }
 
         [NotMapped]
-        public List<ImagensModel> Imagens { get; set; }
+        public  List<ImagensModel>? Imagens { get; set; }
 
         public ProjetoModel? Projeto { get; set; }
 

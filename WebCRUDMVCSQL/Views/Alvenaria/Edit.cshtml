@@ -3,10 +3,33 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<style>
+    .green {
+        color: green
+    }
 
-<h1>Edit</h1>
+    .red {
+        color: red
+    }
 
-<h4>Alvenaria</h4>
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress {
+        height: 100%;
+        background-color: #4caf50;
+        width: 0;
+        transition: width 0.3s ease-in-out;
+    }
+</style>
+<h1>Alvenaria</h1>
+
+<h4>Editar</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,45 +44,86 @@
                 <input asp-for="AlturaBloco" class="form-control" />
                 <span asp-validation-for="AlturaBloco" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ComprimentoBlocos" class="control-label"></label>
                 <input asp-for="ComprimentoBlocos" class="form-control" />
                 <span asp-validation-for="ComprimentoBlocos" class="text-danger"></span>
+
             </div>
 
             <div class="form-group">
                 <label asp-for="QtdBlocos" class="control-label"></label>
-                <input asp-for="QtdBlocos" class="form-control" />
+                <div class="input-group">
+                    <input asp-for="QtdBlocos" class="form-control mr-2" />
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" @(Model.QtdBlocosOk ? "checked" : "") value="true" name="QtdBlocosOk">
+                    </span>
+                </div>
                 <span asp-validation-for="QtdBlocos" class="text-danger"></span>
-                <span><input class="form-check-input" type="checkbox" @(Model.QtdBlocosOk ? "checked" : "") value="true" name="QtdBlocosOk"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="QtdPilares" class="control-label"></label>
-                <input asp-for="QtdPilares" class="form-control" />
-                <span asp-validation-for="QtdPilares" class="text-danger"></span>
-                <span><input class="form-check-input" type="checkbox" @(Model.QtdPilaresOk ? "checked" : "") value="true" name="QtdBlocosOk"></span>
+                <div class="input-group">
+                    <input asp-for="QtdPilares" class="form-control" />
+                    <span asp-validation-for="QtdPilares" class="text-danger"></span>
+                    <span class ="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" @(Model.QtdPilaresOk ? "checked" : "") value="true" name="QtdBlocosOk">
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="DataInicioAlvenaria" class="control-label"></label>
-                <input asp-for="DataInicioAlvenaria" class="form-control" />
-                <span asp-validation-for="DataInicioAlvenaria" class="text-danger"></span>
-                <span><input class="form-check-input" type="checkbox" @(Model.DataInicioAlvenariaOk ? "checked" : "") value="true" name="DataInicioAlvenariaOk"></span>
+                <div class="input-group">
+                    <input asp-for="DataInicioAlvenaria" class="form-control" />
+                    <span asp-validation-for="DataInicioAlvenaria" type="date" class="text-danger"></span>
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" @(Model.DataInicioAlvenariaOk ? "checked" : "") value="true" name="DataInicioAlvenariaOk">
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="DataConclusaoAlvenaria" class="control-label"></label>
-                <input asp-for="DataConclusaoAlvenaria" class="form-control" />
-                <span asp-validation-for="DataConclusaoAlvenaria" class="text-danger"></span>
-                <span><input class="form-check-input" type="checkbox" @(Model.DataConclusaoAlvenariaOk ? "checked" : "") value="true" name="DataConclusaoAlvenariaOk"></span>
+                <div class="input-group">
+                    <input asp-for="DataConclusaoAlvenaria" type="date" class="form-control" />
+                    <span asp-validation-for="DataConclusaoAlvenaria" class="text-danger"></span>
+                    <span class ="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" @(Model.DataConclusaoAlvenariaOk ? "checked" : "") value="true" name="DataConclusaoAlvenariaOk">
+                    </span>
+                </div>
+                <br />
             </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" style="background-color:#255f9c" />
             </div>
+            <br />
         </form>
+        <div class="progress-bar">
+            <div class="progress" style="text-align:center">
+                <span class="progress-percentage">0%</span>
+            </div>
+        </div>
     </div>
 </div>
 
 <div>
     <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
 </div>
+@section Scripts
+    {
+    <script>
+        const booleanArray = [@(Model.QtdBlocosOk.ToString().ToLower()), @(Model.QtdPilaresOk.ToString().ToLower()), @(Model.DataInicioAlvenariaOk.ToString().ToLower()), @(Model.DataConclusaoAlvenariaOk.ToString().ToLower())];
 
+        function updateProgressBar() {
+            const progressBar = document.querySelector('.progress');
+            const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
+            progressBar.style.width = progressPercentage + '%';
+
+            const progressPercentageElement = document.querySelector('.progress-percentage');
+            progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
+        }
+
+        updateProgressBar(); // Update the progress bar initially
+    </script>
+    }
