@@ -22,7 +22,7 @@ namespace ObraFacilApp.Models
 
         [Column("QtdRegistros")]
         [Display(Name = "Quantidade de torneiras")]
-        public double QtdRegistros { get; set; }
+        public decimal QtdRegistros { get; set; }
         public bool QtdRegistrosOk { get; set; }
 
         [Column("QtdRalos")]
@@ -32,7 +32,7 @@ namespace ObraFacilApp.Models
 
         [Column("QtdCaixaGordura")]
         [Display(Name = "Quantidade de caixa de gordura")]
-        public double QtdCaixaGordura { get; set; }
+        public decimal QtdCaixaGordura { get; set; }
         public bool QtdCaixaGorduraOk { get; set; }
 
         [Column("DataInicioHidraulica ")]

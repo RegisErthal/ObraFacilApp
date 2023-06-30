@@ -34,9 +34,12 @@ namespace ObraFacilApp.Models
         [Column("DataConclusao")]
         [Display(Name = "Data para coclusao da obra")]
         public DateTime DataConclusao { get; set; }
+        [Column("IDUsuario")]
+        [Display(Name = "Usuário")]
+        public int IdUsuario { get; set; }
 
-       
-         public virtual List<FundacaoModel>? Fundacaos { get; set; }
+
+        public virtual List<FundacaoModel>? Fundacaos { get; set; }
          public virtual List<AlvenariaModel>? Alvenarias { get; set; }
          public virtual List<CoberturaModel>? Coberturas { get; set; }
          public virtual List<EletricaModel>? Eletricas { get; set; }

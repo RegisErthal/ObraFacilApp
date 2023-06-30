@@ -13,7 +13,6 @@ namespace ObraFacilApp.Models
 
         public DbSet<ProjetoModel> Projeto { get; set; }
         public DbSet<LoginModel> Login { get; set; }
-        public DbSet<ObraFacilApp.Models.ProjetoModel>? Projeto_1 { get; set; }
         public DbSet<AlvenariaModel> Alvenaria { get; set; }
         public DbSet<CoberturaModel> Cobertura { get; set; }
 
