@@ -22,7 +22,11 @@ namespace ObraFacilApp.Models
         [Column("EmailResponsavel")]
         [Display(Name = "Email do Responsável")]
         public string EmailResponsavel { get; set; }
-        
+
+        [Column("MetragemQuadrada")]
+        [Display(Name = "Valor de custo m²")]
+        public string MetragemQuadrada { get; set; }
+
         [Column("CustoMetro")]
         [Display(Name = "Valor de custo m²")]
         public string CustoMetro { get; set; }
