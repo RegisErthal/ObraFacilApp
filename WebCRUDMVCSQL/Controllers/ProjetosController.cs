@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
@@ -16,20 +17,31 @@ namespace ObraFacilApp.Controllers
         // GET: Projetoe
         public async Task<IActionResult> Index()
         {
-            return _context.Projeto_1 != null ?
-                        View(await _context.Projeto_1.ToListAsync()) :
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+            var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+
+            var list = await _context.Projeto.ToListAsync();
+            IEnumerable<ProjetoModel> listFiltered = null;
+
+            if (usuario.isAdmin)
+                listFiltered = list;
+            else
+                listFiltered = list.Where(x => x.UsuarioId == usuario.Id);
+
+            return _context.Projeto != null ?
+                        View(listFiltered) :
                         Problem("Entity set 'Contexto.Projeto_1'  is null.");
         }
 
         // GET: Projetoe/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Projeto_1 == null)
+            if (id == null || _context.Projeto == null)
             {
                 return NotFound();
             }
 
-            var projeto = await _context.Projeto_1
+            var projeto = await _context.Projeto
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (projeto == null)
             {
@@ -54,9 +66,13 @@ namespace ObraFacilApp.Controllers
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             //projeto.DataConclusao=DateTime.Now
-                
+
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+            var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+
             if (ModelState.IsValid)
             {
+                projeto.UsuarioId = usuario.Id;
                 _context.Add(projeto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -67,12 +83,12 @@ namespace ObraFacilApp.Controllers
         // GET: Projetoe/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Projeto_1 == null)
+            if (id == null || _context.Projeto == null)
             {
                 return NotFound();
             }
 
-            var projeto = await _context.Projeto_1.FindAsync(id);
+            var projeto = await _context.Projeto.FindAsync(id);
             if (projeto == null)
             {
                 return NotFound();
@@ -142,12 +158,12 @@ namespace ObraFacilApp.Controllers
         // GET: Projetoe/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Projeto_1 == null)
+            if (id == null || _context.Projeto == null)
             {
                 return NotFound();
             }
 
-            var projeto = await _context.Projeto_1
+            var projeto = await _context.Projeto
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (projeto == null)
             {
@@ -162,14 +178,14 @@ namespace ObraFacilApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Projeto_1 == null)
+            if (_context.Projeto == null)
             {
                 return Problem("Entity set 'Contexto.Projeto_1'  is null.");
             }
-            var projeto = await _context.Projeto_1.FindAsync(id);
+            var projeto = await _context.Projeto.FindAsync(id);
             if (projeto != null)
             {
-                _context.Projeto_1.Remove(projeto);
+                _context.Projeto.Remove(projeto);
             }
 
             await _context.SaveChangesAsync();
@@ -178,7 +194,7 @@ namespace ObraFacilApp.Controllers
 
         private bool ProjetoExists(int id)
         {
-            return (_context.Projeto_1?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Projeto?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

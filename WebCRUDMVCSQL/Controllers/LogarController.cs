@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
@@ -31,12 +32,15 @@ namespace ObraFacilApp.Controllers
                                               && m.Senha == dadosLogin.Senha);
 
                 if (login == null)
-                { 
+                {
                     ModelState.AddModelError("", "Usuário ou senha incorretos."); // Adiciona mensagem de erro à ModelState
                     return View(); // Retorna a view com a mensagem de erro
                 }
-            else
-                return LocalRedirect("/Home");
+                else
+                {
+                    HttpContext.Session.SetString("ObraFacilUsuario", JsonConvert.SerializeObject(login));
+                    return LocalRedirect("/Home");
+                }
             }
             return View();
         }

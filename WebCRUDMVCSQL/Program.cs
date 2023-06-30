@@ -12,6 +12,8 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false)
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSession();
+
 var Configuration = builder.Configuration;
 
 builder.Services.AddDbContext<ContextoModel>
@@ -40,6 +42,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

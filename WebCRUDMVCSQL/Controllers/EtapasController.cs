@@ -159,7 +159,7 @@ namespace ObraFacilApp.Controllers
             if (hidraulica?.DataConclusaoHidraulicaOK ?? false)
                 ret++;
 
-            if (hidraulica?.QtdCaixaGordura ?? false)
+            if (hidraulica?.QtdCaixaGorduraOk ?? false)
                 ret++;
 
 

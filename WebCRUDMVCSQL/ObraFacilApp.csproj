@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Sessions\" />
     <Folder Include="wwwroot\imagens\UploadProjeto\" />
     <Folder Include="wwwroot\imagens\UploadHidraulica\" />
     <Folder Include="wwwroot\imagens\UploadCobertura\" />

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20230630010735_AduanMigration")]
+    partial class AduanMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

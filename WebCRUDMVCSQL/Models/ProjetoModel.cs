@@ -25,7 +25,7 @@ namespace ObraFacilApp.Models
 
         [Column("MetragemQuadrada")]
         [Display(Name = "Valor de custo m²")]
-        public string MetragemQuadrada { get; set; }
+        public string? MetragemQuadrada { get; set; }
 
         [Column("CustoMetro")]
         [Display(Name = "Valor de custo m²")]
@@ -38,9 +38,9 @@ namespace ObraFacilApp.Models
         [Column("DataConclusao")]
         [Display(Name = "Data para coclusao da obra")]
         public DateTime DataConclusao { get; set; }
-        [Column("IDUsuario")]
+        [Column("UsuarioId")]
         [Display(Name = "Usuário")]
-        public int IdUsuario { get; set; }
+        public int? UsuarioId { get; set; }
 
 
         public virtual List<FundacaoModel>? Fundacaos { get; set; }
