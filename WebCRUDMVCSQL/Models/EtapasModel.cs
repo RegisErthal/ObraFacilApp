@@ -14,6 +14,7 @@
         public decimal HidraulicaPerc { get; set; }
         public bool TemHidraulica { get; set; }
         public bool MostraCronograma { get; set; }
+        public bool UsuarioIsAdmin { get; set; }
 
     }
 }
