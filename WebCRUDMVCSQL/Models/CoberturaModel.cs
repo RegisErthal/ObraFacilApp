@@ -27,6 +27,7 @@ namespace ObraFacilApp.Models
             [Column("EspessuraLaje")]
             [Display(Name = "Espessura da laje")]
             public double EspessuraLaje { get; set; }
+            public bool EspessuraLajeOK { get; set; }
 
             [Column("MetragemCubicaLage")]
             [Display(Name = "Metragem³ de cimento da lage")]

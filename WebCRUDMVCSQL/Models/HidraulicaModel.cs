@@ -20,10 +20,20 @@ namespace ObraFacilApp.Models
         public double QtdTorneiras { get; set; }
         public bool QtdTorneirasOK { get; set; }
 
+        [Column("QtdRegistros")]
+        [Display(Name = "Quantidade de torneiras")]
+        public double QtdRegistros { get; set; }
+        public bool QtdRegistrosOk { get; set; }
+
         [Column("QtdRalos")]
         [Display(Name = "Quantidade de saídas para esgoto")]
         public double QtdRalos { get; set; }
         public bool QtdRalosOK { get; set; }
+
+        [Column("QtdCaixaGortdura")]
+        [Display(Name = "Quantidade de caixa de gordura")]
+        public double QtdCaixaGortdura { get; set; }
+        public bool QtdCaixaGortduraOk { get; set; }
 
         [Column("DataInicioHidraulica ")]
         [Display(Name = "Previsao de ínicio")]

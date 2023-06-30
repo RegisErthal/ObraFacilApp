@@ -57,7 +57,7 @@ namespace ObraFacilApp.Models
         public bool LarguraVigaBaldrameOK { get; set; }
 
         [Column("MetragemCubicaCimentoVigaBaldrama")]
-        [Display(Name = "Metragem cubica de cimento")]
+        [Display(Name = "Metragem cubica de cimento  da viga baldrame")]
         public double MetragemCubicaCimentoVigaBaldrama { get; set; }
         public bool MetragemCubicaCimentoVigaBaldramaOK { get; set; }
 
