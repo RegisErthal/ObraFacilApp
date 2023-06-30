@@ -43,6 +43,7 @@ namespace ObraFacilApp.Models
         public int? UsuarioId { get; set; }
 
 
+
         public virtual List<FundacaoModel>? Fundacaos { get; set; }
          public virtual List<AlvenariaModel>? Alvenarias { get; set; }
          public virtual List<CoberturaModel>? Coberturas { get; set; }

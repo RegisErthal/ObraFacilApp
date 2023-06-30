@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ObraFacilApp.Models.ProjetoModel>
+﻿@model ObraFacilApp.Models.TelaProjetosModel
 
 @{
     ViewData["Title"] = "Index";
@@ -10,13 +10,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomeProjeto)
+                Projetos
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Projetos) {
         <tr>
             <td>
                     @Html.DisplayFor(modelItem => item.NomeProjeto)
@@ -32,7 +32,11 @@
 }
     </tbody>
 </table>
-<p>
-    <a class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c; width: 100px" Logar asp-action="Create">Criar novo projeto </a>
 
-</p>
+@if (Model.MostraBotaoCriar) {
+    <p>
+        <a class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c; width: 100px" Logar asp-action="Create">Criar novo projeto </a>
+
+    </p>
+}
+
