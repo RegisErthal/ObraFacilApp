@@ -87,7 +87,8 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var hidraulica = await _context.Hidraulica.FindAsync(id);
+            var hidraulica = await _context.Hidraulica
+                           .FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (hidraulica == null)
             {
                 return NotFound();
