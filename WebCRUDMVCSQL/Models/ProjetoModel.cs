@@ -15,7 +15,7 @@ namespace ObraFacilApp.Models
         [Display(Name = "Nome do Projeto")]
         public string NomeProjeto { get; set; }
 
-        [Column("Responsavel")]
+        [Column("Responsável")]
         [Display(Name = "Responsável")]
         public string Responsavel { get; set; }
         
@@ -24,7 +24,7 @@ namespace ObraFacilApp.Models
         public string EmailResponsavel { get; set; }
 
         [Column("MetragemQuadrada")]
-        [Display(Name = "Valor de custo m²")]
+        [Display(Name = "Tamanho da obra em m²")]
         public string? MetragemQuadrada { get; set; }
 
         [Column("CustoMetro")]
@@ -32,17 +32,15 @@ namespace ObraFacilApp.Models
         public string CustoMetro { get; set; }
 
         [Column("DataInicio")]
-        [Display(Name = "Data para ínicio da obra")]
+        [Display(Name = "Previsao para ínicio da obra")]
         public DateTime DataInicio { get; set; }
 
         [Column("DataConclusao")]
-        [Display(Name = "Data para coclusao da obra")]
+        [Display(Name = "Previsão para coclusãoo da obra")]
         public DateTime DataConclusao { get; set; }
         [Column("UsuarioId")]
         [Display(Name = "Usuário")]
         public int? UsuarioId { get; set; }
-
-
 
         public virtual List<FundacaoModel>? Fundacaos { get; set; }
          public virtual List<AlvenariaModel>? Alvenarias { get; set; }
