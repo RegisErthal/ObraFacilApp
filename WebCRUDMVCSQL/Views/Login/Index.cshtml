@@ -4,11 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div style="background-color: #FFF; border-radius: 4px; padding: 15px;">
+    <h4>Usuários</h4>
 
-<p>
-    <a asp-action="Create">Criar novo Usuário</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -45,7 +43,10 @@
 }
     </tbody>
 </table>
-
+    <p>
+        <a asp-action="Create"><i class="fa-solid fa-circle-plus" style="color:green"></i></a>
+    </p>
 <div>
-    <a asp-controller="Logar" asp-action="Index">Fazer Logout</a>
+        <a asp-controller="Logar" asp-action="Index">Sair</a>
+</div>
 </div>

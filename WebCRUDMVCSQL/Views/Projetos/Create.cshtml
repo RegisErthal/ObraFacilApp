@@ -3,9 +3,8 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<div style="background-color: #FFF; border-radius: 4px; padding: 15px;">
 <h1>Novo Projeto</h1>
-
 
 <hr />
 <div class="row">
@@ -33,20 +32,19 @@
 
             <div class="form-group" style="margin-top: 5px">
                 <label asp-for="MetragemQuadrada" class="control-label">Tamanho da obra em m²</label>
-                <input asp-for="MetragemQuadrada" class="form-control" />
+                <input asp-for="MetragemQuadrada" class="form-control" id="metragemQuadradaInput" />
                 <span asp-validation-for="MetragemQuadrada" class="text-danger"></span>
             </div>
 
             <div class="form-group" style="margin-top: 5px">
                 <label asp-for="CustoMetro" class="control-label">Custo por m²</label>
-                <input asp-for="CustoMetro" class="form-control" />
+                <input asp-for="CustoMetro" class="form-control" id="custoMetroInput" />
                 <span asp-validation-for="CustoMetro" class="text-danger"></span>
             </div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <span id="result"></span>
-            </div>
-            <p id="result"></p>
+                <div id="custoTotal" style="font-weight: bold;"></div>
+
+
             <div class="form-group" style="margin-top: 5px">
                 <label asp-for="DataInicio" class="control-label">Data de Início</label>
                 <input asp-for="DataInicio" type="date" class="form-control datepicker" />
@@ -58,6 +56,17 @@
                 <input asp-for="DataConclusao" type="date" class="form-control" />
                 <span asp-validation-for="DataConclusao" class="text-danger"></span>
             </div>
+
+            @*<div class="image-container">
+                @foreach (var item in Model.Imagens) {
+                    <div style="display:block; text-align:center;">
+                        <img src=@("/imagens/UploadProjeto/" + item.FileName) class="card-img-top" alt="...">
+                        <div>
+                            <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
+                        </div>
+                    </div>
+                }
+            </div>*@
 
             <div class="form-group" style="margin-top: 15px">
                 <input type="submit" value="Criar" class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c" />
@@ -77,18 +86,19 @@
 @section Scripts {
 
     <script>
-        function calculateCost() {
-            // Obter os valores dos campos de entrada
-            var metragemQuadrada = parseFloat(document.getElementById('metragemQuadrada').value);
-            var custoMetro = parseFloat(document.getElementById('custoMetro').value);
+        function calcularCustoTotal() {
+            var metragemQuadrada = parseFloat(document.getElementById('metragemQuadradaInput').value);
+            var custoMetro = parseFloat(document.getElementById('custoMetroInput').value);
 
-            // Realizar a multiplicação
-            var totalCost = metragemQuadrada * custoMetro;
+            var custoTotal = metragemQuadrada * custoMetro;
 
-            var resultText = "Previsao de custo total da obra: " + totalCost.toFixed(2) ;
-
-            // Exibir o resultado na tela
-            document.getElementById('result').textContent = resultText;
+            // Exibir o custo total na tela
+            document.getElementById('custoTotal').innerText = 'O custo total da obra é: R$ ' + custoTotal.toFixed(2);
         }
+
+        // Atualizar o custo total sempre que houver uma mudança nos campos de MetragemQuadrada ou CustoMetro
+        document.getElementById('metragemQuadradaInput').addEventListener('input', calcularCustoTotal);
+        document.getElementById('custoMetroInput').addEventListener('input', calcularCustoTotal);
+
     </script>
 }

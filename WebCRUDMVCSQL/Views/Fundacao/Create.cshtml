@@ -22,11 +22,7 @@
                 <input asp-for="AlturaAlicerce" class="form-control" />
                 <span asp-validation-for="AlturaAlicerce" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="QtdBlocosAlicerce" class="control-label"></label>
-                <input asp-for="QtdBlocosAlicerce" class="form-control" />
-                <span asp-validation-for="QtdBlocosAlicerce" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="AlturaPedra" class="control-label"></label>
                 <input asp-for="AlturaPedra" class="form-control" />
@@ -37,6 +33,7 @@
                 <input asp-for="ComprimentoPedra" class="form-control" />
                 <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
             </div>
+            <div id="resultadoBlocos" style="font-weight: bold;"></div>
             <div class="form-group">
                 <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
                 <input asp-for="AlturaVigaBaldrame" class="form-control" />
@@ -52,11 +49,11 @@
                 <input asp-for="LarguraVigaBaldrame" class="form-control" />
                 <span asp-validation-for="LarguraVigaBaldrame" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="MetragemCubicaCimentoVigaBaldrama" class="control-label"></label>
-                <input asp-for="MetragemCubicaCimentoVigaBaldrama" class="form-control" />
-                <span asp-validation-for="MetragemCubicaCimentoVigaBaldrama" class="text-danger"></span>
-            </div>
+
+
+            <div id="resultadoMetragemCubica" style="font-weight: bold;"></div>
+            
+            
             <div class="form-group">
                 <label asp-for="QtdMicro" class="control-label"></label>
                 <input asp-for="QtdMicro" class="form-control" />
@@ -72,6 +69,7 @@
                 <input asp-for="DataConclusaoFundacao" type="date" class="form-control" />
                 <span asp-validation-for="DataConclusaoFundacao" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn btn-primary" style="background-color:#255f9c" />
             </div>
@@ -84,28 +82,48 @@
 </div>
 
 @section Scripts {
-    <script>
+    <div id="resultadoBlocos"></div>
 
+    <script>
         $(document).ready(function () {
-            // Função para calcular a metragem quadrada e atualizar o valor na tela
+            
             function qtdBlocos() {
-                debugger;
                 var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
                 var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
                 var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
                 var alturaPedra = parseFloat($('#AlturaPedra').val());
                 var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+                var qtdBlocosInteiro = Math.floor(qtdBlocos);
 
-                $('#qtdBlocos').text(qtdBlocos.toFixed(2)); // Arredonda o valor para duas casas decimais
+                var frase = "Necessário uma média de ";
+                $('#resultadoBlocos').text(frase + qtdBlocosInteiro + " blocos");
             }
 
-            // Chamar a função de cálculo quando os valores dos campos de entrada forem alterados
             $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
                 qtdBlocos();
             });
-
-            // Chamar a função de cálculo ao carregar a página, caso haja valores preenchidos nos campos de entrada
             qtdBlocos();
         });
+
+        $(document).ready(function () {
+            function resultadoMetragemCubica() {
+                var altura = parseFloat($('#AlturaVigaBaldrame').val());
+                var comprimento = parseFloat($('#ComprimentoVigaBaldrame').val());
+                var largura = parseFloat($('#LarguraVigaBaldrame').val());
+                var metragemCubica = altura * comprimento * largura;
+
+                // Exiba o resultado em um elemento HTML
+                $('#resultadoMetragemCubica').text('A metragem cúbica é de cimento para viba baldrame é de: ' + metragemCubica.toFixed(2));
+            }
+
+            // Use o seletor correto para os elementos de entrada
+            $('#AlturaVigaBaldrame, #ComprimentoVigaBaldrame, #LarguraVigaBaldrame').on('input', function () {
+                resultadoMetragemCubica();
+            });
+
+            resultadoMetragemCubica();
+        });
     </script>
+  
+
 }

@@ -42,6 +42,9 @@ namespace ObraFacilApp.Models
         [Display(Name = "Usuário")]
         public int? UsuarioId { get; set; }
 
+        [NotMapped]
+        public List<ImagensModel>? Imagens { get; set; }
+
         public virtual List<FundacaoModel>? Fundacaos { get; set; }
          public virtual List<AlvenariaModel>? Alvenarias { get; set; }
          public virtual List<CoberturaModel>? Coberturas { get; set; }
