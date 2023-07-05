@@ -52,7 +52,7 @@
                 <div class="input-group">
                     <input asp-for="ComprimentoAlicerce" class="form-control" />
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.ComprimentoAlicerceOK ? "checked" : "") value="true" name="ComprimentoAlicerceOK">
+                        
                     </span>
                     <span asp-validation-for="ComprimentoAlicerce" class="text-danger"></span>
                 </div>
@@ -73,7 +73,7 @@
                 <label asp-for="QtdBlocosAlicerce" class="control-label"></label>
                 <div class="input-group">
                    
-                    <input asp-for="QtdBlocosAlicerce" class="form-control" />
+                    <div id="resultadoBlocos" style="font-weight: bold;"></div>
                     <span class="input-group-addon" style="margin-left:10px">
                         <input class="form-check-input" type="checkbox" @(Model.QtdBlocosAlicerceOK ? "checked" : "") value="true" name="QtdBlocosAlicerceOK">
                     </span>
@@ -86,7 +86,7 @@
                     
                     <input asp-for="AlturaPedra" class="form-control" />
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.AlturaPedraOK ? "checked" : "") value="true" name="AlturaPedraOK">
+                        
                     </span>
                     <span asp-validation-for="AlturaPedra" class="text-danger"></span>
                     
@@ -98,18 +98,42 @@
                     
                     <input asp-for="ComprimentoPedra" class="form-control" />
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.ComprimentoPedraOK ? "checked" : "") value="true" name="ComprimentoPedraOK">
+                        
                     </span>
                     <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label asp-for="AlturaAlicerce" class="control-label"></label>
+                <div class="input-group">
+
+                    <input asp-for="ComprimentoPedra" class="form-control" />
+                    <span class="input-group-addon" style="margin-left:10px">
+
+                    </span>
+                    <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="AlicerceOK" class="control-label"></label>
+                <div class="input-group">
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" @(Model.AlicerceOK ? "checked" : "") value="true" name="QtdMicroOK">
+                    </span>
+                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
                 <div class="input-group">
                     
                     <input asp-for="AlturaVigaBaldrame" class="form-control" />
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.AlturaVigaBaldrameOK ? "checked" : "") value="true" name="AlturaVigaBaldrameOK">
+                        
                     </span>
                     <span asp-validation-for="AlturaVigaBaldrame" class="text-danger"></span>
                 </div>
@@ -120,7 +144,7 @@
                     
                     <input asp-for="ComprimentoVigaBaldrame" class="form-control" />
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.ComprimentoVigaBaldrameOK ? "checked" : "") value="true" name="ComprimentoVigaBaldrameOK">
+                        
                     </span>
                     <span asp-validation-for="ComprimentoVigaBaldrame" class="text-danger"></span>
                 </div>
@@ -131,7 +155,7 @@
                     
                     <input asp-for="LarguraVigaBaldrame" class="form-control" />
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.LarguraVigaBaldrameOK ? "checked" : "") value="true" name="LarguraVigaBaldrameOK">
+                       
                     </span>
                     <span asp-validation-for="LarguraVigaBaldrame" class="text-danger"></span>
                 </div>
@@ -141,10 +165,32 @@
                         
                         <input asp-for="MetragemCubicaCimentoVigaBaldrama" class="form-control" />
                         <span class="input-group-addon" style="margin-left:10px">
-                            <input class="form-check-input" type="checkbox" @(Model.MetragemCubicaCimentoVigaBaldramaOK ? "checked" : "") value="true" name="MetragemCubicaCimentoVigaBaldramaOK">
+                           
                         </span>
                         <span asp-validation-for="MetragemCubicaCimentoVigaBaldrama" class="text-danger"></span>
                     </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="VigaBaldrameOK" class="control-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="margin-left:10px">
+                                <input class="form-check-input" type="checkbox" @(Model.VigaBaldrameOK ? "checked" : "") value="true" name="QtdMicroOK">
+                            </span>
+                            <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="IpermeabilizacaoVigaBaldrameOK" class="control-label"></label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="margin-left:10px">
+                                <input class="form-check-input" type="checkbox" @(Model.IpermeabilizacaoVigaBaldrameOK ? "checked" : "") value="true" name="QtdMicroOK">
+                            </span>
+                            <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label asp-for="QtdMicro" class="control-label"></label>
                         <div class="input-group">
@@ -217,28 +263,45 @@
     <script>
 
         $(document).ready(function () {
-            // Função para calcular a metragem quadrada e atualizar o valor na tela
-            function qtdBlocos() {
-                debugger;
-                var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
-                var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
-                var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
-                var alturaPedra = parseFloat($('#AlturaPedra').val());
-                var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+          
+                function qtdBlocos() {
+                    var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
+                    var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
+                    var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
+                    var alturaPedra = parseFloat($('#AlturaPedra').val());
+                    var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+                    var qtdBlocosInteiro = Math.floor(qtdBlocos);
 
-                $('#qtdBlocos').text(qtdBlocos.toFixed(2)); // Arredonda o valor para duas casas decimais
-            }
+                    var frase = "Necessário uma média de ";
+                    $('#resultadoBlocos').text(frase + qtdBlocosInteiro + " blocos");
+                }
 
-            // Chamar a função de cálculo quando os valores dos campos de entrada forem alterados
-            $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
+                $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
+                    qtdBlocos();
+                });
                 qtdBlocos();
             });
 
-            // Chamar a função de cálculo ao carregar a página, caso haja valores preenchidos nos campos de entrada
-            qtdBlocos();
+            $(document).ready(function () {
+                function resultadoMetragemCubica() {
+                    var altura = parseFloat($('#AlturaVigaBaldrame').val());
+                    var comprimento = parseFloat($('#ComprimentoVigaBaldrame').val());
+                    var largura = parseFloat($('#LarguraVigaBaldrame').val());
+                    var metragemCubica = altura * comprimento * largura;
 
-            const booleanArray = [@(Model.ComprimentoAlicerceOK.ToString().ToLower()), @(Model.AlturaAlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.AlturaPedraOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower())];
+                    // Exiba o resultado em um elemento HTML
+                    $('#resultadoMetragemCubica').text('A metragem cúbica é de cimento para viba baldrame é de: ' + metragemCubica.toFixed(2));
+                }
 
+                // Use o seletor correto para os elementos de entrada
+                $('#AlturaVigaBaldrame, #ComprimentoVigaBaldrame, #LarguraVigaBaldrame').on('input', function () {
+                    resultadoMetragemCubica();
+                });
+
+                resultadoMetragemCubica();
+            });
+
+            const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
             function updateProgressBar() {
                 const progressBar = document.querySelector('.progress');
                 const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
@@ -251,5 +314,7 @@
             updateProgressBar(); // Update the progress bar initially
 
         });
+
+
     </script>
 }

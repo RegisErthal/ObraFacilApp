@@ -68,7 +68,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ComprimentoAlicerce,AlturaAlicerce,AlicerceOk,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
         {
             
             var errors = ModelState.Values.SelectMany(v => v.Errors);
@@ -110,7 +110,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,AlturaAlicerceOK,QtdBlocosAlicerceOK,AlturaPedraOK,ComprimentoPedraOK,AlturaVigaBaldrameOK,ComprimentoVigaBaldrameOK,LarguraVigaBaldrameOK,MetragemCubicaCimentoVigaBaldramaOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,UploadFundacao")] FundacaoModel fundacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,AlicerceOk,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK")] FundacaoModel fundacao)
         {
             
             if (id != fundacao.Id)

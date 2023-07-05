@@ -64,7 +64,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria,MetrosDeParedeOK,QtdBlocosOk,ComprimentoBlocos,QtdPilaresOk,DataInicioalvenariaOk,DataConclusaoAlvenariaOk")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,MetrosDeParede,MetrosDeParedeOK,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioAlvenaria,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             alvenaria.ProjetoId = ProjetoId;
@@ -100,7 +100,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioFundacao,DataConclusaoAlvenaria,MetrosDeParedeOK,QtdBlocosOk,ComprimentoBlocos,QtdPilaresOk,DataInicioalvenariaOk,DataConclusaoAlvenariaOk")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,MetrosDeParede,MetrosDeParedeOK,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioAlvenaria,DataConclusaoAlvenaria")] AlvenariaModel alvenaria)
         {
             var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.ProjetoId == id);
             if (id != alvenaria.Id)

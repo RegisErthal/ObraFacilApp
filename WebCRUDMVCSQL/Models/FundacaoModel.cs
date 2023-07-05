@@ -56,6 +56,14 @@ namespace ObraFacilApp.Models
         public double LarguraVigaBaldrame { get; set; }
         public bool LarguraVigaBaldrameOK { get; set; }
 
+        [Column("VigaBaldrameOK")]
+        [Display(Name = "Viga baldrame ")]
+        public bool VigaBaldrameOK { get; set; }
+
+        [Column("cccc")]
+        [Display(Name = "Alicerce")]
+        public bool AlicerceOK { get; set; }
+
         [Column("MetragemCubicaCimentoVigaBaldrama")]
         [Display(Name = "Metragem cubica de cimento  da viga baldrame")]
         public double MetragemCubicaCimentoVigaBaldrama { get; set; }
@@ -65,7 +73,9 @@ namespace ObraFacilApp.Models
         [Display(Name = "Quantidade de micro estacas")]
         public double QtdMicro { get; set; }
         public bool QtdMicroOK { get; set; }
-
+        [Column("IpermeabilizacaoVigaBaldrame")]
+        [Display(Name = "Ipermeabilização  da viga baldrame")]
+        public bool IpermeabilizacaoVigaBaldrameOK { get; set; }
         [Column("DataInicioFundacao")]
         [Display(Name = "Previsão de início ")]
         public DateTime DataInicioFundacao { get; set; }

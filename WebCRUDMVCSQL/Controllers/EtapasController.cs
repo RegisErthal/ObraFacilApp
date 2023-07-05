@@ -56,19 +56,17 @@ namespace ObraFacilApp.Controllers
         {
             var contFundacaoOk = 0;
 
-            if (fundacaoExistente?.ComprimentoAlicerceOK ?? false)
+            if (fundacaoExistente?.AlicerceOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.AlturaAlicerceOK ?? false)
+            if (fundacaoExistente?.QtdBlocosAlicerceOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.ComprimentoVigaBaldrameOK ?? false)
+
+            if (fundacaoExistente?.IpermeabilizacaoVigaBaldrameOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.AlturaVigaBaldrameOK ?? false)
-                contFundacaoOk++;
-
-            if (fundacaoExistente?.MetragemCubicaCimentoVigaBaldramaOK ?? false)
+            if (fundacaoExistente?.VigaBaldrameOK ?? false)
                 contFundacaoOk++;
 
             if (fundacaoExistente?.QtdMicroOK ?? false)
@@ -80,7 +78,7 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.DataInicioFundacaoOK ?? false)
                 contFundacaoOk++;
 
-            return (contFundacaoOk * 100) / 8;
+            return (contFundacaoOk * 100) / 7;
         }
 
         private static decimal QtdOkAlvenaria(AlvenariaModel? alvenariaModel)

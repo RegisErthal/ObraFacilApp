@@ -12,6 +12,13 @@
         <form asp-action="Create">
             <input type="hidden" name="ProjetoId" value="@ViewBag.Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="MetrosDeParede" class="control-label"></label>
+                <input asp-for="MetrosDeParede" class="form-control" />
+                <span asp-validation-for="MetrosDeParede" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="AlturaBloco" class="control-label"></label>
                 <input asp-for="AlturaBloco" class="form-control" />

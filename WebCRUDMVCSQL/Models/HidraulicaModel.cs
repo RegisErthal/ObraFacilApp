@@ -22,8 +22,8 @@ namespace ObraFacilApp.Models
 
         [Column("QtdRegistros")]
         [Display(Name = "Quantidade de torneiras")]
-        public decimal QtdRegistros { get; set; }
-        public bool QtdRegistrosOk { get; set; }
+        public double? QtdRegistros { get; set; }
+        public bool? QtdRegistrosOk { get; set; }
 
         [Column("QtdRalos")]
         [Display(Name = "Quantidade de saídas para esgoto")]
@@ -32,8 +32,8 @@ namespace ObraFacilApp.Models
 
         [Column("QtdCaixaGordura")]
         [Display(Name = "Quantidade de caixa de gordura")]
-        public decimal QtdCaixaGordura { get; set; }
-        public bool QtdCaixaGorduraOk { get; set; }
+        public double? QtdCaixaGordura { get; set; }
+        public bool? QtdCaixaGorduraOk { get; set; }
 
         [Column("DataInicioHidraulica ")]
         [Display(Name = "Previsao de ínicio")]

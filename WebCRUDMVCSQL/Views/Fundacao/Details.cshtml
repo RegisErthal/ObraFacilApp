@@ -41,13 +41,19 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoAlicerce)</th>
                     <td>@Model.ComprimentoAlicerce</td>
-                    <td>@(Model.ComprimentoAlicerceOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                    
                 </tr>
                 
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaAlicerce)</th>
                     <td>@Model.AlturaAlicerce</td>
-                    <td>@(Model.AlturaAlicerceOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.AlicerceOK)</th>
+                    
+                    <td>@(Model.AlicerceOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.QtdBlocosAlicerce)</th>
@@ -57,33 +63,43 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaPedra)</th>
                     <td>@Model.AlturaPedra</td>
-                    <td>@(Model.AlturaPedraOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoPedra)</th>
                     <td>@Model.ComprimentoPedra</td>
-                    <td>@(Model.ComprimentoPedraOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaVigaBaldrame)</th>
                     <td>@Model.AlturaVigaBaldrame</td>
-                    <td>@(Model.AlturaVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)</th>
                     <td>@Model.ComprimentoVigaBaldrame</td>
-                    <td>@(Model.ComprimentoVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green' style= 'color:#1f5129;' ></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
                 </tr>
                 
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.LarguraVigaBaldrame)</th>
                     <td>@Model.LarguraVigaBaldrame</td>
-                    <td>@(Model.LarguraVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)</th>
                     <td>@Model.MetragemCubicaCimentoVigaBaldrama</td>
-                    <td>@(Model.MetragemCubicaCimentoVigaBaldramaOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                    
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.VigaBaldrameOK)</th>
+
+                    <td>@(Model.VigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.IpermeabilizacaoVigaBaldrameOK)</th>
+
+                    <td>@(Model.IpermeabilizacaoVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.QtdMicro)</th>
@@ -120,7 +136,7 @@
 @section Scripts
     {
     <script>
-        const booleanArray = [@(Model.ComprimentoAlicerceOK.ToString().ToLower()), @(Model.AlturaAlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.AlturaPedraOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower())];
+        const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
 
         function updateProgressBar() {
             const progressBar = document.querySelector('.progress');

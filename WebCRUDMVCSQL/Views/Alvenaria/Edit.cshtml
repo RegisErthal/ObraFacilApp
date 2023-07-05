@@ -4,13 +4,18 @@
     ViewData["Title"] = "Edit";
 }
 <style>
-    .green {
-        color: green
+    .image-container {
+        display: flex;
+        width: 1300px;
+        overflow: scroll;
     }
 
-    .red {
-        color: red
-    }
+        .image-container img {
+            flex: 1;
+            margin-right: 10px; 
+            height: 300px;
+            width: 600px;
+        }
 
     .progress-bar {
         width: 100%;
@@ -37,6 +42,18 @@
 
             <input type="hidden" asp-for="Id" value="@Model.Id" />
             <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
+
+
+            <div class="form-group">
+                <label asp-for="MetrosDeParede" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="MetrosDeParede" class="form-control mr-2" />
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" @(Model.MetrosDeParedeOK ? "checked" : "") value="true" name="QtdBlocosOk">
+                    </span>
+                </div>
+                <span asp-validation-for="MetrosDeParede" class="text-danger"></span>
+            </div>
 
 
             <div class="form-group">
@@ -104,6 +121,7 @@
                 <span class="progress-percentage">0%</span>
             </div>
         </div>
+        <br />
     </div>
 </div>
 
@@ -113,7 +131,7 @@
 @section Scripts
     {
     <script>
-        const booleanArray = [@(Model.QtdBlocosOk.ToString().ToLower()), @(Model.QtdPilaresOk.ToString().ToLower()), @(Model.DataInicioAlvenariaOk.ToString().ToLower()), @(Model.DataConclusaoAlvenariaOk.ToString().ToLower())];
+        const booleanArray = [@(Model.MetrosDeParedeOK.ToString().ToLower()), @(Model.QtdBlocosOk.ToString().ToLower()), @(Model.QtdPilaresOk.ToString().ToLower()), @(Model.DataInicioAlvenariaOk.ToString().ToLower()), @(Model.DataConclusaoAlvenariaOk.ToString().ToLower())];
 
         function updateProgressBar() {
             const progressBar = document.querySelector('.progress');

@@ -35,6 +35,13 @@
     <div class="row">
         <table class="table">
             <tbody>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.MetrosDeParede)</th>
+                    <td>@Model.MetrosDeParede</td>
+                    <td>@(Model.MetrosDeParedeOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaBloco)</th>
                     <td>@Model.AlturaBloco</td>
@@ -85,7 +92,7 @@
 @section Scripts
     {
     <script>
-        const booleanArray = [@(Model.QtdBlocosOk.ToString().ToLower()), @(Model.QtdPilaresOk.ToString().ToLower()), @(Model.DataInicioAlvenariaOk.ToString().ToLower()), @(Model.DataConclusaoAlvenariaOk.ToString().ToLower())];
+        const booleanArray = [@(Model.MetrosDeParedeOK.ToString().ToLower()), @(Model.QtdBlocosOk.ToString().ToLower()), @(Model.QtdPilaresOk.ToString().ToLower()), @(Model.DataInicioAlvenariaOk.ToString().ToLower()), @(Model.DataConclusaoAlvenariaOk.ToString().ToLower())];
 
         function updateProgressBar() {
             const progressBar = document.querySelector('.progress');

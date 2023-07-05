@@ -27,11 +27,11 @@ namespace ObraFacilApp.Models
         public bool QtdBlocosOk { get; set; }
 
         [Column("AlturaBloco")]
-        [Display(Name = "Altura dos blocos")]
+        [Display(Name = "Altura dos blocos em metros")]
         public double AlturaBloco { get; set; }
         
         [Column("ComprimentoBlocos")]
-        [Display(Name = "Comprimento dos blocos")]
+        [Display(Name = "Comprimento dos blocos em metros")]
         public double ComprimentoBlocos { get; set; }
         
         [Column("QtdPilares")]
