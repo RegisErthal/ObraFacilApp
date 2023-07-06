@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form enctype="multipart/form-data" asp-controller="Projetos" asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group" style="margin-top: 5px">
@@ -20,9 +20,11 @@
             </div>
 
             <div class="form-group" style="margin-top: 5px">
-                <label asp-for="Responsavel" class="control-label">Responsável</label>
-                <input asp-for="Responsavel" class="form-control" />
-                <span asp-validation-for="Responsavel" class="text-danger"></span>
+                <label asp-for="UsuarioId" class="control-label">Responsável</label>
+                <select asp-for="UsuarioId" class="form-select" asp-items="@ViewBag.UsuariosList">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="UsuarioId" class="text-danger"></span>
             </div>
 
             <div class="form-group" style="margin-top: 5px">
@@ -66,5 +68,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

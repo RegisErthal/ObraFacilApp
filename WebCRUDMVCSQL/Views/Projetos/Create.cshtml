@@ -4,101 +4,103 @@
     ViewData["Title"] = "Create";
 }
 <div style="background-color: #FFF; border-radius: 4px; padding: 15px;">
-<h1>Novo Projeto</h1>
+    <h1>Novo Projeto</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="NomeProjeto" class="control-label">Nome do Projeto</label>
-                <input asp-for="NomeProjeto" class="form-control" />
-                <span asp-validation-for="NomeProjeto" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="NomeProjeto" class="control-label">Nome do Projeto</label>
+                    <input asp-for="NomeProjeto" class="form-control" />
+                    <span asp-validation-for="NomeProjeto" class="text-danger"></span>
+                </div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="Responsavel" class="control-label">Responsável</label>
-                <input asp-for="Responsavel" class="form-control" />
-                <span asp-validation-for="Responsavel" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="UsuarioId" class="control-label">Responsável</label>
+                    <select asp-for="UsuarioId" class="form-select" asp-items="@ViewBag.UsuariosList">
+                        <option value=""></option>
+                    </select>
+                    <span asp-validation-for="UsuarioId" class="text-danger"></span>
+                </div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="EmailResponsavel" class="control-label">E-mail do Responsável</label>
-                <input asp-for="EmailResponsavel" class="form-control" />
-                <span asp-validation-for="EmailResponsavel" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="EmailResponsavel" class="control-label">E-mail do Responsável</label>
+                    <input asp-for="EmailResponsavel" class="form-control" />
+                    <span asp-validation-for="EmailResponsavel" class="text-danger"></span>
+                </div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="MetragemQuadrada" class="control-label">Tamanho da obra em m²</label>
-                <input asp-for="MetragemQuadrada" class="form-control" id="metragemQuadradaInput" />
-                <span asp-validation-for="MetragemQuadrada" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="MetragemQuadrada" class="control-label">Tamanho da obra em m²</label>
+                    <input asp-for="MetragemQuadrada" class="form-control" id="metragemQuadradaInput" />
+                    <span asp-validation-for="MetragemQuadrada" class="text-danger"></span>
+                </div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="CustoMetro" class="control-label">Custo por m²</label>
-                <input asp-for="CustoMetro" class="form-control" id="custoMetroInput" />
-                <span asp-validation-for="CustoMetro" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="CustoMetro" class="control-label">Custo por m²</label>
+                    <input asp-for="CustoMetro" class="form-control" id="custoMetroInput" />
+                    <span asp-validation-for="CustoMetro" class="text-danger"></span>
+                </div>
 
                 <div id="custoTotal" style="font-weight: bold;"></div>
 
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="DataInicio" class="control-label">Data de Início</label>
-                <input asp-for="DataInicio" type="date" class="form-control datepicker" />
-                <span asp-validation-for="DataInicio" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="DataInicio" class="control-label">Data de Início</label>
+                    <input asp-for="DataInicio" type="date" class="form-control datepicker" />
+                    <span asp-validation-for="DataInicio" class="text-danger"></span>
+                </div>
 
-            <div class="form-group" style="margin-top: 5px">
-                <label asp-for="DataConclusao" class="control-label">Data de Conclusão</label>
-                <input asp-for="DataConclusao" type="date" class="form-control" />
-                <span asp-validation-for="DataConclusao" class="text-danger"></span>
-            </div>
+                <div class="form-group" style="margin-top: 5px">
+                    <label asp-for="DataConclusao" class="control-label">Data de Conclusão</label>
+                    <input asp-for="DataConclusao" type="date" class="form-control" />
+                    <span asp-validation-for="DataConclusao" class="text-danger"></span>
+                </div>
 
-            @*<div class="image-container">
+                @*<div class="image-container">
                 @foreach (var item in Model.Imagens) {
-                    <div style="display:block; text-align:center;">
-                        <img src=@("/imagens/UploadProjeto/" + item.FileName) class="card-img-top" alt="...">
-                        <div>
-                            <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
-                        </div>
-                    </div>
+                <div style="display:block; text-align:center;">
+                <img src=@("/imagens/UploadProjeto/" + item.FileName) class="card-img-top" alt="...">
+                <div>
+                <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
+                </div>
+                </div>
                 }
-            </div>*@
+                </div>*@
 
-            <div class="form-group" style="margin-top: 15px">
-                <input type="submit" value="Criar" class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c" />
-            </div>
+                <div class="form-group" style="margin-top: 15px">
+                    <input type="submit" value="Criar" class="btn btn-primary" style="background-color:#255f9c" style="background-color:#255f9c" />
+                </div>
 
-        </form>
-        
+            </form>
+
+        </div>
     </div>
-</div>
 
 
 
-<div style ="margin-top: 15px">
-    <a asp-action="Index">Voltar</a>
-</div>
+    <div style="margin-top: 15px">
+        <a asp-action="Index">Voltar</a>
+    </div>
 
-@section Scripts {
+    @section Scripts {
 
-    <script>
-        function calcularCustoTotal() {
-            var metragemQuadrada = parseFloat(document.getElementById('metragemQuadradaInput').value);
-            var custoMetro = parseFloat(document.getElementById('custoMetroInput').value);
+        <script>
+            function calcularCustoTotal() {
+                var metragemQuadrada = parseFloat(document.getElementById('metragemQuadradaInput').value);
+                var custoMetro = parseFloat(document.getElementById('custoMetroInput').value);
 
-            var custoTotal = metragemQuadrada * custoMetro;
+                var custoTotal = metragemQuadrada * custoMetro;
 
-            // Exibir o custo total na tela
-            document.getElementById('custoTotal').innerText = 'O custo total da obra é: R$ ' + custoTotal.toFixed(2);
-        }
+                // Exibir o custo total na tela
+                document.getElementById('custoTotal').innerText = 'O custo total da obra é: R$ ' + custoTotal.toFixed(2);
+            }
 
-        // Atualizar o custo total sempre que houver uma mudança nos campos de MetragemQuadrada ou CustoMetro
-        document.getElementById('metragemQuadradaInput').addEventListener('input', calcularCustoTotal);
-        document.getElementById('custoMetroInput').addEventListener('input', calcularCustoTotal);
+            // Atualizar o custo total sempre que houver uma mudança nos campos de MetragemQuadrada ou CustoMetro
+            document.getElementById('metragemQuadradaInput').addEventListener('input', calcularCustoTotal);
+            document.getElementById('custoMetroInput').addEventListener('input', calcularCustoTotal);
 
-    </script>
-}
+        </script>
+    }
