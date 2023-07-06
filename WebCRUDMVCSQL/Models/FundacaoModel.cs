@@ -60,7 +60,7 @@ namespace ObraFacilApp.Models
         [Display(Name = "Viga baldrame ")]
         public bool VigaBaldrameOK { get; set; }
 
-        [Column("cccc")]
+        [Column("AlicerceOK")]
         [Display(Name = "Alicerce")]
         public bool AlicerceOK { get; set; }
 

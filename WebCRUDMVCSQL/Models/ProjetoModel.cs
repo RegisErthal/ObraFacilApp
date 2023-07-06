@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Web.Helpers;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ObraFacilApp.Models
@@ -6,7 +8,7 @@ namespace ObraFacilApp.Models
     [Table("Projeto")]
     public class ProjetoModel
     {
-        
+
         [Column("Id")]
         [Display(Name = "Código")]
         public int Id { get; set; }
@@ -14,11 +16,11 @@ namespace ObraFacilApp.Models
         [Column("NomeProjeto")]
         [Display(Name = "Nome do Projeto")]
         public string NomeProjeto { get; set; }
-
-        [Column("Responsável")]
-        [Display(Name = "Responsável")]
-        public string Responsavel { get; set; }
         
+        [Column("Responsavel")]
+        [Display(Name = "Responsável")]
+        public string? Responsavel { get; set; }
+
         [Column("EmailResponsavel")]
         [Display(Name = "Email do Responsável")]
         public string EmailResponsavel { get; set; }
@@ -40,16 +42,15 @@ namespace ObraFacilApp.Models
         public DateTime DataConclusao { get; set; }
         [Column("UsuarioId")]
         [Display(Name = "Usuário")]
-        public int? UsuarioId { get; set; }
+        public int UsuarioId { get; set; }
 
         [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
 
-        public virtual List<FundacaoModel>? Fundacaos { get; set; }
-         public virtual List<AlvenariaModel>? Alvenarias { get; set; }
-         public virtual List<CoberturaModel>? Coberturas { get; set; }
-         public virtual List<EletricaModel>? Eletricas { get; set; }
-         public virtual List<HidraulicaModel>? Hidraulicas { get; set; }
-    
+        //public virtual List<FundacaoModel>? Fundacaos { get; set; }
+        //public virtual List<AlvenariaModel>? Alvenarias { get; set; }
+        //public virtual List<CoberturaModel>? Coberturas { get; set; }
+        //public virtual List<EletricaModel>? Eletricas { get; set; }
+        //public virtual List<HidraulicaModel>? Hidraulicas { get; set; }
     }
 }
