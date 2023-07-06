@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Web.Helpers;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ObraFacilApp.Models
@@ -47,10 +45,10 @@ namespace ObraFacilApp.Models
         [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
 
-        //public virtual List<FundacaoModel>? Fundacaos { get; set; }
-        //public virtual List<AlvenariaModel>? Alvenarias { get; set; }
-        //public virtual List<CoberturaModel>? Coberturas { get; set; }
-        //public virtual List<EletricaModel>? Eletricas { get; set; }
-        //public virtual List<HidraulicaModel>? Hidraulicas { get; set; }
+        public virtual List<FundacaoModel>? Fundacaos { get; set; }
+        public virtual List<AlvenariaModel>? Alvenarias { get; set; }
+        public virtual List<CoberturaModel>? Coberturas { get; set; }
+        public virtual List<EletricaModel>? Eletricas { get; set; }
+        public virtual List<HidraulicaModel>? Hidraulicas { get; set; }
     }
 }
