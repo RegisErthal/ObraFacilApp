@@ -12,6 +12,7 @@
         <form asp-action="Create">
             <input type="hidden" name="ProjetoId" value="@ViewBag.Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="ComprimentoAlicerce" class="control-label"></label>
                 <input asp-for="ComprimentoAlicerce" class="form-control" />
@@ -82,7 +83,7 @@
 </div>
 
 @section Scripts {
-    <div id="resultadoBlocos"></div>
+   
 
     <script>
         $(document).ready(function () {

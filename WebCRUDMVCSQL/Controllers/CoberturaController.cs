@@ -75,7 +75,7 @@ namespace ObraFacilApp.Controllers
                 _context.Entry(cobertura).State = EntityState.Added;
                 _context.Add(cobertura);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
             }
             return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
         }

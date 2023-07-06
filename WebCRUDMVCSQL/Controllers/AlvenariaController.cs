@@ -76,7 +76,7 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(alvenaria);
+            return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
         }
 
         // GET: Alvenaria/Edit/5

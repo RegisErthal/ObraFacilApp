@@ -44,6 +44,18 @@
                 </tr>
 
                 <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdRegistros)</th>
+                    <td>@Model.QtdRegistros</td>
+                    <td>@(Model.QtdRegistrosOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdCaixaGordura)</th>
+                    <td>@Model.QtdCaixaGordura</td>
+                    <td>@(Model.QtdCaixaGorduraOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+
+                <tr>
                     <th>@Html.DisplayNameFor(model => model.QtdRalos)</th>
                     <td>@Model.QtdRalos</td>
                     <td>@(Model.QtdRalosOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>

@@ -22,8 +22,8 @@ namespace ObraFacilApp.Models
 
         [Column("QtdRegistros")]
         [Display(Name = "Quantidade de torneiras")]
-        public double? QtdRegistros { get; set; }
-        public bool? QtdRegistrosOk { get; set; }
+        public double QtdRegistros { get; set; }
+        public bool QtdRegistrosOk { get; set; }
 
         [Column("QtdRalos")]
         [Display(Name = "Quantidade de saídas para esgoto")]

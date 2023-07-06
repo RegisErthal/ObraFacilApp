@@ -81,7 +81,7 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(fundacao);
+            return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
         }
 
         // GET: Fundacao/Edit/5
