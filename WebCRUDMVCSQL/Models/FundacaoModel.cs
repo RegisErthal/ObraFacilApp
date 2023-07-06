@@ -76,6 +76,11 @@ namespace ObraFacilApp.Models
         [Column("IpermeabilizacaoVigaBaldrame")]
         [Display(Name = "Ipermeabilização  da viga baldrame")]
         public bool IpermeabilizacaoVigaBaldrameOK { get; set; }
+
+        [Column("PrevisaoCusto")]
+        [Display(Name = "Previsao de custo da etapa")]
+        public double PrevisaoCusto { get; set; }
+
         [Column("DataInicioFundacao")]
         [Display(Name = "Previsão de início ")]
         public DateTime DataInicioFundacao { get; set; }

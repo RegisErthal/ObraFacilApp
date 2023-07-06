@@ -35,6 +35,10 @@ namespace ObraFacilApp.Models
         public double? QtdCaixaGordura { get; set; }
         public bool QtdCaixaGorduraOk { get; set; }
 
+        [Column("PrevisaoCusto")]
+        [Display(Name = "Previsao de custo da etapa")]
+        public double PrevisaoCusto { get; set; }
+
         [Column("DataInicioHidraulica ")]
         [Display(Name = "Previsao de ínicio")]
         public DateTime DataInicioHidraulica { get; set; }

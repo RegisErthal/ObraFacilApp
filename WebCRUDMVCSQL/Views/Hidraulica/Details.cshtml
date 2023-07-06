@@ -62,6 +62,12 @@
                 </tr>
 
                 <tr>
+                    <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
+                    <td>@Model.PrevisaoCusto</td>
+                    
+                </tr>
+
+                <tr>
                     <th>@Html.DisplayNameFor(model => model.DataInicioHidraulica)</th>
                     <td>@Model.DataInicioHidraulica.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataInicioHidraulicaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>

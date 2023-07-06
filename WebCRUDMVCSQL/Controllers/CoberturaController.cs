@@ -66,7 +66,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK")] CoberturaModel cobertura)
+        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK,PrevisaoCusto")] CoberturaModel cobertura)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             cobertura.ProjetoId = ProjetoId;
@@ -101,7 +101,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK")] CoberturaModel cobertura)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK,PrevisaoCusto")] CoberturaModel cobertura)
         {
             if (id != cobertura.Id)
             {

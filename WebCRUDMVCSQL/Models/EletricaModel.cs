@@ -40,6 +40,10 @@ namespace ObraFacilApp.Models
         public double QtdLampadas { get; set; }
         public bool QtdLampadasOk { get; set; }
 
+        [Column("PrevisaoCusto")]
+        [Display(Name = "Previsao de custo da etapa")]
+        public double PrevisaoCusto { get; set; }
+
         [Column("DataInicioEletrica")]
         [Display(Name = "Previsão de ínicio")]
         public DateTime DataInicioEletrica { get; set; }

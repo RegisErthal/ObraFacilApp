@@ -106,6 +106,12 @@
                     <td>@Model.QtdMicro</td>
                     <td>@(Model.QtdMicroOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
+                    <td>@Model.PrevisaoCusto</td>
+                </tr>
+
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.DataInicioFundacao)</th>
                     <td>@Model.DataInicioFundacao.ToString("dd/MM/yyyy")</td>

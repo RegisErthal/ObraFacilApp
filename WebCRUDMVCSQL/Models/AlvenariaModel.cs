@@ -39,6 +39,11 @@ namespace ObraFacilApp.Models
         public double QtdPilares { get; set; }
         public bool QtdPilaresOk { get; set; }
 
+        [Column("PrevisaoCusto")]
+        [Display(Name = "Previsao de custo da etapa")]
+        public double PrevisaoCusto { get; set; }
+        
+
         [Column("DataInicioAlvenaria")]
         [Display(Name = "Previsão de ínicio")]
         public DateTime DataInicioAlvenaria { get; set; }

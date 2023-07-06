@@ -64,7 +64,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOKQtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOKQtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] HidraulicaModel hidraulica)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             hidraulica.ProjetoId = ProjetoId;
@@ -101,7 +101,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,QtdRalosOK,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,QtdRalosOK,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] HidraulicaModel hidraulica)
         {
             if (id != hidraulica.Id)
             {
