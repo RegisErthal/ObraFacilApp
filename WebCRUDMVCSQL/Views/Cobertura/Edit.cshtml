@@ -38,11 +38,17 @@
             <div class="form-group">
                 <label asp-for="DataInicioCobertura" class="control-label"></label>
                 <input asp-for="DataInicioCobertura" class="form-control" />
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataInicioCoberturaOK" /> @Html.DisplayNameFor(model => model.PossueLaje)
+                </label>
                 <span asp-validation-for="DataInicioCobertura" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataConclusaoCobertura" class="control-label"></label>
                 <input asp-for="DataConclusaoCobertura" class="form-control" />
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DataConclusaoCoberturaOK" /> @Html.DisplayNameFor(model => model.PossueLaje)
+                </label>
                 <span asp-validation-for="DataConclusaoCobertura" class="text-danger"></span>
             </div>
             <br >
