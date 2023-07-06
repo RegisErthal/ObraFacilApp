@@ -26,6 +26,9 @@
                 <input asp-for="EspessuraLaje" class="form-control" />
                 <span asp-validation-for="EspessuraLaje" class="text-danger"></span>
             </div>
+
+            <div id="resultadoMetragemCubica" style="font-weight: bold;">sdsdsd</div>
+
             <div class="form-group">
                 <label asp-for="PrevisaoCusto" class="control-label"></label>
                 <input asp-for="PrevisaoCusto" class="form-control" />
@@ -56,23 +59,22 @@
     {
     <script>
         $(document).ready(function () {
-            var calcularQuantidadeBlocos = function () {
-                var metrosDeParede = parseFloat($("#TamanhoCobertura").val());
-                var alturaBloco = parseFloat($("#EspessuraLaje").val());
-                var comprimentoBlocos = parseFloat($("#ComprimentoBlocos").val());
+            function resultadoMetragemCubica() {
+                var tamanhoCobertura = parseFloat($('#TamanhoCobertura').val());
+                var espessuraLaje = parseFloat($('#EspessuraLaje').val());
 
-                var qtdBlocos = metrosDeParede / (alturaBloco * comprimentoBlocos);
-                var qtdBlocosInteiro = Math.floor(qtdBlocos);
+                var metragemCubica = espessuraLaje * tamanhoCobertura;
 
-                var frase = "Necessário uma média de ";
-                $('#resultadoBlocos').text(frase + qtdBlocosInteiro + " blocos");
-            };
+                // Exiba o resultado em um elemento HTML
+                $('#resultadoMetragemCubica').text('Metragem cúbica é de cimento para chapa: ' + metragemCubica.toFixed(2));
+            }
 
-            $('#TamanhoCobertura, #AlturaBloco, #ComprimentoBlocos').on('input', function () {
-                calcularQuantidadeBlocos();
+            // Use o seletor correto para os elementos de entrada
+            $('#TamanhoCobertura, #EspessuraLaje').on('input', function () {
+                resultadoMetragemCubica();
             });
 
-            calcularQuantidadeBlocos();
+            resultadoMetragemCubica();
         });
     </script>
 
