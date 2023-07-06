@@ -33,7 +33,7 @@ namespace ObraFacilApp.Models
         [Column("QtdCaixaGordura")]
         [Display(Name = "Quantidade de caixa de gordura")]
         public double? QtdCaixaGordura { get; set; }
-        public bool? QtdCaixaGorduraOk { get; set; }
+        public bool QtdCaixaGorduraOk { get; set; }
 
         [Column("DataInicioHidraulica ")]
         [Display(Name = "Previsao de ínicio")]

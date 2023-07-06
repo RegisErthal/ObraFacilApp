@@ -52,12 +52,12 @@
 
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlicerceOK)</th>
-                    
+                    <td>--</td>
                     <td>@(Model.AlicerceOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.QtdBlocosAlicerce)</th>
-                    <td>@Model.QtdBlocosAlicerce</td>
+                    <td id="resultadoBlocos" style="font-weight: bold;"></td>
                     <td>@(Model.QtdBlocosAlicerceOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
@@ -93,12 +93,12 @@
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.VigaBaldrameOK)</th>
-
+                    <td>--</td>
                     <td>@(Model.VigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.IpermeabilizacaoVigaBaldrameOK)</th>
-
+                    <td>--</td>
                     <td>@(Model.IpermeabilizacaoVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
                 <tr>
@@ -135,6 +135,26 @@
 
 @section Scripts
     {
+    <script>
+                $(document).ready(function () {
+
+                function qtdBlocos() {
+                    var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
+                    var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
+                    var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
+                    var alturaPedra = parseFloat($('#AlturaPedra').val());
+                    var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+                    var qtdBlocosInteiro = Math.floor(qtdBlocos);
+
+                    $('#resultadoBlocos').text(qtdBlocosInteiro);
+                }
+
+                $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
+                    qtdBlocos();
+                });
+                qtdBlocos();
+            });
+    </script>
     <script>
         const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
 
