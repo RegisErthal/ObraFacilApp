@@ -178,7 +178,7 @@ namespace ObraFacilApp.Controllers
                 ret++;
 
 
-            return (ret * 100) / 4;
+            return (ret * 100) / 6;
         }
 
     }

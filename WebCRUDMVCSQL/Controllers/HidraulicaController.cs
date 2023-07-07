@@ -64,7 +64,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOKQtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOK,QtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] HidraulicaModel hidraulica)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             hidraulica.ProjetoId = ProjetoId;
