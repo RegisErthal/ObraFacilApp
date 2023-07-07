@@ -52,8 +52,8 @@
                 </tr>
 
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.QtdBlocos)</th>
-                    <td>@Model.QtdBlocos</td>
+                    <td id ="resultadoBlocos" style="font-weight: bold;"></td>
+                    <td>--</td>
                     <td>@(Model.QtdBlocosOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
               
@@ -110,4 +110,28 @@
 
         updateProgressBar(); // Update the progress bar initially
     </script>
+
+    <script>
+        $(document).ready(function () {
+            var calcularQuantidadeBlocos = function () {
+                var metrosDeParede = parseFloat($("#MetrosDeParede").val());
+                var alturaBloco = parseFloat($("#AlturaBloco").val());
+                var comprimentoBlocos = parseFloat($("#ComprimentoBlocos").val());
+
+                var qtdBlocos = metrosDeParede / (alturaBloco * comprimentoBlocos);
+                var qtdBlocosInteiro = Math.floor(qtdBlocos);
+
+                var frase = "Necessário uma média de ";
+                $('#resultadoBlocos').text(frase + qtdBlocosInteiro + " blocos");
+            };
+
+            $('#MetrosDeParede, #AlturaBloco, #ComprimentoBlocos').on('input', function () {
+                calcularQuantidadeBlocos();
+            });
+
+            calcularQuantidadeBlocos();
+        });
+
+    </script>
+
     }

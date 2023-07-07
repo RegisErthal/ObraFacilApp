@@ -59,13 +59,10 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.AlicerceOK ?? false)
                 contFundacaoOk++;
 
-            //if (fundacaoExistente?.QtdBlocosAlicerceOK ?? false)
-            //    contFundacaoOk++;
-
-            if (fundacaoExistente?.IpermeabilizacaoVigaBaldrameOK ?? false)
+            if (fundacaoExistente?.VigaBaldrameOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.VigaBaldrameOK ?? false)
+            if (fundacaoExistente?.IpermeabilizacaoVigaBaldrameOK ?? false)
                 contFundacaoOk++;
 
             if (fundacaoExistente?.QtdMicroOK ?? false)
@@ -74,7 +71,7 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.DataInicioFundacaoOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.DataInicioFundacaoOK ?? false)
+            if (fundacaoExistente?.DataConclusaoFundacaoOK ?? false)
                 contFundacaoOk++;
 
             return (contFundacaoOk * 100) / 6;
