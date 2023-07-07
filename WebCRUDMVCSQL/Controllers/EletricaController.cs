@@ -22,9 +22,9 @@ namespace ObraFacilApp.Controllers
         // GET: Eletrica
         public async Task<IActionResult> Index()
         {
-              return _context.Eletrica != null ? 
-                          View(await _context.Eletrica.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Eletrica'  is null.");
+            return _context.Eletrica != null ?
+                        View(await _context.Eletrica.ToListAsync()) :
+                        Problem("Entity set 'Contexto.Eletrica'  is null.");
         }
 
         // GET: Eletrica/Details/5
@@ -65,7 +65,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,QtdLampadas,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] EletricaModel eletrica)
+        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,QtdLampadas,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] EletricaModel eletrica)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             eletrica.ProjetoId = ProjetoId;
@@ -100,7 +100,8 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-               public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdDisjuntoresOk,QtdTomadas,QtdTomadasOk,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,PrevisaoCusto")] EletricaModel eletrica) {
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdDisjuntoresOk,QtdTomadas,QtdTomadasOk,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,PrevisaoCusto,QtdLampadasOk,LigacaoMonofasicaOk")] EletricaModel eletrica)
+        {
             if (id != eletrica.Id)
             {
                 return NotFound();
@@ -161,14 +162,14 @@ namespace ObraFacilApp.Controllers
             {
                 _context.Eletrica.Remove(eletrica);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EletricaExists(int id)
         {
-          return (_context.Eletrica?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Eletrica?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
