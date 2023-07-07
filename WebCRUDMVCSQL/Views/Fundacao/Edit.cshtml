@@ -40,201 +40,205 @@
 <h4>Fundacao</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="">
+
         <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" asp-for="Id" value="@Model.Id" />
-            <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
 
-            <div class="form-group">
-                <label asp-for="ComprimentoAlicerce" class="control-label"></label>
-                <div class="input-group">
-                    <input asp-for="ComprimentoAlicerce" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
+                <div class="form-group">
+                    <label asp-for="ComprimentoAlicerce" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="ComprimentoAlicerce" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
 
-                    </span>
-                    <span asp-validation-for="ComprimentoAlicerce" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="AlturaAlicerce" class="control-label"></label>
-                <div class="input-group">
-                    <input asp-for="AlturaAlicerce" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="AlturaAlicerce" class="text-danger"></span>
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label asp-for="AlturaPedra" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="AlturaPedra" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="AlturaPedra" class="text-danger"></span>
-
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="ComprimentoPedra" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="ComprimentoPedra" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div>
-                <label>Para este alicerce serão necessária uma média de blocos de:</label>
-                <span id="qtdBlocos"></span>
-            </div>
-
-
-            <div class="form-group">
-                <label asp-for="AlicerceOK" class="control-label"></label>
-                    <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.AlicerceOK ? "checked" : "") value="true" name="QtdMicroOK">
-                    </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="AlturaVigaBaldrame" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="AlturaVigaBaldrame" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="ComprimentoVigaBaldrame" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="ComprimentoVigaBaldrame" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="ComprimentoVigaBaldrame" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="LarguraVigaBaldrame" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="LarguraVigaBaldrame" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="LarguraVigaBaldrame" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetragemCubicaCimentoVigaBaldrama" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="MetragemCubicaCimentoVigaBaldrama" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-
-                    </span>
-                    <span asp-validation-for="MetragemCubicaCimentoVigaBaldrama" class="text-danger"></span>
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <label asp-for="VigaBaldrameOK" class="control-label"></label>
-                    <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.VigaBaldrameOK ? "checked" : "") value="true" name="QtdMicroOK">
-                    </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
-            </div>
-            <br />
-
-            <div class="form-group">
-                <label asp-for="IpermeabilizacaoVigaBaldrameOK" class="control-label"></label>
-                    <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.IpermeabilizacaoVigaBaldrameOK ? "checked" : "") value="true" name="QtdMicroOK">
-                    </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="QtdMicro" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="QtdMicro" class="form-control" />
-                    <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.QtdMicroOK ? "checked" : "") value="true" name="QtdMicroOK">
-                    </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PrevisaoCusto" class="control-label"></label>
-                <div class="input-group"> 
-                    <input asp-for="PrevisaoCusto" class="form-control" />
-                  
-                    <span asp-validation-for="PrevisaoCusto" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="DataInicioFundacao" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="DataInicioFundacao" class="form-control" type="date" />
-                    <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.DataInicioFundacaoOK ? "checked" : "") value="true" name="DataInicioFundacaoOK">
-                    </span>
-                    <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataConclusaoFundacao" class="control-label"></label>
-                <div class="input-group">
-
-                    <input asp-for="DataConclusaoFundacao" class="form-control" type="date" />
-                    <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.DataConclusaoFundacaoOK ? "checked" : "") value="true" name="DataConclusaoFundacaoOK">
-                    </span>
-                    <span asp-validation-for="DataConclusaoFundacao" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-
-            <div class="image-container">
-                @foreach (var item in Model.Imagens) {
-                    <div style="display:block; text-align:center;">
-                        <img src=@("/imagens/UploadFundacao/" + item.FileName) class="card-img-top" alt="...">
-                        <div>
-                            <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
-                        </div>
+                        </span>
+                        <span asp-validation-for="ComprimentoAlicerce" class="text-danger"></span>
                     </div>
-                }
-            </div>
+                </div>
 
-            <div class="form-group" style="margin-top: 15px">
-                <input asp-for="UploadFundacao" type="file" name="UploadFundacao" value="UploadFundacao" multiple />
+                <div class="form-group">
+                    <label asp-for="AlturaAlicerce" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="AlturaAlicerce" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
 
+                        </span>
+                        <span asp-validation-for="AlturaAlicerce" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="AlturaPedra" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="AlturaPedra" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+
+                        </span>
+                        <span asp-validation-for="AlturaPedra" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ComprimentoPedra" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="ComprimentoPedra" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+
+                        </span>
+                        <span asp-validation-for="ComprimentoPedra" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Para este alicerce serão necessária uma média de blocos de:</label>
+                    <span id="qtdBlocos"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="AlicerceOK" class="control-label"></label>
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="AlicerceOK">
+                    </span>
+                    <span asp-validation-for="AlicerceOK" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AlturaVigaBaldrame" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="AlturaVigaBaldrame" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+
+                        </span>
+                        <span asp-validation-for="AlturaVigaBaldrame" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ComprimentoVigaBaldrame" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="ComprimentoVigaBaldrame" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+
+                        </span>
+                        <span asp-validation-for="ComprimentoVigaBaldrame" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LarguraVigaBaldrame" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="LarguraVigaBaldrame" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+
+                        </span>
+                        <span asp-validation-for="LarguraVigaBaldrame" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MetragemCubicaCimentoVigaBaldrama" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="MetragemCubicaCimentoVigaBaldrama" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+
+                        </span>
+                        <span asp-validation-for="MetragemCubicaCimentoVigaBaldrama" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="VigaBaldrameOK" class="control-label"></label>
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="VigaBaldrameOK">
+                    </span>
+                    <span asp-validation-for="VigaBaldrameOK" class="text-danger"></span>
+                </div>
+                <br />
+
+                <div class="form-group">
+                    <label asp-for="IpermeabilizacaoVigaBaldrameOK" class="control-label"></label>
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="IpermeabilizacaoVigaBaldrameOK">
+                    </span>
+                    <span asp-validation-for="IpermeabilizacaoVigaBaldrameOK" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="QtdMicro" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="QtdMicro" class="form-control" />
+                        <span class="input-group-addon" style="margin-left:10px">
+                            <input class="form-check-input" type="checkbox" asp-for="QtdMicroOK">
+                        </span>
+                        <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PrevisaoCusto" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="PrevisaoCusto" class="form-control" />
+
+                        <span asp-validation-for="PrevisaoCusto" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DataInicioFundacao" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="DataInicioFundacao" class="form-control" type="date" />
+                        <span class="input-group-addon" style="margin-left:10px">
+                            <input class="form-check-input" type="checkbox" asp-for="DataInicioFundacaoOK">
+                        </span>
+                        <span asp-validation-for="DataInicioFundacao" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataConclusaoFundacao" class="control-label"></label>
+                    <div class="input-group">
+
+                        <input asp-for="DataConclusaoFundacao" class="form-control" type="date" />
+                        <span class="input-group-addon" style="margin-left:10px">
+                            <input class="form-check-input" type="checkbox" asp-for="DataConclusaoFundacaoOK">
+                        </span>
+                        <span asp-validation-for="DataConclusaoFundacao" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+
+                <div class="image-container">
+                    @foreach (var item in Model.Imagens)
+                    {
+                        <div style="display:block; text-align:center;">
+                            <img src=@("/imagens/UploadFundacao/" + item.FileName) class="card-img-top" alt="...">
+                            <div>
+                                <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="form-group" style="margin-top: 15px">
+                    <input asp-for="UploadFundacao" type="file" name="UploadFundacao" value="UploadFundacao" multiple />
+
+                </div>
             </div>
             <br />
             <div class="progress-bar">
-                <div class="progress" style="text-align:center">
-                    <span class="progress-percentage">0%</span>
+                <div class="progress text-center" style="text-align:center">
+                    <span class="progress-percentage w-100">0%</span>
                 </div>
             </div>
             <br />
@@ -293,19 +297,19 @@
             resultadoMetragemCubica();
         });
 
-        const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
-        function updateProgressBar() {
-            const progressBar = document.querySelector('.progress');
-            const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
-            progressBar.style.width = progressPercentage + '%';
+        $(document).ready(function () {
+            const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
+            function updateProgressBar() {
+                const progressBar = document.querySelector('.progress');
+                const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
+                progressBar.style.width = progressPercentage + '%';
 
-            const progressPercentageElement = document.querySelector('.progress-percentage');
-            progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
-        }
+                const progressPercentageElement = document.querySelector('.progress-percentage');
+                progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
+            }
 
-        updateProgressBar(); // Update the progress bar initially
-
-                });
+            updateProgressBar(); // Update the progress bar initially
+        });
 
 
     </script>

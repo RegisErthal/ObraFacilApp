@@ -35,10 +35,10 @@ namespace ObraFacilApp.Controllers
             model.Id = id;
 
             model.FundacaoPerc = percFundacaoOk;
-            model.AlvenariaPerc = percFundacaoOk;
-            model.CoberturaPerc = percFundacaoOk;
-            model.EletricaPerc = percFundacaoOk;
-            model.HidraulicaPerc = percFundacaoOk;
+            model.AlvenariaPerc = percAlvenariaOk;
+            model.CoberturaPerc = percCoberturaOk;
+            model.EletricaPerc = percEletricaOk;
+            model.HidraulicaPerc = percHidraulicaOk;
 
             model.TemFundacao = fundacao != null;
             model.TemAlvenaria = alvenaria != null;
@@ -59,9 +59,8 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.AlicerceOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.QtdBlocosAlicerceOK ?? false)
-                contFundacaoOk++;
-
+            //if (fundacaoExistente?.QtdBlocosAlicerceOK ?? false)
+            //    contFundacaoOk++;
 
             if (fundacaoExistente?.IpermeabilizacaoVigaBaldrameOK ?? false)
                 contFundacaoOk++;
@@ -78,7 +77,7 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.DataInicioFundacaoOK ?? false)
                 contFundacaoOk++;
 
-            return (contFundacaoOk * 100) / 7;
+            return (contFundacaoOk * 100) / 6;
         }
 
         private static decimal QtdOkAlvenaria(AlvenariaModel? alvenariaModel)
@@ -108,11 +107,11 @@ namespace ObraFacilApp.Controllers
         {
             var ret = 0;
 
-            if (cobertura?.TamanhoCoberturaOK ?? false)
-                ret++;
+            //if (cobertura?.TamanhoCoberturaOK ?? false)
+            //    ret++;
 
-            if (cobertura?.MetragemCubicaLageOk ?? false)
-                ret++;
+            //if (cobertura?.MetragemCubicaLageOk ?? false)
+            //    ret++;
 
             //if (cobertura?.EspeEspessuraLajeOK ?? false)
             //    ret++;
@@ -124,7 +123,7 @@ namespace ObraFacilApp.Controllers
                 ret++;
 
 
-            return (ret * 100) / 4;
+            return (ret * 100) / 2;
         }
 
         private static decimal QtdOkEletrica(EletricaModel? eletrica)

@@ -59,7 +59,7 @@ namespace ObraFacilApp.Controllers
             }
             else
             {
-                return Redirect("/Fundacao/Details/" + FundacaoExistente.ProjetoId); 
+                return Redirect("/Fundacao/Details/" + FundacaoExistente.ProjetoId);
             }
         }
 
@@ -68,9 +68,9 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ComprimentoAlicerce,AlturaAlicerce,AlicerceOk,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto")] FundacaoModel fundacao)
+        public async Task<IActionResult> Create(int ProjetoId, [Bind("ComprimentoAlicerce,AlturaAlicerce,AlicerceOK,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto")] FundacaoModel fundacao)
         {
-            
+
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             fundacao.ProjetoId = ProjetoId;
 
@@ -87,7 +87,7 @@ namespace ObraFacilApp.Controllers
         // GET: Fundacao/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            
+
             if (id == null || _context.Fundacao == null)
             {
                 return NotFound();
@@ -110,17 +110,18 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,AlicerceOk,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto")] FundacaoModel fundacao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,ComprimentoAlicerce,AlturaAlicerce,AlicerceOK,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOK,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto, IpermeabilizacaoVigaBaldrameOK")] FundacaoModel fundacao)
         {
-            
+
             if (id != fundacao.Id)
             {
                 return NotFound();
             }
 
-            if (fundacao.UploadFundacao != null && fundacao.UploadFundacao.Count > 0) 
+            if (fundacao.UploadFundacao != null && fundacao.UploadFundacao.Count > 0)
             {
-                foreach (var file in fundacao.UploadFundacao) {
+                foreach (var file in fundacao.UploadFundacao)
+                {
 
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
 
@@ -133,7 +134,8 @@ namespace ObraFacilApp.Controllers
 
                     var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadFundacao");
 
-                    if (!Directory.Exists(folderPath)) {
+                    if (!Directory.Exists(folderPath))
+                    {
                         Directory.CreateDirectory(folderPath);
                     }
 
@@ -141,7 +143,8 @@ namespace ObraFacilApp.Controllers
                     var filePath = Path.Combine(folderPath, newFileName);
 
 
-                    using (var stream = new FileStream(filePath, FileMode.Create)) {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
                         await file.CopyToAsync(stream);
                     }
 
@@ -155,27 +158,27 @@ namespace ObraFacilApp.Controllers
                 }
 
             }
-           
 
-            
-                try
+
+
+            try
+            {
+                _context.Update(fundacao);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FundacaoExists(fundacao.Id))
                 {
-                    _context.Update(fundacao);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!FundacaoExists(fundacao.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
-            
+            }
+            return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
+
         }
 
         // GET: Fundacao/Delete/5
@@ -233,7 +236,7 @@ namespace ObraFacilApp.Controllers
         //    return RedirectToAction("UploadFundacao");
         //}
 
-        
+
         private bool FundacaoExists(int id)
         {
             return (_context.Fundacao?.Any(e => e.Id == id)).GetValueOrDefault();
