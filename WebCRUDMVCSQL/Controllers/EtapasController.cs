@@ -35,10 +35,10 @@ namespace ObraFacilApp.Controllers
             model.Id = id;
 
             model.FundacaoPerc = percFundacaoOk;
-            model.AlvenariaPerc = percFundacaoOk;
-            model.CoberturaPerc = percFundacaoOk;
-            model.EletricaPerc = percFundacaoOk;
-            model.HidraulicaPerc = percFundacaoOk;
+            model.AlvenariaPerc = percAlvenariaOk;
+            model.CoberturaPerc = percCoberturaOk;
+            model.EletricaPerc = percEletricaOk;
+            model.HidraulicaPerc = percHidraulicaOk;
 
             model.TemFundacao = fundacao != null;
             model.TemAlvenaria = alvenaria != null;

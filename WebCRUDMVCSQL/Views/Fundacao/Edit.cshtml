@@ -103,9 +103,9 @@
             <div class="form-group">
                 <label asp-for="AlicerceOK" class="control-label"></label>
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.AlicerceOK ? "checked" : "") value="true" name="QtdMicroOK">
+                        <input class="form-check-input" type="checkbox" asp-for="AlicerceOK">
                     </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                    <span asp-validation-for="AlicerceOK" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -157,18 +157,18 @@
             <div class="form-group">
                 <label asp-for="VigaBaldrameOK" class="control-label"></label>
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.VigaBaldrameOK ? "checked" : "") value="true" name="QtdMicroOK">
+                        <input class="form-check-input" type="checkbox" @(Model.VigaBaldrameOK ? "checked" : "") value="true" asp-for="VigaBaldrameOK">
                     </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                <span asp-validation-for="VigaBaldrameOK" class="text-danger"></span>
             </div>
             <br />
 
             <div class="form-group">
                 <label asp-for="IpermeabilizacaoVigaBaldrameOK" class="control-label"></label>
                     <span class="input-group-addon" style="margin-left:10px">
-                        <input class="form-check-input" type="checkbox" @(Model.IpermeabilizacaoVigaBaldrameOK ? "checked" : "") value="true" name="QtdMicroOK">
+                        <input class="form-check-input" type="checkbox" @(Model.IpermeabilizacaoVigaBaldrameOK ? "checked" : "") value="true" asp-for="IpermeabilizacaoVigaBaldrameOK">
                     </span>
-                    <span asp-validation-for="QtdMicro" class="text-danger"></span>
+                    <span asp-validation-for="IpermeabilizacaoVigaBaldrameOK" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
