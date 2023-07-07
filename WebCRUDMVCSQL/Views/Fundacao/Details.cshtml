@@ -162,17 +162,18 @@
             });
     </script>
     <script>
-        const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
+        $(document).ready(function () {
+            const booleanArray = [@(Model.AlicerceOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower()), @(Model.IpermeabilizacaoVigaBaldrameOK.ToString().ToLower()), @(Model.VigaBaldrameOK.ToString().ToLower())];
+            function updateProgressBar() {
+                const progressBar = document.querySelector('.progress');
+                const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
+                progressBar.style.width = progressPercentage + '%';
 
-        function updateProgressBar() {
-            const progressBar = document.querySelector('.progress');
-            const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
-            progressBar.style.width = progressPercentage + '%';
+                const progressPercentageElement = document.querySelector('.progress-percentage');
+                progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
+            }
 
-            const progressPercentageElement = document.querySelector('.progress-percentage');
-            progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
-        }
-
-        updateProgressBar(); // Update the progress bar initially
+            updateProgressBar(); // Update the progress bar initially
+        });
     </script>
     }

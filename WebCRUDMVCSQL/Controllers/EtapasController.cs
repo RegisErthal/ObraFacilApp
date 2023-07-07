@@ -59,9 +59,8 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.AlicerceOK ?? false)
                 contFundacaoOk++;
 
-            if (fundacaoExistente?.QtdBlocosAlicerceOK ?? false)
-                contFundacaoOk++;
-
+            //if (fundacaoExistente?.QtdBlocosAlicerceOK ?? false)
+            //    contFundacaoOk++;
 
             if (fundacaoExistente?.IpermeabilizacaoVigaBaldrameOK ?? false)
                 contFundacaoOk++;
@@ -78,7 +77,7 @@ namespace ObraFacilApp.Controllers
             if (fundacaoExistente?.DataInicioFundacaoOK ?? false)
                 contFundacaoOk++;
 
-            return (contFundacaoOk * 100) / 7;
+            return (contFundacaoOk * 100) / 6;
         }
 
         private static decimal QtdOkAlvenaria(AlvenariaModel? alvenariaModel)
