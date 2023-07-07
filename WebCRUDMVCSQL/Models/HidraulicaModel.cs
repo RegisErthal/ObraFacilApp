@@ -21,7 +21,7 @@ namespace ObraFacilApp.Models
         public bool QtdTorneirasOK { get; set; }
 
         [Column("QtdRegistros")]
-        [Display(Name = "Quantidade de torneiras")]
+        [Display(Name = "Quantidade de registros")]
         public double QtdRegistros { get; set; }
         public bool QtdRegistrosOk { get; set; }
 
