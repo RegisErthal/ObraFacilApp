@@ -15,7 +15,7 @@ namespace ObraFacilApp.Models
         [Display(Name = "Nome do Projeto")]
         public string NomeProjeto { get; set; }
         
-        [Column("Responsavel")]
+        [Column("Responsável")]
         [Display(Name = "Responsável")]
         public string? Responsavel { get; set; }
 
@@ -40,7 +40,7 @@ namespace ObraFacilApp.Models
         public DateTime DataConclusao { get; set; }
         [Column("UsuarioId")]
         [Display(Name = "Usuário")]
-        public int UsuarioId { get; set; }
+        public int? UsuarioId { get; set; }
 
         [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
