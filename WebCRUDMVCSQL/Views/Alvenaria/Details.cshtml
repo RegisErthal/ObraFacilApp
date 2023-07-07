@@ -35,7 +35,9 @@
     <div class="row">
         <table class="table">
             <tbody>
-
+                <input type="hidden" asp-for="MetrosDeParede" />
+                <input type="hidden" asp-for="AlturaBloco" />
+                <input type="hidden" asp-for="ComprimentoBlocos" />
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.MetrosDeParede)</th>
                     <td>@Model.MetrosDeParede</td>
