@@ -77,7 +77,7 @@
 @section Scripts
     {
     <script>
-        const booleanArray = [@(Model.DataInicioCoberturaOK.ToString().ToLower()), @(Model.DataConclusaoCoberturaOK.ToString().ToLower())]
+        const booleanArray = [@(Model.DataInicioCoberturaOK.ToString().ToLower()), @(Model.DataConclusaoCoberturaOK.ToString().ToLower()), @(Model.TamanhoCoberturaOK.ToString().ToLower())]
         function updateProgressBar() {
             const progressBar = document.querySelector('.progress');
             const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
