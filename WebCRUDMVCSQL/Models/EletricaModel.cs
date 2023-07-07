@@ -47,7 +47,7 @@ namespace ObraFacilApp.Models
         [Column("DataInicioEletrica")]
         [Display(Name = "Previsão de ínicio")]
         public DateTime DataInicioEletrica { get; set; }
-        public bool DataInicioEletricaOk { get; set; }
+        public bool DataInicioEletricaOk{ get; set; }
 
         [Column("DataConclusaoEletrica")]
         [Display(Name = "Previsão de conclusão")]

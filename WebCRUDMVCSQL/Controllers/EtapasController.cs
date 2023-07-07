@@ -133,8 +133,8 @@ namespace ObraFacilApp.Controllers
             if (eletrica?.LigacaoMonofasicaOk ?? false)
                 ret++;
 
-            if (eletrica?.LigacaoTrifasicaOk ?? false)
-                ret++;
+            //if (eletrica?.LigacaoTrifasicaOk ?? false)
+            //    ret++;
 
             if (eletrica?.QtdDisjuntoresOk ?? false)
                 ret++;
@@ -152,7 +152,7 @@ namespace ObraFacilApp.Controllers
                 ret++;
 
 
-            return (ret * 100) / 7;
+            return (ret * 100) / 6;
         }
 
         private static decimal QtdOkHidraulica(HidraulicaModel? hidraulica)

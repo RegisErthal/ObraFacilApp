@@ -19,25 +19,36 @@
                     <input class="form-check-input" asp-for="LigacaoMonofasica" /> @Html.DisplayNameFor(model => model.LigacaoMonofasica)
                 </label>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="LigacaoTrifasica" /> @Html.DisplayNameFor(model => model.LigacaoTrifasica)
-                </label>
-            </div>
+
             <div class="form-group">
                 <label asp-for="QtdDisjuntores" class="control-label"></label>
-                <input asp-for="QtdDisjuntores" class="form-control" />
-                <span asp-validation-for="QtdDisjuntores" class="text-danger"></span>
+                <div class="input-group">
+                    <input asp-for="QtdDisjuntores" class="form-control" />
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="QtdDisjuntoresOk">
+                    </span>
+                    <span asp-validation-for="QtdDisjuntores" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="QtdTomadas" class="control-label"></label>
                 <input asp-for="QtdTomadas" class="form-control" />
-                <span asp-validation-for="QtdTomadas" class="text-danger"></span>
+                <div class="input-group">
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="QtdTomadasOk">
+                    </span>
+                    <span asp-validation-for="QtdTomadas" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="QtdLampadas" class="control-label"></label>
-                <input asp-for="QtdLampadas" class="form-control" />
-                <span asp-validation-for="QtdLampadas" class="text-danger"></span>
+                <div class="input-group">
+                    <input asp-for="QtdLampadas" class="form-control" />
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="QtdLampadasOk">
+                    </span>
+                    <span asp-validation-for="QtdLampadas" class="text-danger"></span>
+                </div>
             </div>
 
             <div class="form-group">
@@ -48,13 +59,24 @@
 
             <div class="form-group">
                 <label asp-for="DataInicioEletrica" class="control-label"></label>
-                <input asp-for="DataInicioEletrica" type="date" class="form-control" />
-                <span asp-validation-for="DataInicioEletrica" class="text-danger"></span>
+                <div class="input-group">
+                    <input asp-for="DataInicioEletrica" type="date" class="form-control" />
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="DataInicioEletricaOk">
+                    </span>
+                    <span asp-validation-for="DataInicioEletrica" class="text-danger"></span>
+                </div>
             </div>
+
             <div class="form-group">
                 <label asp-for="DataConclusaoEletrica" class="control-label"></label>
-                <input asp-for="DataConclusaoEletrica" type="date" class="form-control" />
-                <span asp-validation-for="DataConclusaoEletrica" class="text-danger"></span>
+                <div class="input-group">
+                    <input asp-for="DataConclusaoEletrica" type="date" class="form-control" />
+                    <span class="input-group-addon" style="margin-left:10px">
+                        <input class="form-check-input" type="checkbox" asp-for="DataConclusaoEletricaOk">
+                    </span>
+                    <span asp-validation-for="DataConclusaoEletrica" class="text-danger"></span>
+                </div>
             </div>
             <br />
             <div class="form-group">
