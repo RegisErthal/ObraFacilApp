@@ -66,7 +66,7 @@
         </table>
         <div class="progress-bar">
             <div class="progress" style="text-align:center">
-                <span class="progress-percentage">0%</span>
+                <span class="progress-percentage w-100">0%</span>
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
 @section Scripts
     {
     <script>
-        const booleanArray = [@(Model.TamanhoCoberturaOK.ToString().ToLower()), @(Model.DataInicioCoberturaOK.ToString().ToLower()), @(Model.DataConclusaoCoberturaOK.ToString().ToLower())]
+        const booleanArray = [@(Model.DataInicioCoberturaOK.ToString().ToLower()), @(Model.DataConclusaoCoberturaOK.ToString().ToLower())]
         function updateProgressBar() {
             const progressBar = document.querySelector('.progress');
             const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;

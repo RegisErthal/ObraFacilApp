@@ -107,11 +107,11 @@ namespace ObraFacilApp.Controllers
         {
             var ret = 0;
 
-            if (cobertura?.TamanhoCoberturaOK ?? false)
-                ret++;
+            //if (cobertura?.TamanhoCoberturaOK ?? false)
+            //    ret++;
 
-            if (cobertura?.MetragemCubicaLageOk ?? false)
-                ret++;
+            //if (cobertura?.MetragemCubicaLageOk ?? false)
+            //    ret++;
 
             //if (cobertura?.EspeEspessuraLajeOK ?? false)
             //    ret++;
@@ -123,7 +123,7 @@ namespace ObraFacilApp.Controllers
                 ret++;
 
 
-            return (ret * 100) / 4;
+            return (ret * 100) / 2;
         }
 
         private static decimal QtdOkEletrica(EletricaModel? eletrica)
