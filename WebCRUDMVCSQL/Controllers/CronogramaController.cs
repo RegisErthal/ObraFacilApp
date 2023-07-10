@@ -84,6 +84,7 @@ namespace ObraFacilApp.Controllers
             List<CronogramaViewModel> cronogramaViewModels = new List<CronogramaViewModel>();
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Fundacao",
+                PercentEtapa = "",
                 DataInicio = fundacao.DataInicioFundacao,
                 DataFim = fundacao.DataConclusaoFundacao,
                 DataInicioOk = fundacao.DataInicioFundacaoOK,
@@ -92,6 +93,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Alvenaria",
+                PercentEtapa = "",
                 DataInicio = alvenaria.DataInicioAlvenaria,
                 DataFim = alvenaria.DataConclusaoAlvenaria,
                 DataInicioOk = alvenaria.DataInicioAlvenariaOk,
@@ -100,6 +102,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Cobertura",
+                PercentEtapa = "",
                 DataInicio = cobertura.DataInicioCobertura,
                 DataFim = cobertura.DataConclusaoCobertura,
                 DataInicioOk = cobertura.DataInicioCoberturaOK,
@@ -108,6 +111,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Eletrica",
+                PercentEtapa = "",
                 DataInicio = eletrica.DataInicioEletrica,
                 DataFim = eletrica.DataConclusaoEletrica,
                 DataInicioOk = eletrica.DataInicioEletricaOk,
@@ -116,6 +120,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Hidraulica",
+                PercentEtapa = "",
                 DataInicio = hidraulica.DataInicioHidraulica,
                 DataFim = hidraulica.DataConclusaoHidraulica,
                 DataInicioOk = hidraulica.DataInicioHidraulicaOK,

@@ -40,6 +40,7 @@
                 <tbody>
                     <tr>
                         <th>@item.NomeEtapa</th>
+                        <th>@item.PercentEtapa</th>
                     </tr>
                     <tr>
                         <td>Previsão de início</td>
@@ -58,24 +59,3 @@
 
     </dl>
 </div>
-@*<div>
-    <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
-</div>*@
-
-@*@section Scripts
-    {
-    <script>
-        const booleanArray = [@(Model.ComprimentoAlicerceOK.ToString().ToLower()), @(Model.AlturaAlicerceOK.ToString().ToLower()), @(Model.QtdBlocosAlicerceOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.AlturaPedraOK.ToString().ToLower()), @(Model.ComprimentoPedraOK.ToString().ToLower()), @(Model.DataConclusaoFundacaoOK.ToString().ToLower()), @(Model.DataInicioFundacaoOK.ToString().ToLower()), @(Model.QtdMicroOK.ToString().ToLower())];
-
-        function updateProgressBar() {
-            const progressBar = document.querySelector('.progress');
-            const progressPercentage = (booleanArray.filter(Boolean).length / booleanArray.length) * 100;
-            progressBar.style.width = progressPercentage + '%';
-
-            const progressPercentageElement = document.querySelector('.progress-percentage');
-            progressPercentageElement.textContent = Math.round(progressPercentage) + '%';
-        }
-
-        updateProgressBar(); // Update the progress bar initially
-    </script>
-    }*@
