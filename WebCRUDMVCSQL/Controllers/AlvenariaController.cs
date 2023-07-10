@@ -74,7 +74,7 @@ namespace ObraFacilApp.Controllers
                 _context.Entry(alvenaria).State = EntityState.Added;
                 _context.Add(alvenaria);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
             }
             return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
         }

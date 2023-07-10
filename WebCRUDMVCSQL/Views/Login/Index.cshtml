@@ -35,9 +35,9 @@
                 @Html.DisplayFor(modelItem => item.isAdmin)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit" style="color:blue"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info" style=" color:green"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" style=" color:gray"></i></a>
             </td>
         </tr>
 }

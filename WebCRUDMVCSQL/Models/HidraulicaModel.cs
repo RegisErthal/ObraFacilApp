@@ -31,7 +31,7 @@ namespace ObraFacilApp.Models
         public bool QtdRalosOK { get; set; }
 
         [Column("QtdCaixaGordura")]
-        [Display(Name = "Quantidade de caixa de gordura")]
+        [Display(Name = "Quantidade de caixas de gordura")]
         public double? QtdCaixaGordura { get; set; }
         public bool QtdCaixaGorduraOk { get; set; }
 
