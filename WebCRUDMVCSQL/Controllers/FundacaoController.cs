@@ -68,7 +68,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId, [Bind("ComprimentoAlicerce,AlturaAlicerce,AlicerceOK,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto")] FundacaoModel fundacao)
+        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,ComprimentoAlicerce,AlturaAlicerce,AlicerceOK,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto")] FundacaoModel fundacao)
         {
 
             var errors = ModelState.Values.SelectMany(v => v.Errors);
@@ -81,7 +81,7 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
             }
-            return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
+            return View(fundacao);
         }
 
         // GET: Fundacao/Edit/5

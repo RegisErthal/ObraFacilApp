@@ -9,8 +9,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <input type="hidden" name="ProjetoId" value="@ViewBag.Id" />
+        <form method="post" asp-action="Create">
+            <input type="hidden" asp-for="ProjetoId" value="@ViewBag.Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">

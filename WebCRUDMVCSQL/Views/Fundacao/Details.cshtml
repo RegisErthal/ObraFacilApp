@@ -35,19 +35,23 @@
     <h4>Fundação</h4>
     <hr />
     <div class="row">
+        <input type="hidden" asp-for="ComprimentoAlicerce" />
+        <input type="hidden" asp-for="AlturaAlicerce" />
+        <input type="hidden" asp-for="ComprimentoPedra" />
+        <input type="hidden" asp-for="AlturaPedra" />
         <table class="table">
             <tbody>
-                
+
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoAlicerce)</th>
                     <td>@Model.ComprimentoAlicerce</td>
-                    
+
                 </tr>
-                
+
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaAlicerce)</th>
                     <td>@Model.AlturaAlicerce</td>
-                    
+
                 </tr>
 
                 <tr>
@@ -63,33 +67,33 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaPedra)</th>
                     <td>@Model.AlturaPedra</td>
-                    
+
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoPedra)</th>
                     <td>@Model.ComprimentoPedra</td>
-                    
+
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.AlturaVigaBaldrame)</th>
                     <td>@Model.AlturaVigaBaldrame</td>
-                    
+
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoVigaBaldrame)</th>
                     <td>@Model.ComprimentoVigaBaldrame</td>
-                    
+
                 </tr>
-                
+
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.LarguraVigaBaldrame)</th>
                     <td>@Model.LarguraVigaBaldrame</td>
-                    
+
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.MetragemCubicaCimentoVigaBaldrama)</th>
                     <td>@Model.MetragemCubicaCimentoVigaBaldrama</td>
-                    
+
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.VigaBaldrameOK)</th>
@@ -127,7 +131,7 @@
             </tbody>
         </table>
         <div class="progress-bar">
-            <div class="progress text-center" style="text-align:center" >
+            <div class="progress text-center" style="text-align:center">
                 <span class="progress-percentage w-100">0%</span>
             </div>
         </div>
@@ -135,31 +139,31 @@
     </div>
 
 </div>
-    <div>
+<div>
     <a asp-controller="Etapas" asp-action="Index" asp-route-id="@Model.ProjetoId">Voltar</a>
-    </div>
+</div>
 
 @section Scripts
     {
     <script>
-                $(document).ready(function () {
+        $(document).ready(function () {
 
-                function qtdBlocos() {
-                    var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
-                    var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
-                    var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
-                    var alturaPedra = parseFloat($('#AlturaPedra').val());
-                    var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
-                    var qtdBlocosInteiro = Math.floor(qtdBlocos);
+            function qtdBlocos() {
+                var comprimentoAlicerce = parseFloat($('#ComprimentoAlicerce').val());
+                var alturaAlicerce = parseFloat($('#AlturaAlicerce').val());
+                var comprimentoPedra = parseFloat($('#ComprimentoPedra').val());
+                var alturaPedra = parseFloat($('#AlturaPedra').val());
+                var qtdBlocos = (comprimentoAlicerce * alturaAlicerce) / (comprimentoPedra * alturaPedra);
+                var qtdBlocosInteiro = Math.floor(qtdBlocos);
 
-                    $('#resultadoBlocos').text(qtdBlocosInteiro);
-                }
+                $('#resultadoBlocos').text(qtdBlocosInteiro);
+            }
 
-                $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
-                    qtdBlocos();
-                });
+            $('#ComprimentoAlicerce, #AlturaAlicerce, #ComprimentoPedra, #AlturaPedra').on('input', function () {
                 qtdBlocos();
             });
+            qtdBlocos();
+        });
     </script>
     <script>
         $(document).ready(function () {
