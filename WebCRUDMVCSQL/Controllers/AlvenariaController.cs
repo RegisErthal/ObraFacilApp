@@ -106,7 +106,6 @@ namespace ObraFacilApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, AlvenariaModel alvenaria)
         {
-            ViewBag.ProjetoId = id;
 
             if (id == 0)
             {

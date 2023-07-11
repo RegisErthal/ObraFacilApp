@@ -38,7 +38,7 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.LigacaoMonofasica)</th>
                     <td>@Model.LigacaoMonofasica</td>
-                    <td>@(Model.LigacaoMonofasicaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                    @*<td>@(Model.LigacaoMonofasicaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>*@
                 </tr>
                 @*<tr>
                     <th>@Html.DisplayNameFor(model => model.LigacaoTrifasica)</th>
@@ -92,7 +92,7 @@
 @section Scripts
     {
     <script>
-        const booleanArray = [@(Model.LigacaoMonofasicaOk.ToString().ToLower()), @(Model.QtdLampadasOk.ToString().ToLower()), @(Model.QtdDisjuntoresOk.ToString().ToLower()), @(Model.QtdTomadasOk.ToString().ToLower()), @(Model.DataInicioEletricaOk.ToString().ToLower()), @(Model.DataConclusaoEletricaOk.ToString().ToLower())];
+        const booleanArray = [@(Model.QtdLampadasOk.ToString().ToLower()), @(Model.QtdDisjuntoresOk.ToString().ToLower()), @(Model.QtdTomadasOk.ToString().ToLower()), @(Model.DataInicioEletricaOk.ToString().ToLower()), @(Model.DataConclusaoEletricaOk.ToString().ToLower())];
 
         function updateProgressBar() {
             const progressBar = document.querySelector('.progress');

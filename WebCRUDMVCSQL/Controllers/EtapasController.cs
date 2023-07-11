@@ -127,8 +127,8 @@ namespace ObraFacilApp.Controllers
         {
             var ret = 0;
 
-            if (eletrica?.LigacaoMonofasicaOk ?? false)
-                ret++;
+            //if (eletrica?.LigacaoMonofasicaOk ?? false)
+            //    ret++;
 
             //if (eletrica?.LigacaoTrifasicaOk ?? false)
             //    ret++;
@@ -149,7 +149,7 @@ namespace ObraFacilApp.Controllers
                 ret++;
 
 
-            return (ret * 100) / 6;
+            return (ret * 100) / 5;
         }
 
         private static decimal QtdOkHidraulica(HidraulicaModel? hidraulica)

@@ -9,11 +9,11 @@ namespace ObraFacilApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         [Display(Name = "Código")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Column("ProjetoId")]
         [Display(Name = "ProjetoId")]
-        public int ProjetoId { get; set; }
+        public int? ProjetoId { get; set; }
 
         [Column("LigacaoMonofasica")]
         [Display(Name = "Ligação monofasica")]
@@ -22,8 +22,8 @@ namespace ObraFacilApp.Models
 
         [Column("LigacaoTrifasica")]
         [Display(Name = "Ligação trifasica")]
-        public bool LigacaoTrifasica { get; set; }
-        public bool LigacaoTrifasicaOk { get; set; }
+        public bool LigacaoTrifasica { get; set; } = false;
+        public bool LigacaoTrifasicaOk { get; set; } = false;
 
         [Column("QtdDisjuntores")]
         [Display(Name = "Quantidade de disjuntores")]

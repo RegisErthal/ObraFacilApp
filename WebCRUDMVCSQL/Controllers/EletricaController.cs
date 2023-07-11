@@ -51,7 +51,7 @@ namespace ObraFacilApp.Controllers
             var EletricaExistente = _context.Eletrica.FirstOrDefault(m => m.ProjetoId == id);
             if (EletricaExistente == null)
             {
-                ViewBag.Id = id;
+                ViewBag.ProjetoId = id;
                 return View();
             }
             else
@@ -65,10 +65,14 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,LigacaoMonofasica,LigacaoTrifasica,QtdDisjuntores,QtdTomadas,QtdLampadas,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] EletricaModel eletrica)
+        public async Task<IActionResult> Create([FromRoute] int id, EletricaModel eletrica)
         {
+            ViewBag.ProjetoId = id;
+
+            eletrica.Id = null;
+
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            eletrica.ProjetoId = ProjetoId;
+            //eletrica.ProjetoId = ProjetoId;
             if (ModelState.IsValid)
             {
                 _context.Entry(eletrica).State = EntityState.Added;
@@ -76,7 +80,7 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
             }
-            return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
+            return View(eletrica);
         }
 
         // GET: Eletrica/Edit/5
@@ -87,7 +91,7 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var EletricaExistente = _context.Eletrica.FirstOrDefault(m => m.ProjetoId == id);
+            var EletricaExistente = await _context.Eletrica.FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (EletricaExistente == null)
             {
                 return NotFound();
@@ -100,8 +104,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,LigacaoMonofasica,LigacaoMonofasicaOk,LigacaoTrifasica,LigacaoTrifasicaOk,QtdDisjuntores,QtdDisjuntoresOk,QtdTomadas,QtdTomadasOk,QtdLampadas,QtdLampadasOk,PrevisaoCusto,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk")] EletricaModel eletrica) 
+        public async Task<IActionResult> Edit(int id, EletricaModel eletrica) 
 
         {
             if (id == 0)
@@ -118,7 +121,7 @@ namespace ObraFacilApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EletricaExists(eletrica.Id))
+                    if (!EletricaExists(eletrica.Id ?? 0))
                     {
                         return NotFound();
                     }

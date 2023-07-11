@@ -12,11 +12,11 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
             <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" asp-for="LigacaoMonofasicaOk" /> @Html.DisplayNameFor(model => model.LigacaoMonofasica)
+                    <input class="form-check-input" type="checkbox" asp-for="LigacaoMonofasica" /> @Html.DisplayNameFor(model => model.LigacaoMonofasica)
                 </label>
             </div>
 
