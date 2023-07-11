@@ -52,7 +52,7 @@ namespace ObraFacilApp.Controllers
             var CoberturaExistente  = _context.Cobertura.FirstOrDefault(m => m.ProjetoId == id);
             if (CoberturaExistente == null)
             {
-                ViewBag.Id = id;
+                ViewBag.ProjetoId = id;
                 return View();
             }
             else
@@ -66,10 +66,14 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK,PrevisaoCusto")] CoberturaModel cobertura)
+        public async Task<IActionResult> Create(int ProjetoId, CoberturaModel cobertura)
         {
+            ViewBag.ProjetoId = ProjetoId;
+
             var errors = ModelState.Values.SelectMany(v => v.Errors);
+            cobertura.Id = null;
             cobertura.ProjetoId = ProjetoId;
+
             if (ModelState.IsValid)
             {
                 _context.Entry(cobertura).State = EntityState.Added;
@@ -77,7 +81,8 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
             }
-            return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
+            
+            return View(ProjetoId);
         }
 
         // GET: Cobertura/Edit/5
@@ -88,11 +93,12 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var CoberturaExistente = _context.Cobertura.FirstOrDefault(m => m.ProjetoId == id);
+            var CoberturaExistente = await _context.Cobertura.FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (CoberturaExistente == null)
             {
                 return NotFound();
             }
+
             return View(CoberturaExistente);
         }
 
@@ -117,7 +123,7 @@ namespace ObraFacilApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CoberturaExists(cobertura.Id))
+                    if (!CoberturaExists(cobertura.Id ?? 0))
                     {
                         return NotFound();
                     }
