@@ -9,11 +9,11 @@ namespace ObraFacilApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         [Display(Name = "Código")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Column("ProjetoId")]
         [Display(Name = "ProjetoId")]
-        public int ProjetoId { get; set; }
+        public int? ProjetoId { get; set; }
 
         [Column("QtdTorneiras")]
         [Display(Name = "Quantidade de torneiras")]

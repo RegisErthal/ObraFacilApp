@@ -50,7 +50,7 @@ namespace ObraFacilApp.Controllers
             var HidraulicaExistente = _context.Hidraulica.FirstOrDefault(m => m.ProjetoId == id);
             if (HidraulicaExistente == null)
             {
-                ViewBag.Id = id;
+                ViewBag.ProjetoId = id;
                 return View();
             }
             else
@@ -64,9 +64,12 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRalosOK,QtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Create(int ProjetoId, HidraulicaModel hidraulica)
         {
+            ViewBag.ProjetoId = ProjetoId;
+
             var errors = ModelState.Values.SelectMany(v => v.Errors);
+            hidraulica.Id = null;
             hidraulica.ProjetoId = ProjetoId;
 
             if (ModelState.IsValid)
@@ -76,7 +79,8 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
             }
-            return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
+
+            return View(hidraulica);
         }
 
         // GET: Hidraulica/Edit/5
@@ -101,7 +105,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,QtdTorneiras,QtdTorneirasOK,QtdRegistros,QtdRegistrosOk,QtdRalos,QtdRalosOK,QtdCaixaGordura,QtdCaixaGorduraOk,QtdRalosOK,DataInicioHidraulicaOK,DataConclusaoHidraulicaOK,QtdRalos,DataInicioEletrica,DataConclusaoEletrica,PrevisaoCusto")] HidraulicaModel hidraulica)
+        public async Task<IActionResult> Edit(int id, HidraulicaModel hidraulica)
         {
             if (id != hidraulica.Id)
             {
@@ -117,7 +121,7 @@ namespace ObraFacilApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HidraulicaExists(hidraulica.Id))
+                    if (!HidraulicaExists(hidraulica.Id ?? 0))
                     {
                         return NotFound();
                     }
@@ -128,7 +132,7 @@ namespace ObraFacilApp.Controllers
                 }
                 return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
             }
-            return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
+            return View(hidraulica);
         }
 
         // GET: Hidraulica/Delete/5

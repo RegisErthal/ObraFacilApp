@@ -12,12 +12,8 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="ProjetoId" class="control-label"></label>
-                <input asp-for="ProjetoId" class="form-control" />
-                <span asp-validation-for="ProjetoId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <input type="hidden" asp-for="ProjetoId" value="@Model.ProjetoId" />
             <div class="form-group">
                 <label asp-for="QtdTorneiras" class="control-label"></label>
                 <div class="input-group">
