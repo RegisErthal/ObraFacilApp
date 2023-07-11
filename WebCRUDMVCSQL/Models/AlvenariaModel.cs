@@ -10,7 +10,7 @@ namespace ObraFacilApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         [Display(Name = "Código")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Column("ProjetoId")]
         [Display(Name = "ProjetoId")]
@@ -22,7 +22,7 @@ namespace ObraFacilApp.Models
         public bool MetrosDeParedeOK { get; set; }
 
         [Column("QtdBlocos")]
-        [Display(Name = "Quantidade de blocos blocos")]
+        [Display(Name = "Quantidade de blocos")]
         public double QtdBlocos { get; set; }
         public bool QtdBlocosOk { get; set; }
 

@@ -64,10 +64,13 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId,[Bind("ProjetoId,MetrosDeParede,MetrosDeParedeOK,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioAlvenaria,DataConclusaoAlvenaria,PrevisaoCusto")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Create(int id, AlvenariaModel alvenaria)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            alvenaria.ProjetoId = ProjetoId;
+            ViewBag.ProjetoId = id;
+
+            alvenaria.Id = null;
+            alvenaria.ProjetoId = id;
 
             if (ModelState.IsValid)
             {
@@ -76,7 +79,8 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
             }
-            return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
+
+            return View(alvenaria);
         }
 
         // GET: Alvenaria/Edit/5
@@ -87,7 +91,7 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.ProjetoId == id);
+            var AlvenariaExistente = await _context.Alvenaria.FirstOrDefaultAsync(m => m.ProjetoId == id);
             if (AlvenariaExistente == null)
             {
                 return NotFound();
@@ -100,8 +104,10 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,MetrosDeParede,MetrosDeParedeOK,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,DataInicioAlvenaria,DataConclusaoAlvenaria,PrevisaoCusto,QtdBlocosOk,DataInicioAlvenariaOk,DataConclusaoAlvenariaOk,QtdPilaresOk")] AlvenariaModel alvenaria)
+        public async Task<IActionResult> Edit(int id, AlvenariaModel alvenaria)
         {
+            ViewBag.ProjetoId = id;
+
             if (id == 0)
             {
                 return NotFound();
@@ -116,7 +122,7 @@ namespace ObraFacilApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AlvenariaExists(alvenaria.Id))
+                    if (!AlvenariaExists(alvenaria.Id ?? 0))
                     {
                         return NotFound();
                     }
@@ -127,7 +133,7 @@ namespace ObraFacilApp.Controllers
                 }
                 return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
             }
-            return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
+            return View(alvenaria);
         }
 
         // GET: Alvenaria/Delete/5
