@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
 using ObraFacilApp.Models.Enum;
@@ -49,12 +42,12 @@ namespace ObraFacilApp.Controllers
 
         // GET: Fundacao/Create
 
-        public IActionResult Create([FromRoute] int id)
+        public IActionResult Create(int id)
         {
             var FundacaoExistente = _context.Fundacao.FirstOrDefault(m => m.ProjetoId == id);
             if (FundacaoExistente == null)
             {
-                ViewBag.Id = id;
+                ViewBag.ProjetoId = id;
                 return View();
             }
             else
@@ -68,11 +61,11 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int ProjetoId, [Bind("ProjetoId,ComprimentoAlicerce,AlturaAlicerce,AlicerceOK,QtdBlocosAlicerce,AlturaPedra,ComprimentoPedra,AlturaVigaBaldrame,ComprimentoVigaBaldrame,LarguraVigaBaldrame,MetragemCubicaCimentoVigaBaldrama,VigBaldrameOk,IpermeabilizacaoVigaBaldrame,QtdMicro,DataInicioFundacao,DataConclusaoFundacao,ComprimentoAlicerceOK,QtdBlocosAlicerceOK,VigaBaldrameOK,QtdMicroOK,DataInicioFundacaoOK,DataConclusaoFundacaoOK,PrevisaoCusto")] FundacaoModel fundacao)
+        public async Task<IActionResult> Create(int ProjetoId, FundacaoModel fundacao)
         {
-
+            ViewBag.ProjetoId = ProjetoId;
+            fundacao.Id = null;
             var errors = ModelState.Values.SelectMany(v => v.Errors);
-            fundacao.ProjetoId = ProjetoId;
 
             if (ModelState.IsValid)
             {
@@ -151,7 +144,7 @@ namespace ObraFacilApp.Controllers
                     var imagemBanco = new ImagensModel();
                     imagemBanco.FilePath = filePath;
                     imagemBanco.TiposEntidades = TiposEntidadesEnum.Fundacao;
-                    imagemBanco.IdEntidade = fundacao.Id;
+                    imagemBanco.IdEntidade = fundacao.Id ?? 0;
                     imagemBanco.FileName = newFileName;
 
                     _context.Imagens.Add(imagemBanco);
@@ -168,7 +161,7 @@ namespace ObraFacilApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FundacaoExists(fundacao.Id))
+                if (!FundacaoExists(fundacao.Id ?? 0))
                 {
                     return NotFound();
                 }
