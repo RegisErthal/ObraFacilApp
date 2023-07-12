@@ -17,6 +17,12 @@ namespace ObraFacilApp.Controllers
         public IActionResult Index(int id)
         {
             var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
             var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
 
             var fundacao = _context.Fundacao?.FirstOrDefault(m => m.ProjetoId == id);
