@@ -32,22 +32,22 @@ namespace ObraFacilApp.Models
         public bool QtdBlocosAlicerceOK { get; set; }
 
         [Column("AlturaPedra")]
-        [Display(Name = "Altura bloco do alicerce")]
+        [Display(Name = "Altura bloco do alicerce em metros")]
         public double AlturaPedra { get; set; }
         public bool AlturaPedraOK { get; set; }
 
         [Column("ComprimentoPedra")]
-        [Display(Name = "Comprimento bloco do alicerce")]
+        [Display(Name = "Comprimento bloco do alicerce em metros")]
         public double ComprimentoPedra { get; set; }
         public bool ComprimentoPedraOK { get; set; }
 
         [Column("AlturaVigaBaldrame")]
-        [Display(Name = "Altura viga baldrame")]
+        [Display(Name = "Altura viga baldrame em metros")]
         public double AlturaVigaBaldrame { get; set; }
         public bool AlturaVigaBaldrameOK { get; set; }
 
         [Column("ComprimentoVigaBaldrame")]
-        [Display(Name = "Comprimento da viga baldrame")]
+        [Display(Name = "Comprimento da viga baldrame em metros")]
         public double ComprimentoVigaBaldrame { get; set; }
         public bool ComprimentoVigaBaldrameOK { get; set; }
 
@@ -57,11 +57,11 @@ namespace ObraFacilApp.Models
         public bool LarguraVigaBaldrameOK { get; set; }
 
         [Column("VigaBaldrameOK")]
-        [Display(Name = "Viga baldrame ")]
+        [Display(Name = "Viga baldrame conclusida ")]
         public bool VigaBaldrameOK { get; set; }
 
         [Column("AlicerceOK")]
-        [Display(Name = "Alicerce")]
+        [Display(Name = "Alicerce concluido")]
         public bool AlicerceOK { get; set; }
 
         [Column("MetragemCubicaCimentoVigaBaldrama")]
