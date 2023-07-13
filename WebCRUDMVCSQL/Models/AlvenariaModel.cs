@@ -53,7 +53,12 @@ namespace ObraFacilApp.Models
         [Display(Name = "Previsão de conclusão")]
         public DateTime DataConclusaoAlvenaria { get; set; }
         public bool DataConclusaoAlvenariaOk { get; set; }
+        [NotMapped]
+        public List<ImagensModel>? Imagens { get; set; }
 
         public ProjetoModel? Projeto { get; set; }
+
+        [NotMapped]
+        public List<IFormFile>? UploadAlvenaria { get; set; }
     }
 }

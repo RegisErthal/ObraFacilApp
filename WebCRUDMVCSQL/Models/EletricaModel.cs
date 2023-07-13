@@ -54,5 +54,8 @@ namespace ObraFacilApp.Models
         public DateTime DataConclusaoEletrica { get; set; }
         public bool DataConclusaoEletricaOk { get; set; }
         public ProjetoModel? Projeto { get; set; }
+
+        [NotMapped]
+        public List<ImagensModel>? Imagens { get; set; }
     }
 }

@@ -48,6 +48,8 @@ namespace ObraFacilApp.Models
             public DateTime DataConclusaoCobertura { get; set; }
             public bool DataConclusaoCoberturaOK { get; set; }
             public ProjetoModel? Projeto { get; set; }
+        [NotMapped]
+        public List<ImagensModel>? Imagens { get; set; }
 
     }
 }

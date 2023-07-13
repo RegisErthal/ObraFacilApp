@@ -128,9 +128,19 @@
                     <td>@Model.DataConclusaoFundacao.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataConclusaoFundacaoOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
-
-
             </tbody>
+
+            @*<div class="image-container">
+                @foreach (var item in Model.Imagens) {
+                    <div style="display:block; text-align:center;">
+                        <img src=@("/imagens/UploadFundacao/" + item.FileName) class="card-img-top" alt="...">
+                        <div>
+                            <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
+                        </div>
+                    </div>
+                }
+            </div>*@
+
         </table>
         <div class="progress-bar">
             <div class="progress text-center" style="text-align:center">

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
+using ObraFacilApp.Models.Enum;
 
 namespace ObraFacilApp.Controllers
 {
@@ -96,6 +97,8 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == AlvenariaExistente.Id && m.TiposEntidades == TiposEntidadesEnum.Alvenaria).ToList();
+            AlvenariaExistente.Imagens = imagens;
             return View(AlvenariaExistente);
         }
 
@@ -112,9 +115,45 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
+            if (alvenaria.UploadAlvenaria != null && alvenaria.UploadAlvenaria.Count > 0) 
+                {
+                foreach (var file in alvenaria.UploadAlvenaria) {
+
+                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                    Guid guid = Guid.NewGuid();
+
+
+                    var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+
+
+                    var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadAlvenaria");
+
+                    if (!Directory.Exists(folderPath)) {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+
+                    var filePath = Path.Combine(folderPath, newFileName);
+
+
+                    using (var stream = new FileStream(filePath, FileMode.Create)) {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    var imagemBanco = new ImagensModel();
+                    imagemBanco.FilePath = filePath;
+                    imagemBanco.TiposEntidades = TiposEntidadesEnum.Alvenaria;
+                    imagemBanco.IdEntidade = alvenaria.Id ?? 0;
+                    imagemBanco.FileName = newFileName;
+
+                    _context.Imagens.Add(imagemBanco);
+                }
+
+            }
+
+            try
                 {
                     _context.Update(alvenaria);
                     await _context.SaveChangesAsync();
@@ -131,7 +170,7 @@ namespace ObraFacilApp.Controllers
                     }
                 }
                 return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
-            }
+           
             return View(alvenaria);
         }
 

@@ -218,23 +218,21 @@
                 </div>
                 <br />
 
-                <div class="image-container">
-                    @foreach (var item in Model.Imagens)
-                    {
-                        <div style="display:block; text-align:center;">
-                            <img src=@("/imagens/UploadFundacao/" + item.FileName) class="card-img-top" alt="...">
-                            <div>
-                                <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
-                            </div>
-                        </div>
-                    }
-                </div>
-
                 <div class="form-group" style="margin-top: 15px">
                     <input asp-for="UploadFundacao" type="file" name="UploadFundacao" value="UploadFundacao" multiple />
 
                 </div>
             </div>
+           @* <div class="image-container">
+                @foreach (var item in Model.Imagens) {
+                    <div style="display:block; text-align:center;">
+                        <img src=@("/imagens/UploadFundacao/" + item.FileName) class="card-img-top" alt="...">
+                        <div>
+                            <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
+                        </div>
+                    </div>
+                }
+            </div>*@
             <br />
             <div class="progress-bar">
                 <div class="progress text-center" style="text-align:center">
