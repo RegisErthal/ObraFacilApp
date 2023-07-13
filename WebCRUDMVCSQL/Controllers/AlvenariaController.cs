@@ -43,6 +43,9 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == alvenaria.Id && m.TiposEntidades == TiposEntidadesEnum.Alvenaria).ToList();
+            alvenaria.Imagens = imagens;
+
             return View(alvenaria);
         }
 
@@ -52,7 +55,7 @@ namespace ObraFacilApp.Controllers
             var AlvenariaExistente = _context.Alvenaria.FirstOrDefault(m => m.ProjetoId == id);
             if (AlvenariaExistente == null)
             {
-                ViewBag.Id = id;
+                ViewBag.ProjetoId = id;
                 return View();
             }
             else
