@@ -50,6 +50,9 @@ namespace ObraFacilApp.Models
         public bool DataConclusaoHidraulicaOK { get; set; }
         public ProjetoModel? Projeto { get; set; }
         [NotMapped]
+        public List<IFormFile>? UploadHidraulica { get; set; }
+
+        [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
 
     }

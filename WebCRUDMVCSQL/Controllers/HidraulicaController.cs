@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Models;
+using ObraFacilApp.Models.Enum;
 
 namespace ObraFacilApp.Controllers
 {
@@ -41,6 +42,9 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == hidraulica.Id && m.TiposEntidades == TiposEntidadesEnum.Hidraulica).ToList();
+            hidraulica.Imagens = imagens;
 
             return View(hidraulica);
         }
@@ -97,6 +101,10 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == hidraulica.Id && m.TiposEntidades == TiposEntidadesEnum.Hidraulica).ToList();
+            hidraulica.Imagens = imagens;
+
             return View(hidraulica);
         }
 
@@ -114,6 +122,48 @@ namespace ObraFacilApp.Controllers
 
             if (ModelState.IsValid)
             {
+
+                if (hidraulica.UploadHidraulica != null && hidraulica.UploadHidraulica.Count > 0)
+                {
+                    foreach (var file in hidraulica.UploadHidraulica)
+                    {
+
+                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                        Guid guid = Guid.NewGuid();
+
+
+                        var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+
+
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadHidraulica");
+
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                        }
+
+
+                        var filePath = Path.Combine(folderPath, newFileName);
+
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        var imagemBanco = new ImagensModel();
+                        imagemBanco.FilePath = filePath;
+                        imagemBanco.TiposEntidades = TiposEntidadesEnum.Hidraulica;
+                        imagemBanco.IdEntidade = hidraulica.Id ?? 0;
+                        imagemBanco.FileName = newFileName;
+
+                        _context.Imagens.Add(imagemBanco);
+                    }
+
+                }
+
                 try
                 {
                     _context.Update(hidraulica);
