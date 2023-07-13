@@ -107,7 +107,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, AlvenariaModel alvenaria)
+        public async Task<IActionResult> Edit(int id,[Bind("Id,ProjetoId,MetrosDeParede,QtdBlocos,AlturaBloco,ComprimentoBlocos,QtdPilares,PrevisaoCusto,DataInicioAlvenaria,DataConclusaoAlvenaria,Imagens,Projeto,UploadAlvenaria")] AlvenariaModel alvenaria)
         {
 
             if (id == 0)
