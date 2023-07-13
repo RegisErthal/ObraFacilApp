@@ -223,16 +223,17 @@
 
                 </div>
             </div>
-           @* <div class="image-container">
-                @foreach (var item in Model.Imagens) {
-                    <div style="display:block; text-align:center;">
-                        <img src=@("/imagens/UploadFundacao/" + item.FileName) class="card-img-top" alt="...">
+            <div style="display: flex; margin-top: 20px; margin-bottom: 10px">
+                @foreach (var item in Model.Imagens)
+                {
+                    <div style="display:block; text-align:center; margin: 2px;">
+                        <img src="../../imagens/UploadFundacao/@(item.FileName)" class="card-img-top" style="width: 300px" alt="...">
                         <div>
                             <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
                         </div>
                     </div>
                 }
-            </div>*@
+            </div>
             <br />
             <div class="progress-bar">
                 <div class="progress text-center" style="text-align:center">
