@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form enctype="multipart/form-data" asp-controller="Projetos" asp-action="Edit" method="post">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group" style="margin-top: 5px">
@@ -52,7 +52,20 @@
             </div>
 
             <div class="form-group" style="margin-top: 15px">
-                <input type="file" name="uploadProjeto" />
+                <input asp-for="UploadProjetos" type="file" name="UploadProjetos" value="UploadProjetos" multiple />
+
+            </div>
+
+            <div style="display: flex; margin-top: 20px; margin-bottom: 10px">
+                @foreach (var item in Model.Imagens)
+                {
+                    <div style="display:block; text-align:center; margin: 2px;">
+                        <img src="../../imagens/UploadProjetos/@(item.FileName)" class="card-img-top" style="width: 300px" alt="...">
+                        <div>
+                            <a asp-action="Delete" asp-controller="Imagens" asp-route-id="@item.Id"> <i class="fa fa-trash" style=" color:gray"></i></a>
+                        </div>
+                    </div>
+                }
             </div>
 
             <div class="form-group" style="margin-top: 15px">

@@ -6,6 +6,14 @@
 <div style="background-color: #FFF; border-radius: 4px; padding: 15px;">
 
     <div class="row">
+        <div style="margin-top: 20px; margin-bottom: 10px">
+            @foreach (var item in Model.Imagens)
+            {
+                <div style="float:left; margin: 2px;">
+                    <img src="../../imagens/UploadProjetos/@(item.FileName)" class="card-img-top" style="width: 300px" alt="...">
+                </div>
+            }
+        </div>
         <table class="table">
             <tbody>
                 <tr>
@@ -47,6 +55,6 @@
     </p>
 
     <div>
-        <a asp-action="Editar" asp-route-id="@Model?.Id">Edit</a> |
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
         <a asp-action="Index">Voltar</a>
     </div>

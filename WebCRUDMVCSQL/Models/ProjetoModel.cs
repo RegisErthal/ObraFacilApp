@@ -43,6 +43,9 @@ namespace ObraFacilApp.Models
         public int? UsuarioId { get; set; }
 
         [NotMapped]
+        public List<IFormFile>? UploadProjetos { get; set; }
+
+        [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
 
         public virtual List<FundacaoModel>? Fundacaos { get; set; }

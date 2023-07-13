@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using NuGet.Protocol.Plugins;
 using ObraFacilApp.Models;
+using ObraFacilApp.Models.Enum;
 using System.Web;
 
 namespace ObraFacilApp.Controllers
@@ -62,6 +63,9 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == projeto.Id && m.TiposEntidades == TiposEntidadesEnum.Projeto).ToList();
+            projeto.Imagens = imagens;
 
             return View(projeto);
         }
@@ -122,6 +126,10 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == projeto.Id && m.TiposEntidades == TiposEntidadesEnum.Projeto).ToList();
+            projeto.Imagens = imagens;
+
             return View(projeto);
         }
 
@@ -130,7 +138,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, IFormFile postedFile, [Bind("Id,NomeProjeto,UsuarioId,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] ProjetoModel projeto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeProjeto,UsuarioId,EmailResponsavel,CustoMetro,DataInicio,DataConclusao,UploadProjetos")] ProjetoModel projeto)
         {
             var usuarios = _context.Login.Select(c => new SelectListItem()
             { Text = c.UserName, Value = c.Id.ToString() });
@@ -142,32 +150,50 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
-            if (postedFile == null || postedFile.Length == 0)
-                return BadRequest("No file selected");
-
-            var fileName = Path.GetFileName(postedFile.FileName);
-
-
-            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Imagens", "UploadProjeto");
-
-
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-
-            var filePath = Path.Combine(folderPath, fileName);
-
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await postedFile.CopyToAsync(stream);
-            }
-
-
-
             if (ModelState.IsValid)
             {
+
+                if (projeto.UploadProjetos != null && projeto.UploadProjetos.Count > 0)
+                {
+                    foreach (var file in projeto.UploadProjetos)
+                    {
+
+                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                        Guid guid = Guid.NewGuid();
+
+
+                        var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+
+
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadProjetos");
+
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                        }
+
+
+                        var filePath = Path.Combine(folderPath, newFileName);
+
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        var imagemBanco = new ImagensModel();
+                        imagemBanco.FilePath = filePath;
+                        imagemBanco.TiposEntidades = TiposEntidadesEnum.Projeto;
+                        imagemBanco.IdEntidade = projeto.Id;
+                        imagemBanco.FileName = newFileName;
+
+                        _context.Imagens.Add(imagemBanco);
+                    }
+
+                }
+
                 try
                 {
                     _context.Update(projeto);
@@ -184,7 +210,7 @@ namespace ObraFacilApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Projetos/Details/" + projeto.Id);
             }
             return View(projeto);
         }
