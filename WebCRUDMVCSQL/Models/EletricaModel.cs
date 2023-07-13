@@ -56,6 +56,9 @@ namespace ObraFacilApp.Models
         public ProjetoModel? Projeto { get; set; }
 
         [NotMapped]
+        public List<IFormFile>? UploadEletrica { get; set; }
+
+        [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
     }
 }

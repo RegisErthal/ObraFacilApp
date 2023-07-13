@@ -33,6 +33,15 @@
     <h4>Elétrica</h4>
     <hr />
     <div class="row">
+        <div style="margin-top: 20px; margin-bottom: 10px">
+            @foreach (var item in Model.Imagens)
+            {
+                <div style="float:left; margin: 2px;">
+                    <img src="../../imagens/UploadEletrica/@(item.FileName)" class="card-img-top" style="width: 300px" alt="...">
+                </div>
+            }
+        </div>
+
         <table class="table">
             <tbody>
                 <tr>

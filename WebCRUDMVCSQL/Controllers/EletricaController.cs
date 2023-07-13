@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
+using ObraFacilApp.Models.Enum;
 
 namespace ObraFacilApp.Controllers
 {
@@ -41,6 +42,9 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == eletrica.Id && m.TiposEntidades == TiposEntidadesEnum.Eletrica).ToList();
+            eletrica.Imagens = imagens;
 
             return View(eletrica);
         }
@@ -96,6 +100,10 @@ namespace ObraFacilApp.Controllers
             {
                 return NotFound();
             }
+
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == EletricaExistente.Id && m.TiposEntidades == TiposEntidadesEnum.Eletrica).ToList();
+            EletricaExistente.Imagens = imagens;
+
             return View(EletricaExistente);
         }
 
@@ -104,7 +112,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, EletricaModel eletrica) 
+        public async Task<IActionResult> Edit(int id, EletricaModel eletrica)
 
         {
             if (id == 0)
@@ -114,6 +122,48 @@ namespace ObraFacilApp.Controllers
 
             if (ModelState.IsValid)
             {
+
+                if (eletrica.UploadEletrica != null && eletrica.UploadEletrica.Count > 0)
+                {
+                    foreach (var file in eletrica.UploadEletrica)
+                    {
+
+                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                        Guid guid = Guid.NewGuid();
+
+
+                        var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+
+
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadEletrica");
+
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                        }
+
+
+                        var filePath = Path.Combine(folderPath, newFileName);
+
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        var imagemBanco = new ImagensModel();
+                        imagemBanco.FilePath = filePath;
+                        imagemBanco.TiposEntidades = TiposEntidadesEnum.Eletrica;
+                        imagemBanco.IdEntidade = eletrica.Id ?? 0;
+                        imagemBanco.FileName = newFileName;
+
+                        _context.Imagens.Add(imagemBanco);
+                    }
+
+                }
+
                 try
                 {
                     _context.Update(eletrica);

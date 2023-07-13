@@ -41,10 +41,10 @@
         <input type="hidden" asp-for="AlturaPedra" />
 
 
-        <div style="display: flex; margin-bottom: 10px">
+        <div style="margin-bottom: 10px">
             @foreach (var item in Model.Imagens)
             {
-                <div style="display:block; text-align:center; margin: 2px;">
+                <div style="float:left; margin: 2px;">
                     <img src="../../imagens/UploadFundacao/@(item.FileName)" class="card-img-top" style="width: 300px" alt="...">
                 </div>
             }

@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
+using ObraFacilApp.Models.Enum;
 
 namespace ObraFacilApp.Controllers
 {
@@ -23,9 +24,9 @@ namespace ObraFacilApp.Controllers
         // GET: Cobertura
         public async Task<IActionResult> Index()
         {
-              return _context.Cobertura != null ? 
-                          View(await _context.Cobertura.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Cobertura'  is null.");
+            return _context.Cobertura != null ?
+                        View(await _context.Cobertura.ToListAsync()) :
+                        Problem("Entity set 'Contexto.Cobertura'  is null.");
         }
 
         // GET: Cobertura/Details/5
@@ -43,13 +44,16 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == cobertura.Id && m.TiposEntidades == TiposEntidadesEnum.Cobertura).ToList();
+            cobertura.Imagens = imagens;
+
             return View(cobertura);
         }
 
         // GET: Cobertura/Create
         public IActionResult Create([FromRoute] int id)
         {
-            var CoberturaExistente  = _context.Cobertura.FirstOrDefault(m => m.ProjetoId == id);
+            var CoberturaExistente = _context.Cobertura.FirstOrDefault(m => m.ProjetoId == id);
             if (CoberturaExistente == null)
             {
                 ViewBag.ProjetoId = id;
@@ -81,7 +85,7 @@ namespace ObraFacilApp.Controllers
                 await _context.SaveChangesAsync();
                 return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
             }
-            
+
             return View(ProjetoId);
         }
 
@@ -99,6 +103,9 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == CoberturaExistente.Id && m.TiposEntidades == TiposEntidadesEnum.Cobertura).ToList();
+            CoberturaExistente.Imagens = imagens;
+
             return View(CoberturaExistente);
         }
 
@@ -107,7 +114,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK,PrevisaoCusto")] CoberturaModel cobertura)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjetoId,TamanhoCobertura,PossueLaje,EspessuraLaje,DataInicioCobertura,DataConclusaoCobertura,TamanhoCoberturaOK,MetragemCubicaLageOk,DataInicioCoberturaOK,DataConclusaoCoberturaOK,PrevisaoCusto, UploadCobertura")] CoberturaModel cobertura)
         {
             if (id != cobertura.Id)
             {
@@ -116,6 +123,51 @@ namespace ObraFacilApp.Controllers
 
             if (ModelState.IsValid)
             {
+
+                if (cobertura.UploadCobertura != null && cobertura.UploadCobertura.Count > 0)
+                {
+                    foreach (var file in cobertura.UploadCobertura)
+                    {
+
+                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                        Guid guid = Guid.NewGuid();
+
+
+                        var newFileName = $"{fileName}_{guid}{Path.GetExtension(file.FileName)}";
+
+
+                        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imagens", "UploadCobertura");
+
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                        }
+
+
+                        var filePath = Path.Combine(folderPath, newFileName);
+
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+                        var imagemBanco = new ImagensModel();
+                        imagemBanco.FilePath = filePath;
+                        imagemBanco.TiposEntidades = TiposEntidadesEnum.Cobertura;
+                        imagemBanco.IdEntidade = cobertura.Id ?? 0;
+                        imagemBanco.FileName = newFileName;
+
+                        _context.Imagens.Add(imagemBanco);
+                    }
+
+                }
+
+
+
+
                 try
                 {
                     _context.Update(cobertura);
@@ -169,14 +221,14 @@ namespace ObraFacilApp.Controllers
             {
                 _context.Cobertura.Remove(cobertura);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CoberturaExists(int id)
         {
-          return (_context.Cobertura?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Cobertura?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
