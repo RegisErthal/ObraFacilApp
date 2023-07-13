@@ -37,6 +37,9 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var imagens = _context.Imagens.Where(m => m.IdEntidade == fundacao.Id && m.TiposEntidades == TiposEntidadesEnum.Fundacao).ToList();
+            fundacao.Imagens = imagens;
+
             return View(fundacao);
         }
 

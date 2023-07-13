@@ -13,7 +13,7 @@ namespace ObraFacilApp.Models
 
             [Column("ProjetoId")]
             [Display(Name = "ProjetoId")]
-            public int ProjetoId { get; set; }
+            public int? ProjetoId { get; set; }
             
             [Column("TamanhoCobertura")]
             [Display(Name = "Metragem² da cobertura")]

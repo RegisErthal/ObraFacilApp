@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +22,9 @@ namespace ObraFacilApp.Controllers
         // GET: ImagensModel
         public async Task<IActionResult> Index()
         {
-              return _context.Imagens != null ? 
-                          View(await _context.Imagens.ToListAsync()) :
-                          Problem("Entity set 'ContextoModel.Imagens'  is null.");
+            return _context.Imagens != null ?
+                        View(await _context.Imagens.ToListAsync()) :
+                        Problem("Entity set 'ContextoModel.Imagens'  is null.");
         }
 
         // GET: ImagensModel/Details/5
@@ -144,19 +145,49 @@ namespace ObraFacilApp.Controllers
             {
                 return Problem("Entity set 'ContextoModel.Imagens'  is null.");
             }
+
             var imagensModel = await _context.Imagens.FindAsync(id);
             if (imagensModel != null)
             {
                 _context.Imagens.Remove(imagensModel);
             }
-            
+
             await _context.SaveChangesAsync();
-            return Redirect("/Etapas");
+
+            var projetoId = 0;
+
+            if (imagensModel.TiposEntidades == Models.Enum.TiposEntidadesEnum.Fundacao)
+            {
+                var etapa = await _context.Fundacao.FindAsync(imagensModel.IdEntidade);
+                projetoId = etapa.ProjetoId ?? 0;
+            }
+            else if (imagensModel.TiposEntidades == Models.Enum.TiposEntidadesEnum.Alvenaria)
+            {
+                var etapa = await _context.Alvenaria.FindAsync(imagensModel.IdEntidade);
+                projetoId = etapa.ProjetoId ?? 0;
+            }
+            else if (imagensModel.TiposEntidades == Models.Enum.TiposEntidadesEnum.Cobertura)
+            {
+                var etapa = await _context.Cobertura.FindAsync(imagensModel.IdEntidade);
+                projetoId = etapa.ProjetoId ?? 0;
+            }
+            else if (imagensModel.TiposEntidades == Models.Enum.TiposEntidadesEnum.Eletrica)
+            {
+                var etapa = await _context.Eletrica.FindAsync(imagensModel.IdEntidade);
+                projetoId = etapa.ProjetoId ?? 0;
+            }
+            else if (imagensModel.TiposEntidades == Models.Enum.TiposEntidadesEnum.Hidraulica)
+            {
+                var etapa = await _context.Hidraulica.FindAsync(imagensModel.IdEntidade);
+                projetoId = etapa.ProjetoId ?? 0;
+            }
+
+            return Redirect("/Etapas/index/" + projetoId);
         }
 
         private bool ImagensModelExists(int id)
         {
-          return (_context.Imagens?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Imagens?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
