@@ -81,10 +81,16 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            decimal percFundacaoOk = Utils.QtdOkFundacao(fundacao);
+            decimal percAlvenariaOk = Utils.QtdOkAlvenaria(alvenaria);
+            decimal percCoberturaOk = Utils.QtdOkCobertura(cobertura);
+            decimal percEletricaOk = Utils.QtdOkEletrica(eletrica);
+            decimal percHidraulicaOk = Utils.QtdOkHidraulica(hidraulica);
+
             List<CronogramaViewModel> cronogramaViewModels = new List<CronogramaViewModel>();
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Fundacao",
-                PercentEtapa = "",
+                PercentEtapa = percFundacaoOk.ToString("0") + "%",
                 DataInicio = fundacao.DataInicioFundacao,
                 DataFim = fundacao.DataConclusaoFundacao,
                 DataInicioOk = fundacao.DataInicioFundacaoOK,
@@ -93,7 +99,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Alvenaria",
-                PercentEtapa = "",
+                PercentEtapa = percAlvenariaOk.ToString("0") + "%",
                 DataInicio = alvenaria.DataInicioAlvenaria,
                 DataFim = alvenaria.DataConclusaoAlvenaria,
                 DataInicioOk = alvenaria.DataInicioAlvenariaOk,
@@ -102,7 +108,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Cobertura",
-                PercentEtapa = "",
+                PercentEtapa = percCoberturaOk.ToString("0") + "%",
                 DataInicio = cobertura.DataInicioCobertura,
                 DataFim = cobertura.DataConclusaoCobertura,
                 DataInicioOk = cobertura.DataInicioCoberturaOK,
@@ -111,7 +117,7 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Eletrica",
-                PercentEtapa = "",
+                PercentEtapa = percEletricaOk.ToString("0") + "%",
                 DataInicio = eletrica.DataInicioEletrica,
                 DataFim = eletrica.DataConclusaoEletrica,
                 DataInicioOk = eletrica.DataInicioEletricaOk,
@@ -120,12 +126,14 @@ namespace ObraFacilApp.Controllers
 
             cronogramaViewModels.Add(new CronogramaViewModel {
                 NomeEtapa = "Hidraulica",
-                PercentEtapa = "",
+                PercentEtapa = percHidraulicaOk.ToString("0") + "%",
                 DataInicio = hidraulica.DataInicioHidraulica,
                 DataFim = hidraulica.DataConclusaoHidraulica,
                 DataInicioOk = hidraulica.DataInicioHidraulicaOK,
                 DataFimOk = hidraulica.DataConclusaoHidraulicaOK
             });
+
+            ViewBag.ProjetoId = id;
 
             return View(cronogramaViewModels);
 

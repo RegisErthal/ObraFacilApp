@@ -31,11 +31,11 @@ namespace ObraFacilApp.Controllers
             var eletrica = _context.Eletrica?.FirstOrDefault(m => m.ProjetoId == id);
             var hidraulica = _context.Hidraulica?.FirstOrDefault(m => m.ProjetoId == id);
 
-            decimal percFundacaoOk = QtdOkFundacao(fundacao);
-            decimal percAlvenariaOk = QtdOkAlvenaria(alvenaria);
-            decimal percCoberturaOk = QtdOkCobertura(cobertura);
-            decimal percEletricaOk = QtdOkEletrica(eletrica);
-            decimal percHidraulicaOk = QtdOkHidraulica(hidraulica);
+            decimal percFundacaoOk = Utils.QtdOkFundacao(fundacao);
+            decimal percAlvenariaOk = Utils.QtdOkAlvenaria(alvenaria);
+            decimal percCoberturaOk = Utils.QtdOkCobertura(cobertura);
+            decimal percEletricaOk = Utils.QtdOkEletrica(eletrica);
+            decimal percHidraulicaOk = Utils.QtdOkHidraulica(hidraulica);
 
             var model = new EtapasModel();
             model.Id = id;
@@ -58,131 +58,6 @@ namespace ObraFacilApp.Controllers
             return View(model);
         }
 
-        private static decimal QtdOkFundacao(FundacaoModel? fundacaoExistente)
-        {
-            var contFundacaoOk = 0;
-
-            if (fundacaoExistente?.AlicerceOK ?? false)
-                contFundacaoOk++;
-
-            if (fundacaoExistente?.VigaBaldrameOK ?? false)
-                contFundacaoOk++;
-
-            if (fundacaoExistente?.IpermeabilizacaoVigaBaldrameOK ?? false)
-                contFundacaoOk++;
-
-            if (fundacaoExistente?.QtdMicroOK ?? false)
-                contFundacaoOk++;
-
-            if (fundacaoExistente?.DataInicioFundacaoOK ?? false)
-                contFundacaoOk++;
-
-            if (fundacaoExistente?.DataConclusaoFundacaoOK ?? false)
-                contFundacaoOk++;
-
-            return (contFundacaoOk * 100) / 6;
-        }
-
-        private static decimal QtdOkAlvenaria(AlvenariaModel? alvenariaModel)
-        {
-            var contAlvenariaOk = 0;
-
-            if (alvenariaModel?.MetrosDeParedeOK ?? false)
-                contAlvenariaOk++;
-
-            if (alvenariaModel?.QtdBlocosOk ?? false)
-                contAlvenariaOk++;
-
-            if (alvenariaModel?.QtdPilaresOk ?? false)
-                contAlvenariaOk++;
-
-            if (alvenariaModel?.DataInicioAlvenariaOk ?? false)
-                contAlvenariaOk++;
-
-            if (alvenariaModel?.DataConclusaoAlvenariaOk ?? false)
-                contAlvenariaOk++;
-
-
-            return (contAlvenariaOk * 100) / 5;
-        }
-
-        private static decimal QtdOkCobertura(CoberturaModel? cobertura)
-        {
-            var ret = 0;
-
-            if (cobertura?.TamanhoCoberturaOK ?? false)
-                ret++;
-
-            //if (cobertura?.MetragemCubicaLageOk ?? false)
-            //    ret++;
-
-            //if (cobertura?.EspeEspessuraLajeOK ?? false)
-            //    ret++;
-
-            if (cobertura?.DataInicioCoberturaOK ?? false)
-                ret++;
-
-            if (cobertura?.DataConclusaoCoberturaOK ?? false)
-                ret++;
-
-
-            return (ret * 100) / 3;
-        }
-
-        private static decimal QtdOkEletrica(EletricaModel? eletrica)
-        {
-            var ret = 0;
-
-            //if (eletrica?.LigacaoMonofasicaOk ?? false)
-            //    ret++;
-
-            //if (eletrica?.LigacaoTrifasicaOk ?? false)
-            //    ret++;
-
-            if (eletrica?.QtdDisjuntoresOk ?? false)
-                ret++;
-
-            if (eletrica?.QtdTomadasOk ?? false)
-                ret++;
-
-            if (eletrica?.QtdLampadasOk ?? false)
-                ret++;
-
-            if (eletrica?.DataInicioEletricaOk ?? false)
-                ret++;
-
-            if (eletrica?.DataConclusaoEletricaOk ?? false)
-                ret++;
-
-
-            return (ret * 100) / 5;
-        }
-
-        private static decimal QtdOkHidraulica(HidraulicaModel? hidraulica)
-        {
-            var ret = 0;
-
-            if (hidraulica?.QtdTorneirasOK ?? false)
-                ret++;
-
-            if (hidraulica?.QtdRalosOK ?? false)
-                ret++;
-
-            if (hidraulica?.QtdRegistrosOk ?? false)
-                ret++;
-
-            if (hidraulica?.DataInicioHidraulicaOK ?? false)
-                ret++;
-
-            if (hidraulica?.DataConclusaoHidraulicaOK ?? false)
-                ret++;
-
-            if (hidraulica?.QtdCaixaGorduraOk ?? false)
-                ret++;
-
-
-            return (ret * 100) / 6;
-        }
 
     }
 }
