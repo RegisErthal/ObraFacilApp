@@ -57,7 +57,7 @@ namespace ObraFacilApp.Models
         public bool LarguraVigaBaldrameOK { get; set; }
 
         [Column("VigaBaldrameOK")]
-        [Display(Name = "Viga baldrame conclusida ")]
+        [Display(Name = "Viga baldrame concluida ")]
         public bool VigaBaldrameOK { get; set; }
 
         [Column("AlicerceOK")]
