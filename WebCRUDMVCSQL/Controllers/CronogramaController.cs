@@ -150,7 +150,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DataInicioFundacao,DataInicioFundacaoOk,DataConclusaoFundacao,DataConclusaoFundacaoOk,DataConclusaoAlvenaria,DataConclusaoAlvenariaOk,DataInicioCobertura,DataInicioCoberturaOk,DataConclusaoCobertura,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,DataInicioHidraulica,DataInicioHidraulicaOk,DataConclusaoHidraulica,DataConclusaoHidraulicaOk")] CronogramaModel cronograma)
+        public async Task<IActionResult> Create(CronogramaModel cronograma)
         {
             if (ModelState.IsValid)
             {
@@ -182,7 +182,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DataInicioFundacao,DataInicioFundacaoOk,DataConclusaoFundacao,DataConclusaoFundacaoOk,DataConclusaoAlvenaria,DataConclusaoAlvenariaOk,DataInicioCobertura,DataInicioCoberturaOk,DataConclusaoCobertura,DataInicioEletrica,DataInicioEletricaOk,DataConclusaoEletrica,DataConclusaoEletricaOk,DataInicioHidraulica,DataInicioHidraulicaOk,DataConclusaoHidraulica,DataConclusaoHidraulicaOk")] CronogramaModel cronograma)
+        public async Task<IActionResult> Edit(int id, CronogramaModel cronograma)
         {
             if (id != cronograma.Id)
             {

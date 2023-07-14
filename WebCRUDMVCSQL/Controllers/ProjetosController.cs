@@ -85,7 +85,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeProjeto,UsuarioId,EmailResponsavel,CustoMetro,DataInicio,DataConclusao")] ProjetoModel projeto)
+        public async Task<IActionResult> Create(ProjetoModel projeto)
         {
             var errors = ModelState.Values.SelectMany(v => v.Errors);
             //projeto.DataConclusao=DateTime.Now
@@ -138,7 +138,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeProjeto,UsuarioId,EmailResponsavel,CustoMetro,DataInicio,DataConclusao,UploadProjetos")] ProjetoModel projeto)
+        public async Task<IActionResult> Edit(int id, ProjetoModel projeto)
         {
             var usuarios = _context.Login.Select(c => new SelectListItem()
             { Text = c.UserName, Value = c.Id.ToString() });

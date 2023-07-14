@@ -56,7 +56,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdEntidade,TiposEntidades,FileName,FilePath")] ImagensModel imagensModel)
+        public async Task<IActionResult> Create(ImagensModel imagensModel)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace ObraFacilApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdEntidade,TiposEntidades,FileName,FilePath")] ImagensModel imagensModel)
+        public async Task<IActionResult> Edit(int id, ImagensModel imagensModel)
         {
             if (id != imagensModel.Id)
             {
