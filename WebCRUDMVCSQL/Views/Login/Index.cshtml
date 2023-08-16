@@ -28,9 +28,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Senha)
-            </td>
+                    <td>
+                        @foreach (char c in item.Senha) {
+                            @Html.Raw("&#8226;") <!-- Exibe um ponto (•) para cada caractere da senha -->
+                        }
+                    </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.isAdmin)
             </td>
