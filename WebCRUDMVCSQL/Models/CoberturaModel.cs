@@ -20,14 +20,6 @@ namespace ObraFacilApp.Models
         public double TamanhoCobertura { get; set; }
         public bool TamanhoCoberturaOK { get; set; }
 
-        [Column("LarguraTelha")]
-        [Display(Name = "Largura da telha")]
-        public double LarguraTelha { get; set; }
-
-        [Column("AlturaTelha")]
-        [Display(Name = "Altura da telha")]
-        public double AlturaTelha { get; set; }
-       
         [Column("PossueLaje")]
         [Display(Name = "Possui laje")]
         public bool PossueLaje { get; set; }

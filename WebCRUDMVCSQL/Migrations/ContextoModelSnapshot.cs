@@ -98,10 +98,6 @@ namespace ObraFacilApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<double>("AlturaTelha")
-                        .HasColumnType("float")
-                        .HasColumnName("AlturaTelha");
-
                     b.Property<DateTime>("DataConclusaoCobertura")
                         .HasColumnType("datetime2")
                         .HasColumnName("DataConclusaoCobertura");
@@ -123,10 +119,6 @@ namespace ObraFacilApp.Migrations
                     b.Property<bool>("EspessuraLajeOK")
                         .HasColumnType("bit");
 
-                    b.Property<double>("LarguraTelha")
-                        .HasColumnType("float")
-                        .HasColumnName("LarguraTelha");
-
                     b.Property<double>("MetragemCubicaLage")
                         .HasColumnType("float")
                         .HasColumnName("MetragemCubicaLage");
@@ -142,7 +134,7 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("float")
                         .HasColumnName("PrevisaoCusto");
 
-                    b.Property<int?>("ProjetoId")
+                    b.Property<int>("ProjetoId")
                         .HasColumnType("int")
                         .HasColumnName("ProjetoId");
 
@@ -610,7 +602,9 @@ namespace ObraFacilApp.Migrations
                 {
                     b.HasOne("ObraFacilApp.Models.ProjetoModel", "Projeto")
                         .WithMany("Coberturas")
-                        .HasForeignKey("ProjetoId");
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Projeto");
                 });
