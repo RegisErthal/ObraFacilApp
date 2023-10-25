@@ -11,8 +11,8 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false)
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 var Configuration = builder.Configuration;
 

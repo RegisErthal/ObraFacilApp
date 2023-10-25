@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ObraFacilApp.Map;
-using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Models
 {
@@ -22,6 +21,7 @@ namespace ObraFacilApp.Models
         public DbSet<ObraFacilApp.Models.FundacaoModel>? Fundacao { get; set; }
 
         public DbSet<ObraFacilApp.Models.EletricaModel>? Eletrica { get; set; }
+        public DbSet<ComentariosModel> Comentarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder )
         {

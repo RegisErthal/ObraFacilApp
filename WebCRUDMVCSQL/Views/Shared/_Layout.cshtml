@@ -1,4 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var httpContextAccessor = Context.RequestServices.GetService(typeof(IHttpContextAccessor)) as IHttpContextAccessor;
+    var session = httpContextAccessor?.HttpContext?.Session;
+    string userName = "";
+
+    if (session != null && session.TryGetValue("ObraFacilUsuario", out byte[] userData))
+    {
+        string userJson = System.Text.Encoding.UTF8.GetString(userData);
+        var user = Newtonsoft.Json.JsonConvert.DeserializeObject<LogarModel>(userJson);
+        userName = user?.UserName;
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -14,37 +27,37 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#255f9c">
             <div class="container-fluid">
-    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">
-        <img src="~/imagens/logo_obra_facil.png" style="width:30px; height:30px;"/>
-    </a>
-    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color:white" > &nbsp ObraFacil</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-        <ul class="navbar-nav flex-grow-1; ml-auto" style="color:white">
-            <li class="nav-item">
-                <a class="nav-link text-light" asp-area="" asp-controller="Projetos" asp-action="Index">Projetos</a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link text-light" asp-area="" asp-controller="Sobre" asp-action="Index">Sobre</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" asp-area="" asp-controller="MeuContato" asp-action="Index">Contato</a>
-            </li>
-        </ul>
-    </div>  
-    <div>
-    <a>UserName</a>
-    </div>
-    <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Index">
-                <ul class="nav navbar-nav collapse navbar-collapse bs-navbar-collapse navbar-right logout" style="justify-content:end">
-                    <img src="~/imagens/usuário.png" style="width:30px; height:30px;" />
-                </ul>
-            </a>
-</div>
+                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/imagens/logo_obra_facil.png" style="width:30px; height:30px;" />
+                </a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color:white"> &nbsp ObraFacil</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1; ml-auto" style="color:white">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Projetos" asp-action="Index">Projetos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Sobre" asp-action="Index">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="MeuContato" asp-action="Index">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <a>@userName</a>
+                </div>
+                <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Index">
+                    <ul class="nav navbar-nav collapse navbar-collapse bs-navbar-collapse navbar-right logout" style="justify-content:end">
+                        <img src="~/imagens/usuário.png" style="width:30px; height:30px;" />
+                    </ul>
+                </a>
+            </div>
 
         </nav>
     </header>
@@ -55,15 +68,15 @@
     </div>
 
     @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ObraFacilApp - 
-        </div>
+    <div class="container">
+    &copy; 2023 - ObraFacilApp -
+    </div>
     </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/all.min.js" ></script>
+    <script src="~/js/all.min.js"></script>
     <script src="~/js/fontawesome.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

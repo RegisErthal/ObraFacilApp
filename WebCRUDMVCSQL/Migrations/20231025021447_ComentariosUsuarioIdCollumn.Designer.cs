@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ObraFacilApp.Models;
 
@@ -11,9 +12,11 @@ using ObraFacilApp.Models;
 namespace ObraFacilApp.Migrations
 {
     [DbContext(typeof(ContextoModel))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231025021447_ComentariosUsuarioIdCollumn")]
+    partial class ComentariosUsuarioIdCollumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,7 +137,7 @@ namespace ObraFacilApp.Migrations
                         .HasColumnType("float")
                         .HasColumnName("PrevisaoCusto");
 
-                    b.Property<int>("ProjetoId")
+                    b.Property<int?>("ProjetoId")
                         .HasColumnType("int")
                         .HasColumnName("ProjetoId");
 
@@ -631,9 +634,7 @@ namespace ObraFacilApp.Migrations
                 {
                     b.HasOne("ObraFacilApp.Models.ProjetoModel", "Projeto")
                         .WithMany("Coberturas")
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjetoId");
 
                     b.Navigation("Projeto");
                 });

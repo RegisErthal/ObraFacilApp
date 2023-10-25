@@ -147,7 +147,37 @@
                 <span class="progress-percentage w-100">0%</span>
             </div>
         </div>
-
+        <div style="margin-top: 20px; border-top: 3px solid #000; padding-top: 5px;">
+            Comentários:
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Comentário</th>
+                        <th>Usuário</th>
+                        <th>Data/Hora Inclusão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Comentarios)
+                    {
+                        <tr>
+                            <td>@item.Texto</td>
+                            <td>@item.UserName</td>
+                            <td>@item.DataCriacao</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-group">
+                Deixe seu comentário:
+                <form asp-controller="Fundacao" asp-action="SalvarComentario" method="post">
+                    <textarea id="comentario" name="comentario"></textarea><br />
+                    <input type="hidden" id="entidadeId" name="entidadeId" value="@Model.Id">
+                    <button type="submit">Comentar</button>
+                </form>
+            </div>
+            <br />
+        </div>
     </div>
 
 </div>

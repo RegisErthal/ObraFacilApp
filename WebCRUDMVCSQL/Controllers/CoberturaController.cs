@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ObraFacilApp.Migrations;
 using ObraFacilApp.Models;
 using ObraFacilApp.Models.Enum;
@@ -46,6 +47,17 @@ namespace ObraFacilApp.Controllers
 
             var imagens = _context.Imagens.Where(m => m.IdEntidade == cobertura.Id && m.TiposEntidades == TiposEntidadesEnum.Cobertura).ToList();
             cobertura.Imagens = imagens;
+
+            var comentarios = _context.Comentarios.Where(m => m.IdEntidade == cobertura.Id && m.TiposEntidades == TiposEntidadesEnum.Cobertura).ToList();
+            cobertura.Comentarios = comentarios;
+
+            var usuarios = _context.Login.ToList();
+
+            foreach (var comentario in cobertura.Comentarios)
+            {
+                var usuario = usuarios.Where(x => x.Id == comentario.UsuarioId).FirstOrDefault();
+                comentario.UserName = usuario.UserName;
+            }
 
             return View(cobertura);
         }
@@ -224,6 +236,34 @@ namespace ObraFacilApp.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarComentario(string entidadeId, string comentario)
+        {
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+            var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+
+            ViewBag.Comentario = comentario;
+            var comment = new ComentariosModel()
+            {
+                TiposEntidades = TiposEntidadesEnum.Cobertura,
+                Texto = comentario,
+                IdEntidade = Convert.ToInt32(entidadeId),
+                UsuarioId = usuario.Id,
+                DataCriacao = DateTime.Now
+            };
+
+            _context.Entry(comment).State = EntityState.Added;
+            _context.Add(comment);
+            await _context.SaveChangesAsync();
+
+            return Redirect("/Cobertura/Details/" + entidadeId);
         }
 
         private bool CoberturaExists(int id)
