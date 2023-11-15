@@ -62,5 +62,7 @@ namespace ObraFacilApp.Models
 
         [NotMapped]
         public List<IFormFile>? UploadAlvenaria { get; set; }
+        [NotMapped]
+        public LoginModel UsuarioLogado { get; set; }
     }
 }

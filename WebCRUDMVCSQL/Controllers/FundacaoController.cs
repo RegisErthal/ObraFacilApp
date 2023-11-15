@@ -39,6 +39,17 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
+            var usuarioLogado = JsonConvert.DeserializeObject<LoginModel>(session);
+
+            fundacao.UsuarioLogado = usuarioLogado;
+
             var imagens = _context.Imagens.Where(m => m.IdEntidade == fundacao.Id && m.TiposEntidades == TiposEntidadesEnum.Fundacao).ToList();
             fundacao.Imagens = imagens;
 
@@ -253,6 +264,18 @@ namespace ObraFacilApp.Controllers
             _context.Entry(comment).State = EntityState.Added;
             _context.Add(comment);
             await _context.SaveChangesAsync();
+
+            return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
+        }
+
+        public async Task<IActionResult> ApagarComentario(string id)
+        {
+            var comment = await _context.Comentarios.FindAsync(Convert.ToInt32(id));
+            var fundacao = await _context.Fundacao.FindAsync(comment.IdEntidade);
+
+            _context.Entry(comment).State = EntityState.Deleted;
+            _context.Remove(comment);
+            _context.SaveChanges();
 
             return Redirect("/Fundacao/Details/" + fundacao.ProjetoId);
         }

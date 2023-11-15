@@ -44,6 +44,17 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
+            var usuarioLogado = JsonConvert.DeserializeObject<LoginModel>(session);
+
+            eletrica.UsuarioLogado = usuarioLogado;
+
             var imagens = _context.Imagens.Where(m => m.IdEntidade == eletrica.Id && m.TiposEntidades == TiposEntidadesEnum.Eletrica).ToList();
             eletrica.Imagens = imagens;
 
@@ -260,6 +271,18 @@ namespace ObraFacilApp.Controllers
             _context.Entry(comment).State = EntityState.Added;
             _context.Add(comment);
             await _context.SaveChangesAsync();
+
+            return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
+        }
+
+        public async Task<IActionResult> ApagarComentario(string id)
+        {
+            var comment = await _context.Comentarios.FindAsync(Convert.ToInt32(id));
+            var eletrica = await _context.Eletrica.FindAsync(comment.IdEntidade);
+
+            _context.Entry(comment).State = EntityState.Deleted;
+            _context.Remove(comment);
+            _context.SaveChanges();
 
             return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
         }

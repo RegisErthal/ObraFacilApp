@@ -45,6 +45,17 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
+            var usuarioLogado = JsonConvert.DeserializeObject<LoginModel>(session);
+
+            cobertura.UsuarioLogado = usuarioLogado;
+
             var imagens = _context.Imagens.Where(m => m.IdEntidade == cobertura.Id && m.TiposEntidades == TiposEntidadesEnum.Cobertura).ToList();
             cobertura.Imagens = imagens;
 
@@ -264,6 +275,18 @@ namespace ObraFacilApp.Controllers
             _context.Entry(comment).State = EntityState.Added;
             _context.Add(comment);
             await _context.SaveChangesAsync();
+
+            return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
+        }
+
+        public async Task<IActionResult> ApagarComentario(string id)
+        {
+            var comment = await _context.Comentarios.FindAsync(Convert.ToInt32(id));
+            var cobertura = await _context.Cobertura.FindAsync(comment.IdEntidade);
+
+            _context.Entry(comment).State = EntityState.Deleted;
+            _context.Remove(comment);
+            _context.SaveChanges();
 
             return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
         }

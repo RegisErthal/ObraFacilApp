@@ -56,6 +56,8 @@ namespace ObraFacilApp.Models
         public List<ImagensModel>? Imagens { get; set; }
         [NotMapped]
         public List<ComentariosModel>? Comentarios { get; set; }
+        [NotMapped]
+        public LoginModel UsuarioLogado { get; set; }
 
     }
 }

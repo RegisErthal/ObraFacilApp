@@ -109,6 +109,7 @@
                         <th>Comentário</th>
                         <th>Usuário</th>
                         <th>Data/Hora Inclusão</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,6 +119,12 @@
                             <td>@item.Texto</td>
                             <td>@item.UserName</td>
                             <td>@item.DataCriacao</td>
+                            <td>
+                                @if(Model.UsuarioLogado.Id == item.UsuarioId)
+                                {
+                                    <a asp-controller="Alvenaria" asp-action="ApagarComentario" asp-route-id="@item.Id">Apagar</a>
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>

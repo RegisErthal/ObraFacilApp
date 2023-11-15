@@ -100,6 +100,8 @@ namespace ObraFacilApp.Models
         public  List<ComentariosModel>? Comentarios { get; set; }
 
         public ProjetoModel? Projeto { get; set; }
+        [NotMapped]
+        public LoginModel UsuarioLogado { get; set; }
         
     }
 }
