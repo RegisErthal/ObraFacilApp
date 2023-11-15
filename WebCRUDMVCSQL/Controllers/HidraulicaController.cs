@@ -243,7 +243,9 @@ namespace ObraFacilApp.Controllers
             {
                 return RedirectToAction("Index", "Logar");
             }
+
             var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+            var hidraulica = await _context.Hidraulica.FindAsync(Convert.ToInt32(entidadeId));
 
             ViewBag.Comentario = comentario;
             var comment = new ComentariosModel()
@@ -259,7 +261,7 @@ namespace ObraFacilApp.Controllers
             _context.Add(comment);
             await _context.SaveChangesAsync();
 
-            return Redirect("/Hidraulica/Details/" + entidadeId);
+            return Redirect("/Hidraulica/Details/" + hidraulica.ProjetoId);
         }
 
         private bool HidraulicaExists(int id)

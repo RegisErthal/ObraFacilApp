@@ -243,7 +243,9 @@ namespace ObraFacilApp.Controllers
             {
                 return RedirectToAction("Index", "Logar");
             }
+
             var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+            var eletrica = await _context.Eletrica.FindAsync(Convert.ToInt32(entidadeId));
 
             ViewBag.Comentario = comentario;
             var comment = new ComentariosModel()
@@ -259,7 +261,7 @@ namespace ObraFacilApp.Controllers
             _context.Add(comment);
             await _context.SaveChangesAsync();
 
-            return Redirect("/Eletrica/Details/" + entidadeId);
+            return Redirect("/Eletrica/Details/" + eletrica.ProjetoId);
         }
 
         private bool EletricaExists(int id)

@@ -247,7 +247,9 @@ namespace ObraFacilApp.Controllers
             {
                 return RedirectToAction("Index", "Logar");
             }
+
             var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+            var cobertura = await _context.Cobertura.FindAsync(Convert.ToInt32(entidadeId));
 
             ViewBag.Comentario = comentario;
             var comment = new ComentariosModel()
@@ -263,7 +265,7 @@ namespace ObraFacilApp.Controllers
             _context.Add(comment);
             await _context.SaveChangesAsync();
 
-            return Redirect("/Cobertura/Details/" + entidadeId);
+            return Redirect("/Cobertura/Details/" + cobertura.ProjetoId);
         }
 
         private bool CoberturaExists(int id)

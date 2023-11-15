@@ -235,7 +235,9 @@ namespace ObraFacilApp.Controllers
             {
                 return RedirectToAction("Index", "Logar");
             }
+
             var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+            var alvenaria = await _context.Alvenaria.FindAsync(Convert.ToInt32(entidadeId));
 
             ViewBag.Comentario = comentario;
             var comment = new ComentariosModel()
@@ -251,7 +253,7 @@ namespace ObraFacilApp.Controllers
             _context.Add(comment);
             await _context.SaveChangesAsync();
 
-            return Redirect("/Alvenaria/Details/" + entidadeId);
+            return Redirect("/Alvenaria/Details/" + alvenaria.ProjetoId);
         }
 
         private bool AlvenariaExists(int id)
