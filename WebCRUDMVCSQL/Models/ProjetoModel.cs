@@ -15,7 +15,7 @@ namespace ObraFacilApp.Models
         [Display(Name = "Nome do Projeto")]
         public string NomeProjeto { get; set; }
         
-        [Column("Responsavel")]
+        [Column("Responsável")]
         [Display(Name = "Responsável")]
         public string? Responsavel { get; set; }
 
