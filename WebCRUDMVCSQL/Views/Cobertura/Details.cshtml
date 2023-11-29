@@ -49,6 +49,18 @@
                     <td>@Model.TamanhoCobertura</td>
                     <td>@(Model.TamanhoCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
                 </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicioCobertura)</th>
+                    <td>@Model.DataInicioCobertura.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataInicioCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayFor(model => model.DataConclusaoCobertura)</th>
+                    <td>@Model.DataConclusaoCobertura.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataConclusaoCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
+                </tr>
+
                 <tr>
                     <th>@Html.DisplayFor(model => model.PossueLaje)</th>
                     <td>@(Model.PossueLaje ? Html.Raw("Sim") : Html.Raw("Não"))</td>
@@ -64,16 +76,7 @@
                     <td>@Model.PrevisaoCusto</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.DataInicioCobertura)</th>
-                    <td>@Model.DataInicioCobertura.ToString("dd/MM/yyyy")</td>
-                    <td>@(Model.DataInicioCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
-                </tr>
-                <tr>
-                    <th>@Html.DisplayFor(model => model.DataConclusaoCobertura)</th>
-                    <td>@Model.DataConclusaoCobertura.ToString("dd/MM/yyyy")</td>
-                    <td>@(Model.DataConclusaoCoberturaOK ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
-                </tr>
+              
             </tbody>
         </table>
         <div class="progress-bar">

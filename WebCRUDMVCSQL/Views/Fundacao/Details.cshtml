@@ -54,6 +54,43 @@
             <tbody>
 
                 <tr>
+                    <th>@Html.DisplayNameFor(model => model.AlicerceOK)</th>
+                    <td>--</td>
+                    <td>@(Model.AlicerceOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.VigaBaldrameOK)</th>
+                    <td>--</td>
+                    <td>@(Model.VigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.IpermeabilizacaoVigaBaldrameOK)</th>
+                    <td>--</td>
+                    <td>@(Model.IpermeabilizacaoVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.QtdMicro)</th>
+                    <td>@Model.QtdMicro</td>
+                    <td>@(Model.QtdMicroOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataInicioFundacao)</th>
+                    <td>@Model.DataInicioFundacao.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataInicioFundacaoOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.DataConclusaoFundacao)</th>
+                    <td>@Model.DataConclusaoFundacao.ToString("dd/MM/yyyy")</td>
+                    <td>@(Model.DataConclusaoFundacaoOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
+                </tr>
+
+                <h4>Dados Fundação</h4>
+                
+
+                <tr>
                     <th>@Html.DisplayNameFor(model => model.ComprimentoAlicerce)</th>
                     <td>@Model.ComprimentoAlicerce</td>
                     <td>-</td>
@@ -65,11 +102,7 @@
                     <td>-</td>
                 </tr>
 
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.AlicerceOK)</th>
-                    <td>--</td>
-                    <td>@(Model.AlicerceOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
+                
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.QtdBlocosAlicerce)</th>
                     <td id="resultadoBlocos" style="font-weight: bold;"></td>
@@ -107,21 +140,8 @@
                     <td>@Model.MetragemCubicaCimentoVigaBaldrama</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.VigaBaldrameOK)</th>
-                    <td>--</td>
-                    <td>@(Model.VigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.IpermeabilizacaoVigaBaldrameOK)</th>
-                    <td>--</td>
-                    <td>@(Model.IpermeabilizacaoVigaBaldrameOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.QtdMicro)</th>
-                    <td>@Model.QtdMicro</td>
-                    <td>@(Model.QtdMicroOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
+               
+                
 
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
@@ -129,16 +149,6 @@
                     <td>-</td>
                 </tr>
 
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.DataInicioFundacao)</th>
-                    <td>@Model.DataInicioFundacao.ToString("dd/MM/yyyy")</td>
-                    <td>@(Model.DataInicioFundacaoOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.DataConclusaoFundacao)</th>
-                    <td>@Model.DataConclusaoFundacao.ToString("dd/MM/yyyy")</td>
-                    <td>@(Model.DataConclusaoFundacaoOK ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
             </tbody>
 
         </table>

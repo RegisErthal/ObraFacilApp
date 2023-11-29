@@ -71,12 +71,6 @@
                 </tr>
 
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
-                    <td>@Model.PrevisaoCusto</td>
-                    <td>-</td>
-                </tr>
-
-                <tr>
                     <th>@Html.DisplayNameFor(model => model.DataInicioEletrica)</th>
                     <td>@Model.DataInicioEletrica.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataInicioEletricaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
@@ -86,6 +80,14 @@
                     <td>@Model.DataConclusaoEletrica.ToString("dd/MM/yyyy")</td>
                     <td>@(Model.DataConclusaoEletricaOk ? Html.Raw("<i class='fas fa-check green '></i>") : Html.Raw("<i class='fas fa-times red '></i>"))</td>
                 </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
+                    <td>@Model.PrevisaoCusto</td>
+                    <td>-</td>
+                </tr>
+
+                
             </tbody>
         </table>
         <div class="progress-bar">

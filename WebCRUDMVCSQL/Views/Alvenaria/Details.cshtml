@@ -53,32 +53,15 @@
                 </tr>
 
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.AlturaBloco)</th>
-                    <td>@Model.AlturaBloco</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th> @Html.DisplayNameFor(model => model.ComprimentoBlocos)</th>
-                    <td>@Model.ComprimentoBlocos</td>
-                    <td>-</td>
-                </tr>
-
-                <tr>
-                    <td id ="resultadoBlocos" style="font-weight: bold;"></td>
+                    <td id="resultadoBlocos" style="font-weight: bold;"></td>
                     <td>--</td>
                     <td>@(Model.QtdBlocosOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
                 </tr>
-              
+
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.QtdPilares)</th>
                     <td>@Model.QtdPilares</td>
                     <td>@(Model.QtdPilaresOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                </tr>
-
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
-                    <td>@Model.PrevisaoCusto</td>
-                    <td>-</td>
                 </tr>
 
                 <tr>
@@ -92,8 +75,28 @@
                     <th> @Html.DisplayNameFor(model => model.DataConclusaoAlvenaria)</th>
                     <td>@Model.DataConclusaoAlvenaria.ToString("dd/MM/yyyy") </td>
                     <td>@(Model.DataConclusaoAlvenariaOk ? Html.Raw("<i class='fas fa-check green'></i>") : Html.Raw("<i class='fas fa-times red'></i>"))</td>
-                    
+
                 </tr>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.AlturaBloco)</th>
+                    <td>@Model.AlturaBloco</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.ComprimentoBlocos)</th>
+                    <td>@Model.ComprimentoBlocos</td>
+                    <td>-</td>
+                </tr>
+
+                
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.PrevisaoCusto)</th>
+                    <td>@Model.PrevisaoCusto</td>
+                    <td>-</td>
+                </tr>
+
+                
             </tbody>
         </table>
         <div class="progress-bar">
