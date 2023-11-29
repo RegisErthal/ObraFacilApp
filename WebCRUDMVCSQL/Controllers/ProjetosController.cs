@@ -42,6 +42,7 @@ namespace ObraFacilApp.Controllers
             {
                 MostraBotaoCriar = usuario.isAdmin,
                 Projetos = listFiltered,
+                IsAdmin = usuario.isAdmin
             };
 
             return _context.Projeto != null ?
@@ -57,6 +58,16 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
+
+            var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+
             var projeto = await _context.Projeto
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (projeto == null)
@@ -66,6 +77,8 @@ namespace ObraFacilApp.Controllers
 
             var imagens = _context.Imagens.Where(m => m.IdEntidade == projeto.Id && m.TiposEntidades == TiposEntidadesEnum.Projeto).ToList();
             projeto.Imagens = imagens;
+
+            projeto.IsAdmin = usuario.isAdmin;
 
             return View(projeto);
         }

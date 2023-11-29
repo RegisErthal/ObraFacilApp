@@ -47,6 +47,9 @@ namespace ObraFacilApp.Models
 
         [NotMapped]
         public List<ImagensModel>? Imagens { get; set; }
+        
+        [NotMapped]
+        public bool IsAdmin { get; set; }
 
         public virtual List<FundacaoModel>? Fundacaos { get; set; }
         public virtual List<AlvenariaModel>? Alvenarias { get; set; }

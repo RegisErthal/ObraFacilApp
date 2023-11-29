@@ -7,6 +7,7 @@ namespace ObraFacilApp.Models
     {
         public IEnumerable<ProjetoModel> Projetos { get; set; }
         public bool MostraBotaoCriar { get; set; }
+        public bool IsAdmin { get; set; }
     
     }
 }
