@@ -14,8 +14,8 @@ namespace ObraFacilApp.Models
         [Column("NomeProjeto")]
         [Display(Name = "Nome do Projeto")]
         public string NomeProjeto { get; set; }
-        
-        [Column("Responsável")]
+
+        [NotMapped]
         [Display(Name = "Responsável")]
         public string? Responsavel { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace ObraFacilApp.Models
 {
@@ -101,7 +102,7 @@ namespace ObraFacilApp.Models
 
         public ProjetoModel? Projeto { get; set; }
         [NotMapped]
-        public LoginModel UsuarioLogado { get; set; }
+        public LoginModel? UsuarioLogado { get; set; }
         
     }
 }

@@ -80,6 +80,10 @@ namespace ObraFacilApp.Controllers
 
             projeto.IsAdmin = usuario.isAdmin;
 
+
+            var usuarioProjeto = await _context.Login.FindAsync(projeto.UsuarioId);
+            projeto.Responsavel = usuarioProjeto?.UserName ?? "";
+
             return View(projeto);
         }
 
