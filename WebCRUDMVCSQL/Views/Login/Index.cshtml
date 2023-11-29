@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ObraFacilApp.Models.LoginModel>
+﻿@model TelaLoginModel
 
 @{
     ViewData["Title"] = "Index";
@@ -11,19 +11,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                    UserName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Senha)
+                    Senha
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.isAdmin)
+                    Is Admin?
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Logins) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
@@ -39,8 +39,12 @@
             </td>
             <td>
                         <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit" style="color:blue"></i></a> |
-                        <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info" style=" color:green"></i></a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" style=" color:gray"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info" style=" color:green"></i></a> 
+                        @if (Model.IsAdmin){
+                            <span> | </span>
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" style=" color:gray"></i></a>
+                        }
+                        
             </td>
         </tr>
 }

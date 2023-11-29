@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ObraFacilApp.Models;
 
 namespace ObraFacilApp.Controllers
@@ -21,8 +22,31 @@ namespace ObraFacilApp.Controllers
         // GET: Login
         public async Task<IActionResult> Index()
         {
-              return _context.Login != null ? 
-                          View(await _context.Login.ToListAsync()) :
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
+            var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+
+            var list = await _context.Login.ToListAsync();
+            IEnumerable<LoginModel> listFiltered = null;
+
+            if (usuario.isAdmin)
+                listFiltered = list;
+            else
+                listFiltered = list.Where(x => x.Id == usuario.Id);
+
+            var model = new TelaLoginModel()
+            {
+                Logins = listFiltered,
+                IsAdmin = usuario.isAdmin
+            };
+
+            return _context.Login != null ? 
+                          View(model) :
                           Problem("Entity set 'Contexto.Login'  is null.");
         }
 
@@ -74,11 +98,23 @@ namespace ObraFacilApp.Controllers
                 return NotFound();
             }
 
+            var session = HttpContext.Session.GetString("ObraFacilUsuario");
+
+            if (session == null)
+            {
+                return RedirectToAction("Index", "Logar");
+            }
+
+            var usuario = JsonConvert.DeserializeObject<LoginModel>(session);
+
             var login = await _context.Login.FindAsync(id);
             if (login == null)
             {
                 return NotFound();
             }
+
+            login.LoggedUserIsAdmin = usuario.isAdmin;
+
             return View(login);
         }
 

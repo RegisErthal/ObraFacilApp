@@ -22,6 +22,8 @@ namespace ObraFacilApp.Models
         [Display(Name = "isAdmin")]
         public bool isAdmin { get; set; }
 
+        [NotMapped]
+        public bool LoggedUserIsAdmin { get; set; }
     }
 }
 
